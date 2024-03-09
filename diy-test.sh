@@ -1,6 +1,7 @@
 #!/bin/bash
-# echo 'src-git openwrt-packages https://github.com/wwz09/openwrt-packages.git;master' >>feeds.conf.default
-# echo 'src-git openwrt-packages https://github.com/wwz09/small.git;master' >>feeds.conf.default
+
+echo 'src-git openwrt-packages https://github.com/wwz09/openwrt-packages.git;master' >>feeds.conf.default
+echo 'src-git openwrt-packages https://github.com/wwz09/small.git;master' >>feeds.conf.default
 # 修改默认IP
 sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
 

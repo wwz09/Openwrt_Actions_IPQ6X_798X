@@ -53,7 +53,7 @@ rm -rf feeds/luci/applications/luci-app-serverchan
 # svn export https://github.com/haiibo/packages/trunk/luci-theme-netgear package/luci-theme-netgear
 
 # 更改 Argon 主题背景
-cp -f $GITHUB_WORKSPACE/images/openwrt.jpg package/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
+# cp -f $GITHUB_WORKSPACE/images/openwrt.jpg package/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 
 
 # SmartDNS

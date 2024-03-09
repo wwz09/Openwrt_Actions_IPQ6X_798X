@@ -6,7 +6,7 @@ on:
     - cron: 0 19 * * *
 
 env:
-  REPO_URL: https://github.com/wwz09/ipq360v6-6.1.git
+  REPO_URL: https://github.com/breeze303/ipq60xx-6.1.git
   REPO_BRANCH: main
   CONFIG_FILE: configs/ipq60xx-cwifi.config
   DIY_SCRIPT: diy-test.sh
@@ -68,6 +68,13 @@ jobs:
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         VERSION_INFO=$(git show -s --date=short --format="作者: %an<br/>时间: %cd<br/>内容: %s<br/>hash: %H")
         echo "VERSION_INFO=$VERSION_INFO" >> $GITHUB_ENV
+        
+    - name: 更新 & 安装 feeds & 执行脚本
+      run: |
+        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
+        chmod +x $DIY_SCRIPT
+        cd openwrt
+        $GITHUB_WORKSPACE/$DIY_SCRIPT
 
     - name: Generate Variables
       run: |

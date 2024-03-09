@@ -8,7 +8,7 @@ on:
 env:
   REPO_URL: https://github.com/breeze303/ipq60xx-6.1.git
   REPO_BRANCH: main
-  FEEDS_CONF: feeds/360V6.default
+  FEEDS_CONF: feeds/feeds.conf.default
   CONFIG_FILE: configs/ipq60xx-cwifi.config
   DIY_SCRIPT: diy-test.sh
   CLASH_KERNEL: amd64

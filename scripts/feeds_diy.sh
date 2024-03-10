@@ -45,8 +45,9 @@ sed -i 's/"重启"/"系统重启"/g' `grep "重启" -rl ./`
 sed -i 's/"服务"/"应用服务"/g' `grep "服务" -rl ./`
 sed -i 's/"CPU 性能优化调节"/"CPU 设置"/g' `grep "CPU 性能优化调节" -rl ./`
 sed -i 's/"网络"/"网络设置"/g' `grep "网络" -rl ./`
-sed -i 's/"Control"/"家长控制"/g' `grep "Control" -rl ./`
+# sed -i 's/"Control"/"家长控制"/g' `grep "Control" -rl ./`
 sed -i 's/"wolplus"/"网络重启"/g' `grep "wolplus" -rl ./`
+sed -i 's/"parentcontrol"/"家长控制"/g' `grep "parentcontrol" -rl ./`
 
 # 添加额外插件
 git clone --depth=1 -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush package/luci-app-serverchan

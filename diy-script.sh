@@ -65,8 +65,8 @@ git clone --depth=1 https://github.com/ilxp/luci-app-ikoolproxy package/luci-app
 # svn export https://github.com/haiibo/packages/trunk/luci-app-vssr package/luci-app-vssr
 
 # 添加主题
-# git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
-# git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
+git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
+git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 # git clone --depth=1 https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom package/luci-theme-infinityfreedom
 # svn export https://github.com/haiibo/packages/trunk/luci-theme-atmaterial package/luci-theme-atmaterial
 

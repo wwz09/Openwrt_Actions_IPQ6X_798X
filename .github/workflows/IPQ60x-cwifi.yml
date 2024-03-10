@@ -8,7 +8,6 @@ on:
 env:
   REPO_URL: https://github.com/breeze303/ipq60xx-6.1.git
   REPO_BRANCH: main
-  FEEDS_CONF: feeds/feeds.conf.default
   CONFIG_FILE: configs/ipq60xx-cwifi.config
   DIY_SCRIPT: diy-test.sh
   CLASH_KERNEL: amd64
@@ -66,15 +65,11 @@ jobs:
         df -hT $GITHUB_WORKSPACE
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         cd openwrt
+        git clone https://github.com/wwz09/openwrt-packages.git openwrt-packages
+        git clone https://github.com/wwz09/small.git openwrt-small
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         VERSION_INFO=$(git show -s --date=short --format="作者: %an<br/>时间: %cd<br/>内容: %s<br/>hash: %H")
         echo "VERSION_INFO=$VERSION_INFO" >> $GITHUB_ENV
-
-    - name: 替换 feeds 
-      run: |
-        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
-        cd $OPENWRT_PATH/
-        chmod +x feeds.conf.default
         
     - name: Generate Variables
       run: |

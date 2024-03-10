@@ -16,8 +16,8 @@
 sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
 
 # Add a feed source
-echo 'src-git openwrt-packages https://github.com/wwz09/openwrt-packages;master' >>feeds.conf.default
-echo 'src-git openwrt-small https://github.com/wwz09/small;master' >>feeds.conf.default
+echo 'src-git openwrt_packages https://github.com/wwz09/openwrt-packages;master' >>feeds.conf.default
+echo 'src-git openwrt_small https://github.com/wwz09/small;master' >>feeds.conf.default
 echo 'src-git mosdns https://github.com/sbwml/luci-app-mosdns;v5' >>feeds.conf.default
 #echo 'src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2' >>feeds.conf.default
 #echo 'src-git adguardhome https://github.com/xiaoxiao29/luci-app-adguardhome;master' >>feeds.conf.default

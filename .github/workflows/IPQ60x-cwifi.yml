@@ -67,6 +67,7 @@ jobs:
         cd openwrt
         git clone https://github.com/wwz09/openwrt-packages.git openwrt-packages
         git clone https://github.com/wwz09/small.git openwrt-small
+        sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         VERSION_INFO=$(git show -s --date=short --format="作者: %an<br/>时间: %cd<br/>内容: %s<br/>hash: %H")
         echo "VERSION_INFO=$VERSION_INFO" >> $GITHUB_ENV

@@ -61,8 +61,8 @@ sed -i 's/"wolplus"/"网络重启"/g' `grep "wolplus" -rl ./`
 # 添加额外插件
 git clone --depth=1 -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush package/luci-app-serverchan
 git clone --depth=1 https://github.com/ilxp/luci-app-ikoolproxy package/luci-app-ikoolproxy
-svn export https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
-svn export https://github.com/haiibo/packages/trunk/luci-app-vssr package/luci-app-vssr
+# svn export https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
+# svn export https://github.com/haiibo/packages/trunk/luci-app-vssr package/luci-app-vssr
 
 # 添加主题
 # git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon

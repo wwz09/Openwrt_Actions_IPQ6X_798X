@@ -15,9 +15,35 @@
 # 修改默认IP
 sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
 
+#　修改主机名
+sed -i "s/hostname='OpenWrt'/hostname='QihooV6'/g" package/base-files/files/bin/config_generate
+
 # Add a feed source
 echo 'src-git openwrt_packages https://github.com/wwz09/openwrt-packages;master' >>feeds.conf.default
 echo 'src-git openwrt_small https://github.com/wwz09/small;master' >>feeds.conf.default
 echo 'src-git mosdns https://github.com/sbwml/luci-app-mosdns;v5' >>feeds.conf.default
 #echo 'src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2' >>feeds.conf.default
 #echo 'src-git adguardhome https://github.com/xiaoxiao29/luci-app-adguardhome;master' >>feeds.conf.default
+
+# 修改插件名字
+sed -i 's/"挂载点"/"磁盘挂载"/g' `grep "挂载点" -rl ./`
+sed -i 's/"Argon 主题设置"/"主题设置"/g' `grep "Argon 主题设置" -rl ./`
+sed -i 's/"解锁网易云灰色歌曲"/"音乐解锁"/g' `grep "解锁网易云灰色歌曲" -rl ./`
+sed -i 's/"状态"/"系统状态"/g' `grep "状态" -rl ./`
+sed -i 's/"接口"/"有线设置"/g' `grep "接口" -rl ./`
+sed -i 's/"无线"/"无线设置"/g' `grep "无线" -rl ./`
+sed -i 's/"File Transfer"/"文件上传"/g' `grep "File Transfer" -rl ./`
+sed -i 's/"iKoolProxy滤广告"/"广告拦截"/g' `grep "iKoolProxy滤广告" -rl ./`
+sed -i 's/"终端"/"超级终端"/g' `grep "终端" -rl ./`
+sed -i 's/"Frps"/"Frps内网穿透"/g' `grep "Frps" -rl ./`
+sed -i 's/"系统"/"系统设置"/g' `grep "系统" -rl ./`
+sed -i 's/"Hello World"/"世界你好"/g' `grep "Hello World" -rl ./`
+sed -i 's/"广告屏蔽大师 Plus+"/"广告屏蔽"/g' `grep "广告屏蔽大师 Plus+" -rl ./`
+sed -i 's/"DDNSTO 远程控制"/"远程控制"/g' `grep "DDNSTO 远程控制" -rl ./`
+sed -i 's/"网络存储"/"存储设置"/g' `grep "网络存储" -rl ./`
+sed -i 's/"重启"/"系统重启"/g' `grep "重启" -rl ./`
+sed -i 's/"服务"/"应用服务"/g' `grep "服务" -rl ./`
+sed -i 's/"CPU 性能优化调节"/"CPU 设置"/g' `grep "CPU 性能优化调节" -rl ./`
+sed -i 's/"网络"/"网络设置"/g' `grep "网络" -rl ./`
+sed -i 's/"Control"/"家长控制"/g' `grep "Control" -rl ./`
+sed -i 's/"wolplus"/"网络重启"/g' `grep "wolplus" -rl ./`

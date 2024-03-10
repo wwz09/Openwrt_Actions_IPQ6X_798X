@@ -25,6 +25,16 @@ echo 'src-git mosdns https://github.com/sbwml/luci-app-mosdns;v5' >>feeds.conf.d
 #echo 'src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2' >>feeds.conf.default
 #echo 'src-git adguardhome https://github.com/xiaoxiao29/luci-app-adguardhome;master' >>feeds.conf.default
 
+# 移除要替换的包
+#rm -rf feeds/packages/net/mosdns
+#rm -rf feeds/packages/net/msd_lite
+#rm -rf feeds/packages/net/smartdns
+#rm -rf feeds/luci/themes/luci-theme-argon
+#rm -rf feeds/luci/themes/luci-theme-netgear
+#rm -rf feeds/luci/applications/luci-app-mosdns
+#rm -rf feeds/luci/applications/luci-app-netdata
+#rm -rf feeds/luci/applications/luci-app-serverchan
+
 # 修改插件名字
 sed -i 's/"挂载点"/"磁盘挂载"/g' `grep "挂载点" -rl ./`
 sed -i 's/"Argon 主题设置"/"主题设置"/g' `grep "Argon 主题设置" -rl ./`
@@ -56,9 +66,10 @@ svn export https://github.com/vernesong/OpenClash/trunk/luci-app-openclash packa
 svn export https://github.com/haiibo/packages/trunk/luci-app-vssr package/luci-app-vssr
 
 # 添加主题
-git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
-git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
-svn export https://github.com/haiibo/packages/trunk/luci-theme-atmaterial package/luci-theme-atmaterial
+# git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
+# git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
+# git clone --depth=1 https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom package/luci-theme-infinityfreedom
+# svn export https://github.com/haiibo/packages/trunk/luci-theme-atmaterial package/luci-theme-atmaterial
 
 # 取消主题默认设置
 find package/luci-theme-*/* -type f -name '*luci-theme-*' -print -exec sed -i '/set luci.main.mediaurlbase/d' {} \;

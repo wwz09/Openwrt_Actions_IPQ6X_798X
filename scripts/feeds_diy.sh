@@ -18,6 +18,9 @@ sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generat
 #　修改主机名
 sed -i "s/hostname='OpenWrt'/hostname='QihooV6'/g" package/base-files/files/bin/config_generate
 
+#　修改feeds.conf.default文件  删除所有还有immortalwrt的行
+# sed '/immortalwrt/d' feeds.conf.default
+
 # Add a feed source
 echo 'src-git packages https://github.com/coolsnowwolf/packages.git' >>feeds.conf.default
 echo 'src-git luci https://github.com/coolsnowwolf/luci.git' >>feeds.conf.default

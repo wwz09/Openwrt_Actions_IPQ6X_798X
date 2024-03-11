@@ -10,7 +10,7 @@ env:
   REPO_BRANCH: main
   FEEDS_CONF: feeds/feeds.conf.default
   CONFIG_FILE: configs/ipq60xx-cwifi.config
-  DIY_SCRIPT: scripts/feeds_diy
+  DIY_SCRIPT: scripts/feeds_diy.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false

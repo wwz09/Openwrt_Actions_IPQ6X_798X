@@ -72,7 +72,7 @@ jobs:
         
     - name: 更新 & 安装 feeds & 执行脚本
       run: |
-        sed -i 's/'immortalwrt'/'coolsnowwolf'/g' $OPENWRT_PATH/feeds.conf.default
+        sed '/immortalwrt/d' $OPENWRT_PATH/feeds.conf.default
         chmod +x $DIY_SCRIPT
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT

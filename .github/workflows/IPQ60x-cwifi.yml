@@ -6,10 +6,10 @@ on:
     - cron: 0 19 * * *
 
 env:
-  REPO_URL:  https://github.com/breeze303/ipq60xx-6.1.git
+  REPO_URL:  https://github.com/wwz09/IPQXX6.1.git
   REPO_BRANCH: main
   CONFIG_FILE: configs/ipq60xx-cwifi.config
-  DIY_SCRIPT: scripts/feeds_diy.sh
+  DIY_SCRIPT: scripts/cwifi.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false

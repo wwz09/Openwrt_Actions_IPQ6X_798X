@@ -18,10 +18,7 @@ sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generat
 #　修改主机名
 sed -i "s/hostname='OpenWrt'/hostname='QihooV6'/g" package/base-files/files/bin/config_generate
 
-
 # Add a feed source
-# echo 'src-git packages https://github.com/coolsnowwolf/packages.git' >>feeds.conf.default
-# echo 'src-git luci https://github.com/coolsnowwolf/luci.git' >>feeds.conf.default
 echo 'src-git openwrt_packages https://github.com/wwz09/openwrt-packages;master' >>feeds.conf.default
 echo 'src-git openwrt_small https://github.com/wwz09/small;master' >>feeds.conf.default
 echo 'src-git mosdns https://github.com/sbwml/luci-app-mosdns;v5' >>feeds.conf.default
@@ -32,11 +29,11 @@ echo 'src-git mosdns https://github.com/sbwml/luci-app-mosdns;v5' >>feeds.conf.d
 #rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/msd_lite
 #rm -rf feeds/packages/net/smartdns
-#rm -rf feeds/luci/themes/luci-theme-argon
-#rm -rf feeds/luci/themes/luci-theme-netgear
+# rm -rf feeds/luci/themes/luci-theme-argon
+rm -rf feeds/luci/themes/luci-theme-netgear
 #rm -rf feeds/luci/applications/luci-app-mosdns
 #rm -rf feeds/luci/applications/luci-app-netdata
-#rm -rf feeds/luci/applications/luci-app-serverchan
+rm -rf feeds/luci/applications/luci-app-serverchan
 
 
 

@@ -29,7 +29,7 @@ echo 'src-git mosdns https://github.com/sbwml/luci-app-mosdns;v5' >>feeds.conf.d
 #rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/msd_lite
 #rm -rf feeds/packages/net/smartdns
-# rm -rf feeds/luci/themes/luci-theme-argon
+rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf feeds/luci/themes/luci-theme-netgear
 #rm -rf feeds/luci/applications/luci-app-mosdns
 #rm -rf feeds/luci/applications/luci-app-netdata
@@ -43,8 +43,8 @@ git clone --depth=1 https://github.com/ilxp/luci-app-ikoolproxy package/luci-app
 
 
 # 添加主题
-git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
-git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
+# git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
+# git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 
 
 # 取消主题默认设置

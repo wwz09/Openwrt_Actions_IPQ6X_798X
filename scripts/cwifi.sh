@@ -19,8 +19,9 @@ sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generat
 sed -i "s/hostname='OpenWrt'/hostname='QihooV6'/g" package/base-files/files/bin/config_generate
 
 # Add a feed source
-echo 'src-git openwrt_packages https://github.com/wwz09/openwrt-packages;master' >>feeds.conf.default
-echo 'src-git openwrt_small https://github.com/wwz09/small;master' >>feeds.conf.default
+echo 'src-git small-package https://github.com/kenzok8/small-package;main' >>feeds.conf.default
+# echo 'src-git openwrt_packages https://github.com/wwz09/openwrt-packages;master' >>feeds.conf.default
+# echo 'src-git openwrt_small https://github.com/wwz09/small;master' >>feeds.conf.default
 # echo 'src-git mosdns https://github.com/sbwml/luci-app-mosdns;v5' >>feeds.conf.default
 # echo 'src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2' >>feeds.conf.default
 # echo 'src-git adguardhome https://github.com/xiaoxiao29/luci-app-adguardhome;master' >>feeds.conf.default
@@ -30,7 +31,7 @@ echo 'src-git openwrt_small https://github.com/wwz09/small;master' >>feeds.conf.
 # rm -rf feeds/packages/net/msd_lite
 # rm -rf feeds/packages/net/smartdns
 rm -rf feeds/packages/lang/golang
-git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+rm -rf feeds/smpackage/{base-files,dnsmasq,firewall*,fullconenat,libnftnl,nftables,ppp,opkg,ucl,upx,vsftpd-alt,miniupnpd-iptables,wireless-regdb}
 rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf feeds/openwrt-packages/luci-theme-argon
 rm -rf feeds/openwrt-packages/luci-app-argon-config
@@ -44,12 +45,12 @@ rm -rf feeds/luci/applications/luci-app-serverchan
 
 # 添加额外插件
 git clone --depth=1 -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush package/luci-app-serverchan
-git clone --depth=1 https://github.com/ilxp/luci-app-ikoolproxy package/luci-app-ikoolproxy
-
+# git clone --depth=1 https://github.com/ilxp/luci-app-ikoolproxy package/luci-app-ikoolproxy
+git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 
 # 添加主题
-git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
-git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
+# git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
+# git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 
 
 # 取消主题默认设置

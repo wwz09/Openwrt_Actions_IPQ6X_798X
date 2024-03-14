@@ -29,6 +29,8 @@ echo 'src-git openwrt_small https://github.com/wwz09/small;master' >>feeds.conf.
 # rm -rf feeds/packages/net/mosdns
 # rm -rf feeds/packages/net/msd_lite
 # rm -rf feeds/packages/net/smartdns
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf feeds/openwrt-packages/luci-theme-argon
 rm -rf feeds/openwrt-packages/luci-app-argon-config

@@ -31,10 +31,11 @@ echo 'src-git openwrt_small https://github.com/wwz09/small;master' >>feeds.conf.
 # rm -rf feeds/packages/net/smartdns
 rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf feeds/openwrt-packages/luci-theme-argon
-rm -rf feeds/luci/themes/luci-theme-netgear
-rm -rf feeds/openwrt-packages/luci-app-ikoolproxy
-#rm -rf feeds/luci/applications/luci-app-mosdns
-#rm -rf feeds/luci/applications/luci-app-netdata
+rm -rf feeds/openwrt-packages/luci-app-argon-config
+# rm -rf feeds/luci/themes/luci-theme-netgear
+# rm -rf feeds/openwrt-packages/luci-app-ikoolproxy
+# rm -rf feeds/luci/applications/luci-app-mosdns
+# rm -rf feeds/luci/applications/luci-app-netdata
 rm -rf feeds/luci/applications/luci-app-serverchan
 
 
@@ -45,8 +46,8 @@ git clone --depth=1 https://github.com/ilxp/luci-app-ikoolproxy package/luci-app
 
 
 # 添加主题
-# git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
-# git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
+git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
+git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 
 
 # 取消主题默认设置

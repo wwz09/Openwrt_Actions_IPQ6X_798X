@@ -10,7 +10,7 @@ env:
   REPO_BRANCH: main
   CONFIG_FILE: configs/ipq60xx-cwifi.config
   DIY_P1_SH: ./scripts/diy.sh
-  DIY_P2_SH: ./scripts/cwifi.sh
+  DIY_P2_SH: ./scripts/diy-test.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false

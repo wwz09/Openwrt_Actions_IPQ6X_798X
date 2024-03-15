@@ -9,7 +9,8 @@ env:
   REPO_URL:  https://github.com/wwz09/IPQXX6.1.git
   REPO_BRANCH: main
   CONFIG_FILE: configs/ipq60xx-cwifi.config
-  DIY_SCRIPT: scripts/cwifi.sh
+  DIY_P1_SH: ./scripts/CWIFI1.sh
+  DIY_P2_SH: ./scripts/CWIFI2.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
@@ -71,9 +72,15 @@ jobs:
         
     - name: 更新 & 安装 feeds & 执行脚本
       run: |
-        chmod +x $DIY_SCRIPT
+        chmod +x $DIY_P1_SH
         cd $OPENWRT_PATH
-        $GITHUB_WORKSPACE/$DIY_SCRIPT
+        $GITHUB_WORKSPACE/$DIY_P1_SH 
+        
+    - name: DIY执行脚本
+      run: |
+        chmod +x $DIY_P2_SH
+        cd $OPENWRT_PATH
+        $GITHUB_WORKSPACE/$DIY_P2_SH
         
     - name: Generate Variables
       run: |

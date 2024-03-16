@@ -44,5 +44,8 @@ git clone  https://github.com/sirpdboy/luci-app-parentcontrol.git feeds/luci/app
 # git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 
 
+#　编译的固件文件名添加日期
+sed -i 's/IMG_PREFIX:=$(VERSION_DIST_SANITIZED)/IMG_PREFIX:=WIFI-$(VERSION_DIST_SANITIZED)/g' include/image.mk
+
 # 取消主题默认设置
 # find package/luci-theme-*/* -type f -name '*luci-theme-*' -print -exec sed -i '/set luci.main.mediaurlbase/d' {} \;

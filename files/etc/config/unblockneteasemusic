@@ -1,0 +1,16 @@
+
+config unblockneteasemusic 'config'
+	option enable '1'
+	option disable_upgrade_check '1'
+	option auto_update '1'
+	option update_time '3'
+	option music_source 'kuwo'
+	option use_custom_cookie '0'
+	option follow_source_order '1'
+	option search_album '0'
+	option enable_flac '0'
+	option select_max_br '0'
+	option replace_music_source 'dont_replace'
+	option block_ads '0'
+	option advanced_mode '0'
+

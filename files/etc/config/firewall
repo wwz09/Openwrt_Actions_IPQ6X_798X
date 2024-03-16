@@ -9,7 +9,7 @@ config defaults
 
 config zone
 	option name 'lan'
-	list network 'lan'
+	option network 'lan utun'
 	option input 'ACCEPT'
 	option output 'ACCEPT'
 	option forward 'ACCEPT'
@@ -141,5 +141,29 @@ config include 'qcanssecm'
 	option type 'script'
 	option path '/etc/firewall.d/qca-nss-ecm'
 	option family 'any'
+	option reload '1'
+
+config include 'parentcontrol'
+	option type 'script'
+	option path '/etc/parentcontrol.include'
+	option reload '1'
+
+config include 'homeproxy_pre'
+	option type 'nftables'
+	option path '/var/run/homeproxy/fw4_pre.nft'
+	option position 'table-pre'
+
+config include 'homeproxy_post'
+	option type 'nftables'
+	option path '/var/run/homeproxy/fw4_post.nft'
+	option position 'table-post'
+
+config include 'openclash'
+	option type 'script'
+	option path '/var/etc/openclash.include'
+
+config include 'unblockneteasemusic'
+	option type 'script'
+	option path '/var/run/unblockneteasemusic/fw3.include'
 	option reload '1'
 

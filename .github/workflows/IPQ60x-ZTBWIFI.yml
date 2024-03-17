@@ -1,4 +1,4 @@
-name: IPQ60XX-TEST
+name: IPQ60XX-CWIFI
 
 on:
   workflow_dispatch:
@@ -8,14 +8,14 @@ on:
 env:
   REPO_URL: https://github.com/breeze303/ipq60xx-6.1.git
   REPO_BRANCH: main
-  CONFIG_FILE: configs/ipq60xx-test.config
-  DIY_P1_SH: ./scripts/TEST1.sh
-  DIY_P2_SH: ./scripts/TEST2.sh
+  CONFIG_FILE: configs/ipq60xx-ZTBWIFI.config
+  DIY_P1_SH: ./scripts/ZTBWIFI1.sh
+  DIY_P2_SH: ./scripts/ZTBWIFI2.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: IPQ60XX-TEST
+  FIRMWARE_TAG: IPQ60XX-ZTBWIFI
   TZ: Asia/Shanghai
 
 jobs:
@@ -69,7 +69,7 @@ jobs:
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         VERSION_INFO=$(git show -s --date=short --format="作者: %an<br/>时间: %cd<br/>内容: %s<br/>hash: %H")
         echo "VERSION_INFO=$VERSION_INFO" >> $GITHUB_ENV
-     
+        
     - name: 更新 & 安装 feeds & 执行脚本
       run: |
         chmod +x $DIY_P1_SH

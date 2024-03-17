@@ -1,4 +1,4 @@
-name: IPQ60XX-TEST
+name: IPQ60XX-CSBWIFI
 
 on:
   workflow_dispatch:
@@ -9,13 +9,13 @@ env:
   REPO_URL: https://github.com/breeze303/ipq60xx-6.1.git
   REPO_BRANCH: main
   CONFIG_FILE: configs/ipq60xx-test.config
-  DIY_P1_SH: ./scripts/TEST1.sh
-  DIY_P2_SH: ./scripts/TEST2.sh
+  DIY_P1_SH: ./scripts/CSBWIFI1.sh
+  DIY_P2_SH: ./scripts/CSBWIFI2.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: IPQ60XX-TEST
+  FIRMWARE_TAG: IPQ60XX-CSBWIFI
   TZ: Asia/Shanghai
 
 jobs:

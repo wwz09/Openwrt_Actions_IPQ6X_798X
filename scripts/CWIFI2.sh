@@ -13,7 +13,7 @@
 
 
 # 移除要替换的包
-# rm -rf package/feeds/luci/homeproxy
+rm -rf package/feeds/packages/uspot
 # rm -rf package/feeds/luci/luci-app-airwhu
 # rm -rf package/feeds/luci/luci-app-amule
 # rm -rf package/feeds/luci/luci-app-appfilter

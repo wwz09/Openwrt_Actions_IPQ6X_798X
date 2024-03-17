@@ -35,9 +35,9 @@ git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 # rm -rf feeds/luci/applications
 # git clone  https://github.com/wwz09/applications feeds/luci/applications
 git clone  https://github.com/wwz09/sup.git feeds/luci/applications/sup
-git clone --depth=1 -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush package/luci-app-serverchan
+git clone  https://github.com/sirpdboy/luci-app-parentcontrol.git feeds/luci/applications/luci-app-parentcontrol
 # git clone https://github.com/rianjskis/luci-app-filetransfer.git luci/applications/luci-app-filetransfer
-# git clone  https://github.com/sirpdboy/luci-app-parentcontrol.git feeds/luci/applications/luci-app-parentcontrol
+git clone --depth=1 -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush package/luci-app-serverchan
 # git clone --depth=1 https://github.com/ilxp/luci-app-ikoolproxy package/luci-app-ikoolproxy
 
 
@@ -46,8 +46,8 @@ git clone --depth=1 -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpu
 # git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 
 
-#　编译的固件文件名添加日期
-sed -i 's/IMG_PREFIX:=$(VERSION_DIST_SANITIZED)/IMG_PREFIX:=WIFI-$(VERSION_DIST_SANITIZED)/g' include/image.mk
+#　编译的固件文件名
+sed -i 's/IMG_PREFIX:=$(VERSION_DIST_SANITIZED)/IMG_PREFIX:=WIFI自用版-$(VERSION_DIST_SANITIZED)/g' include/image.mk
 
 # 取消主题默认设置
 # find package/luci-theme-*/* -type f -name '*luci-theme-*' -print -exec sed -i '/set luci.main.mediaurlbase/d' {} \;

@@ -24,7 +24,7 @@
 # rm -rf feeds/luci/themes/luci-theme-netgear
 # rm -rf feeds/openwrt-packages/luci-app-ikoolproxy
 # rm -rf feeds/luci/applications/luci-app-mosdns
-# rm -rf feeds/luci/applications/luci-app-netdata
+rm -rf package/feeds/luci/luci-app-samba
 # rm -rf feeds/luci/applications/luci-app-serverchan
 
 

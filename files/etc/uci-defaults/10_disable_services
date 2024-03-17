@@ -1,0 +1,5 @@
+/etc/init.d/parentcontrol disable
+/etc/init.d/timewol disable
+/etc/init.d/weburl disable
+
+exit 0

@@ -137,6 +137,11 @@ config include 'fullconenat'
 	option path '/usr/share/fullconenat/firewall.include'
 	option reload '1'
 
+config include 'unblockneteasemusic'
+	option type 'script'
+	option path '/var/run/unblockneteasemusic/fw3.include'
+	option reload '1'
+
 config include 'qcanssecm'
 	option type 'script'
 	option path '/etc/firewall.d/qca-nss-ecm'
@@ -161,9 +166,4 @@ config include 'homeproxy_post'
 config include 'openclash'
 	option type 'script'
 	option path '/var/etc/openclash.include'
-
-config include 'unblockneteasemusic'
-	option type 'script'
-	option path '/var/run/unblockneteasemusic/fw3.include'
-	option reload '1'
 

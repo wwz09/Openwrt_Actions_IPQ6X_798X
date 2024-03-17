@@ -22,12 +22,12 @@ sed -i '/luci/d' feeds.conf.default
 # 删除所有空白行
 sed －i '/^\s*$/d' feeds.conf.default
 
-echo 'src-git luci https://github.com/immortalwrt/luci.git' >>feeds.conf.default
+# echo 'src-git luci https://github.com/immortalwrt/luci.git' >>feeds.conf.default
 # echo 'src-git small_package https://github.com/kenzok8/small-package.git;main' >>feeds.conf.default
 # echo 'src-git openwrt_packages https://github.com/wwz09/openwrt-packages;master' >>feeds.conf.default
 # echo 'src-git openwrt_small https://github.com/wwz09/small;master' >>feeds.conf.default
 # echo 'src-git mosdns https://github.com/sbwml/luci-app-mosdns;v5' >>feeds.conf.default
-# echo 'src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2' >>feeds.conf.default
+# echo 'src-git sup https://github.com/wwz09/sup.git' >>feeds.conf.default
 # echo 'src-git adguardhome https://github.com/xiaoxiao29/luci-app-adguardhome;master' >>feeds.conf.default
 
 ./scripts/feeds update -a

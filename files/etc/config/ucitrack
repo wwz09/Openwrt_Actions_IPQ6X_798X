@@ -55,17 +55,14 @@ config samba
 config tinyproxy
 	option init 'tinyproxy'
 
-config eqos
-	option init 'eqos'
+config weburl
+	option init 'weburl'
 
 config ddnsto
 	option init 'ddnsto'
 
 config timewol
 	option init 'timewol'
-
-config weburl
-	option init 'weburl'
 
 config parentcontrol
 	option init 'parentcontrol'
@@ -76,9 +73,14 @@ config vlmcsd
 config wolplus
 	option init 'wolplus'
 
+config eqos
+
 config openclash
 	option init 'openclash'
 
 config serverchan
 	option init 'serverchan'
+
+config usb_printer
+	option init 'usb_printer'
 

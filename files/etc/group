@@ -15,3 +15,4 @@ dnsmasq:x:453:dnsmasq
 logd:x:514:logd
 ubus:x:81:ubus
 sing-box:x:5566:sing-box
+lp:x:7:p910nd

@@ -1,4 +1,4 @@
-name: IPQ60XX-CWIFI
+name: IPQ60XX-ZTBWIFI
 
 on:
   workflow_dispatch:

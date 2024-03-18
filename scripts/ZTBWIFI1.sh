@@ -18,12 +18,13 @@ sed -i "s/hostname='OpenWrt'/hostname='QihooV6'/g" package/base-files/files/bin/
 
 # 删除luci所在行
 # sed -i '/luci/d' feeds.conf.default
+sed -i '/packages/d' feeds.conf.default
 
 # 删除所有空白行
-# sed －i '/^\s*$/d' feeds.conf.default
+sed －i '/^\s*$/d' feeds.conf.default
 
 # echo 'src-git luci https://github.com/immortalwrt/luci.git' >>feeds.conf.default
-# echo 'src-git small_package https://github.com/kenzok8/small-package.git;main' >>feeds.conf.default
+echo 'src-git packages https://github.com/immortalwrt/packages.git' >>feeds.conf.default
 # echo 'src-git openwrt_packages https://github.com/wwz09/openwrt-packages;master' >>feeds.conf.default
 # echo 'src-git openwrt_small https://github.com/wwz09/small;master' >>feeds.conf.default
 # echo 'src-git mosdns https://github.com/sbwml/luci-app-mosdns;v5' >>feeds.conf.default

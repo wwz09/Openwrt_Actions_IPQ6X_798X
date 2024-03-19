@@ -33,8 +33,8 @@ rm -rf package/feeds/sup/shadowsocksr-libev
 # 移除要替换的包
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
-rm -rf feeds/luci/applications
-git clone https://github.com/wwz09/applications feeds/luci/applications
+# rm -rf feeds/luci/applications
+# git clone https://github.com/wwz09/applications feeds/luci/applications
 # git clone  https://github.com/wwz09/sup.git feeds/luci/applications/sup
 git clone https://github.com/sirpdboy/luci-app-parentcontrol.git feeds/luci/applications/luci-app-parentcontrol
 # git clone https://github.com/rianjskis/luci-app-filetransfer.git luci/applications/luci-app-filetransfer

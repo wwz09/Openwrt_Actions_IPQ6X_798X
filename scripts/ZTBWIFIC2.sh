@@ -13,9 +13,9 @@
 
 
 # 移除要替换的包
-rm -rf package/feeds/packages/uspot
-rm -rf package/feeds/sup/upx
-rm -rf package/feeds/sup/shadowsocksr-libev
+# rm -rf package/feeds/packages/uspot
+# rm -rf package/feeds/sup/upx
+# rm -rf package/feeds/sup/shadowsocksr-libev
 # rm -rf package/feeds/luci/luci-app-appfilter
 # rm -rf package/feeds/luci/luci-app-bitsrunlogin-go
 # rm -rf package/feeds/luci/luci-app-cpulimit

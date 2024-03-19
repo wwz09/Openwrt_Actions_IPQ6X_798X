@@ -24,9 +24,9 @@ sed -i '/packages/d' feeds.conf.default
 sed －i '/^\s*$/d' feeds.conf.default
 
 
-echo 'src-git luci https://github.com/Lienol/openwrt-luci.git;22.03' >>feeds.conf.default
+#echo 'src-git luci https://github.com/Lienol/openwrt-luci.git;22.03' >>feeds.conf.default
 echo 'src-git packages https://github.com/Lienol/openwrt-packages.git;22.03' >>feeds.conf.default
-# echo 'src-git luci https://github.com/coolsnowwolf/luci.git' >>feeds.conf.default
+echo 'src-git luci https://github.com/coolsnowwolf/luci.git' >>feeds.conf.default
 # echo 'src-git packages https://github.com/immortalwrt/packages.git' >>feeds.conf.default
 # echo 'src-git openwrt_packages https://github.com/wwz09/openwrt-packages;master' >>feeds.conf.default
 # echo 'src-git openwrt_small https://github.com/wwz09/small;master' >>feeds.conf.default

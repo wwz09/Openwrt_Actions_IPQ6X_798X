@@ -30,7 +30,7 @@ echo 'src-git packages https://github.com/immortalwrt/packages.git' >>feeds.conf
 # echo 'src-git openwrt_small https://github.com/wwz09/small;master' >>feeds.conf.default
 # echo 'src-git mosdns https://github.com/sbwml/luci-app-mosdns;v5' >>feeds.conf.default
 # echo 'src-git sup https://github.com/wwz09/sup.git' >>feeds.conf.default
-echo 'src-git small-package https://github.com/kenzok8/small-package.git' >>feeds.conf.default
+echo 'src-git small_package https://github.com/kenzok8/small-package.git' >>feeds.conf.default
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a

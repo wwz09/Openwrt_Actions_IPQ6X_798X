@@ -46,9 +46,5 @@ config interface 'wan6'
 	option device 'eth3'
 	option proto 'dhcpv6'
 
-config interface 'utun'
-	option proto 'none'
-	option ifname 'utun'
-	option device 'utun'
-	option auto '0'
+
 

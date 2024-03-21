@@ -31,7 +31,8 @@ sed -i "s/hostname='OpenWrt'/hostname='QihooV6'/g" package/base-files/files/bin/
 # echo 'src-git openwrt_small https://github.com/wwz09/small;master' >>feeds.conf.default
 # echo 'src-git mosdns https://github.com/sbwml/luci-app-mosdns;v5' >>feeds.conf.default
 # echo 'src-git sup https://github.com/wwz09/sup.git' >>feeds.conf.default
-echo 'src-git small_package https://github.com/kenzok8/small-package.git' >>feeds.conf.default
+echo 'src-git openwrt_packages https://github.com/kenzok8/openwrt-packages.git' >>feeds.conf.default
+echo 'src-git small https://github.com/kenzok8/small.git' >>feeds.conf.default
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a

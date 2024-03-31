@@ -108,6 +108,14 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
+    - name: 补丁   
+      run: |
+        git config --global user.name "OpenWrt Builder"
+        git config --global user.email "buster-openwrt@ovvo.uk"
+        cd $OPENWRT_PATH/feeds/luci
+        wget https://raw.githubusercontent.com/openwrt-ipq60xx/patches/main/feeds/luci/0001-show-soc-status-on-luci.patch
+        git am 0001-show-soc-status-on-luci.patch  
+
     - name: Load Custom Configuration
       run: |
         [ -e ./scripts/ZTBWIFI/files ] && mv ./scripts/ZTBWIFI/files $OPENWRT_PATH/files
@@ -172,6 +180,7 @@ jobs:
         body: |
           **This is OpenWrt Firmware for ${{ env.FIRMWARE_TAG }}**
           ### 📒 固件信息(WIFI版本)
+          - 这是带WIFI以及NSS的6.1内核固件
           - 💻 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 OpenWrt 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}

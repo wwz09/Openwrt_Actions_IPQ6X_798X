@@ -23,8 +23,8 @@ sed -i '/small/d' feeds.conf.default
 # 删除所有空白行
 sed －i '/^\s*$/d' feeds.conf.default
 
-echo 'src-git luci https://github.com/immortalwrt/luci.git' >>feeds.conf.default
-echo 'src-git packages https://github.com/immortalwrt/packages.git' >>feeds.conf.default
+# echo 'src-git luci https://github.com/immortalwrt/luci.git' >>feeds.conf.default
+# echo 'src-git packages https://github.com/immortalwrt/packages.git' >>feeds.conf.default
 # echo 'src-git small_package https://github.com/kenzok8/small-package.git;main' >>feeds.conf.default
 # echo 'src-git openwrt_packages https://github.com/wwz09/openwrt-packages;master' >>feeds.conf.default
 # echo 'src-git openwrt_small https://github.com/wwz09/small;master' >>feeds.conf.default

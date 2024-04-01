@@ -16,6 +16,9 @@ sed -i 's/192.168.1.1/192.168.3.1/g' package/base-files/files/bin/config_generat
 #　修改主机名
 sed -i "s/hostname='OpenWrt'/hostname='QihooV6'/g" package/base-files/files/bin/config_generate
 
+#　编译的固件文件名
+sed -i 's/IMG_PREFIX:=$(VERSION_DIST_SANITIZED)/IMG_PREFIX:=ZYBWIFI-$(VERSION_DIST_SANITIZED)/g' include/image.mk
+
 # 删除luci所在行
 # sed -i '/luci/d' feeds.conf.default
 # sed -i '/packages/d' feeds.conf.default

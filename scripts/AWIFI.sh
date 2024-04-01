@@ -18,7 +18,7 @@ sed -i "s/hostname='OpenWrt'/hostname='QihooV6'/g" package/base-files/files/bin/
 
 
 #　编译的固件文件名
-sed -i 's/IMG_PREFIX:=$(VERSION_DIST_SANITIZED)/IMG_PREFIX:=ZYAWIFI-$(VERSION_DIST_SANITIZED)/g' include/image.mk
+# sed -i 's/IMG_PREFIX:=$(VERSION_DIST_SANITIZED)/IMG_PREFIX:=ZYAWIFI-$(VERSION_DIST_SANITIZED)/g' include/image.mk
 
 # 删除luci所在行
 # sed -i '/luci/d' feeds.conf.default

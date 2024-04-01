@@ -118,7 +118,7 @@ jobs:
 
     - name: Load Custom Configuration
       run: |
-        [ -e ./scripts/files ] && mv ./scripts/files $OPENWRT_PATH/files
+        [ -e ./files ] && mv ./files $OPENWRT_PATH/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_PATH/.config
 
     - name: Download DL Package

@@ -45,8 +45,8 @@ git_sparse_clone main https://github.com/Lienol/openwrt-package luci-app-filebro
 git_sparse_clone openwrt-18.06 https://github.com/immortalwrt/luci applications/luci-app-eqos
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
-git clone  https://github.com/wwz09/luci_small feeds/package/luci_small
-git_sparse_clone main https://github.com/wwz09/luci_app  luci-app-filetransfer luci-app-p910nd luci-app-usb-printer luci-app-vlmcsd luci-app-smartdns luci-app-wolplus  luci-app-frpc luci-app-lucky dependent
+# git clone  https://github.com/wwz09/luci_small feeds/package/luci_small
+# git_sparse_clone main https://github.com/wwz09/luci_app  luci-app-filetransfer luci-app-p910nd luci-app-usb-printer luci-app-vlmcsd luci-app-smartdns luci-app-wolplus  luci-app-frpc luci-app-lucky dependent
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-parentcontrol luci-app-openclash luci-app-ddnsto luci-app-control-weburl luci-app-control-timewol luci-app-firewall luci-app-homeproxy luci-app-opkg luci-app-samba4
 # git clone  https://github.com/sirpdboy/luci-app-parentcontrol.git feeds/luci/applications/luci-app-parentcontrol
 git clone --depth=1 -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush package/luci-app-serverchan

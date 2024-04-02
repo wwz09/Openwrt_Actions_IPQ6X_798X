@@ -45,10 +45,10 @@ git_sparse_clone main https://github.com/Lienol/openwrt-package luci-app-filebro
 git_sparse_clone openwrt-18.06 https://github.com/immortalwrt/luci applications/luci-app-eqos
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
-# git clone  https://github.com/wwz09/sup.git feeds/package/sup
-git_sparse_clone main https://github.com/wwz09/sup  luci-app-filetransfer luci-app-p910nd luci-app-usb-printer luci-app-vlmcsd luci-app-smartdns luci-app-wolplus  luci-app-frpc luci-app-lucky dependent
-git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-parentcontrol luci-app-openclash luci-app-ddnsto luci-app-control-weburl luci-app-control-timewol luci-app-firewall luci-app-homeproxy luci-app-opkg luci-app-samba4
-# git clone  https://github.com/sirpdboy/luci-app-parentcontrol.git feeds/luci/applications/luci-app-parentcontrol
+git clone  https://github.com/wwz09/sup.git feeds/package/sup
+# git_sparse_clone main https://github.com/wwz09/sup  luci-app-filetransfer luci-app-p910nd luci-app-usb-printer luci-app-vlmcsd luci-app-smartdns luci-app-wolplus  luci-app-frpc luci-app-lucky dependent
+# git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-parentcontrol luci-app-openclash luci-app-ddnsto luci-app-control-weburl luci-app-control-timewol luci-app-firewall luci-app-homeproxy luci-app-opkg luci-app-samba4
+git clone  https://github.com/sirpdboy/luci-app-parentcontrol.git feeds/luci/applications/luci-app-parentcontrol
 git clone --depth=1 -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush package/luci-app-serverchan
 
 # 修复 hostapd 报错

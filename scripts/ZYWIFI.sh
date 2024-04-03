@@ -39,17 +39,17 @@ git clone --depth=1 https://github.com/kongfl888/luci-app-adguardhome package/lu
 git clone --depth=1 -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush package/luci-app-serverchan
 git clone --depth=1 https://github.com/ilxp/luci-app-ikoolproxy package/luci-app-ikoolproxy
 git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
-git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
+# git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
 git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
 git_sparse_clone main https://github.com/Lienol/openwrt-package luci-app-filebrowser luci-app-ssr-mudb-server
 git_sparse_clone openwrt-18.06 https://github.com/immortalwrt/luci applications/luci-app-eqos
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
-# git clone  https://github.com/wwz09/luci_small feeds/package/luci_small
-# git_sparse_clone main https://github.com/wwz09/luci_app  luci-app-filetransfer luci-app-p910nd luci-app-usb-printer luci-app-vlmcsd luci-app-smartdns luci-app-wolplus  luci-app-frpc luci-app-lucky dependent
-git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-parentcontrol luci-app-openclash luci-app-ddnsto luci-app-control-weburl luci-app-control-timewol luci-app-firewall luci-app-homeproxy luci-app-opkg luci-app-samba4
-# git clone  https://github.com/sirpdboy/luci-app-parentcontrol.git feeds/luci/applications/luci-app-parentcontrol
-git clone --depth=1 -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush package/luci-app-serverchan
+git_sparse_clone master  https://github.com/wwz09/luci_small luci-base  luci-compat luci
+git_sparse_clone main https://github.com/wwz09/luci_app luci-app-p910nd luci-app-usb-printer luci-app-vlmcsd  luci-app-wolplus  luci-app-frpc  luci-app-control-webrestriction
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-control-weburl luci-app-control-timewol luci-app-firewall  luci-app-opkg luci-app-samba4 
+git clone  https://github.com/sirpdboy/luci-app-parentcontrol.git feeds/luci/applications/luci-app-parentcontrol
+# git clone --depth=1 -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush package/luci-app-serverchan
 
 # 修复 hostapd 报错
 cp -f $GITHUB_WORKSPACE/scripts/011-fix-mbo-modules-build.patch package/network/services/hostapd/patches/011-fix-mbo-modules-build.patch
@@ -64,10 +64,10 @@ find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/PKG_SOURCE_U
 find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/PKG_SOURCE_URL:=@GHCODELOAD/PKG_SOURCE_URL:=https:\/\/codeload.github.com/g' {}
 
 # 添加主题
-# git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
+git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
 # git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 # git clone --depth=1 -b 18.06 https://github.com/kiddin9/luci-theme-edge package/luci-theme-edge
-git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
+# git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
 git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 git clone --depth=1 https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom package/luci-theme-infinityfreedom
 git_sparse_clone main https://github.com/haiibo/packages luci-theme-atmaterial luci-theme-opentomcat luci-theme-netgear

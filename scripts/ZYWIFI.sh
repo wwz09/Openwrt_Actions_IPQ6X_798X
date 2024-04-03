@@ -72,7 +72,7 @@ git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon package/luci-t
 git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 git clone --depth=1 https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom package/luci-theme-infinityfreedom
 git_sparse_clone main https://github.com/haiibo/packages luci-theme-atmaterial luci-theme-opentomcat luci-theme-netgear
-git clone --depth=1 -b openwrt-18.06  https://github.com/rosywrt package/luci-theme-rosy
+git clone --depth=1 -b openwrt-18.06  https://github.com/rosywrt/luci-theme-rosy package/luci-theme-rosy
 
 #　编译的固件文件名
 # sed -i 's/IMG_PREFIX:=$(VERSION_DIST_SANITIZED)/IMG_PREFIX:=ZYBWIFI-$(VERSION_DIST_SANITIZED)/g' include/image.mk

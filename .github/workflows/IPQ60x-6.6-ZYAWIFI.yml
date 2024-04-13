@@ -1,4 +1,4 @@
-name: IPQ60XX-ZYBWIFI
+name: IPQ60XX-6.6-ZYAWIFI
 
 on:
   workflow_dispatch:
@@ -6,16 +6,16 @@ on:
     # - cron: 0 19 * * *
 
 env:
-  REPO_URL: https://github.com/breeze303/ipq60xx-6.1.git
+  REPO_URL: https://github.com/breeze303/ipq60xx-6.6.git
   REPO_BRANCH: main
   CONFIG_FILE: configs/ipq60xx-ZYWIFI.config
-  DIY_P1_SH: ./scripts/BWIFI.sh
+  DIY_P1_SH: ./scripts/AWIFI.sh
   DIY_P2_SH: ./scripts/ZYWIFI.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: IPQ60XX-ZYBWIFI
+  FIRMWARE_TAG: IPQ60XX-ZYAWIFI
   TZ: Asia/Shanghai
 
 jobs:
@@ -81,7 +81,7 @@ jobs:
         chmod +x $DIY_P2_SH
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_P2_SH
-        sed -i 's/IMG_PREFIX:=$(VERSION_DIST_SANITIZED)/IMG_PREFIX:=ZYBWIFI-$(VERSION_DIST_SANITIZED)/g' include/image.mk
+        sed -i 's/IMG_PREFIX:=$(VERSION_DIST_SANITIZED)/IMG_PREFIX:=ZYAWIFI-$(VERSION_DIST_SANITIZED)/g' include/image.mk
         
     - name: Generate Variables
       run: |
@@ -109,7 +109,7 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
-    - name: Apply patches   
+    - name: 补丁   
       run: |
         git config --global user.name "OpenWrt Builder"
         git config --global user.email "buster-openwrt@ovvo.uk"
@@ -119,7 +119,7 @@ jobs:
 
     - name: Load Custom Configuration
       run: |
-        [ -e files ] && mv files $OPENWRT_PATH/files
+        [ -e ./files ] && mv ./files $OPENWRT_PATH/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_PATH/.config
 
     - name: Download DL Package

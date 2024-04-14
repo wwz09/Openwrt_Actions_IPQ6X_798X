@@ -5,6 +5,8 @@
 
 ## 项目说明 [![](https://img.shields.io/badge/-项目基本介绍-FFFFFF.svg)](#项目说明-)
 - 固件默认管理地址：`192.168.1.1` 默认用户：`root` 默认密码：`password`
+
+- 源码来源：[ipq60xx-6.6](https://github.com/zheng799/ipq60xx-6.6.git)  
 - 源码来源：[ipq60xx-6.1](https://github.com/zheng799/ipq60xx-6.1.git)
 - 源码来源：[openwrt-ipq60xx](https://github.com/openwrt-dev/openwrt-ipq60xx) 感谢大佬
 - 源码来源: [ipq60xx-devel_nss](https://github.com/JiaY-shi/openwrt/tree/ipq60xx-devel_nss) 感谢大佬

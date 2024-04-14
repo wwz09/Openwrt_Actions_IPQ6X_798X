@@ -1,4 +1,4 @@
-名字: IPQ60XX-6.6-ZYAWIFI
+name: IPQ60XX-6.6-ZYAWIFI
 
 on:
   workflow_dispatch:
@@ -18,12 +18,12 @@ env:
   FIRMWARE_TAG: IPQ60XX-6.6-ZYAWIFI
   TZ: Asia/Shanghai
 
-作业:
+jobs:
   Build:
     runs-on: ubuntu-22.04
 
     steps:
-    - 名字: Check Server Performance
+    - name: Check Server Performance
       run: |
         echo "警告⚠"
         echo "分配的服务器性能有限，若选择的插件过多，务必注意CPU性能！"
@@ -37,7 +37,7 @@ env:
         echo "--------------------------硬盘信息--------------------------"
         echo "硬盘数量：$(ls /dev/sd* | grep -v [1-9] | wc -l)" && df -hT
 
-    - 名字: Initialization Environment
+    - name: Initialization Environment
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
@@ -51,14 +51,14 @@ env:
         sudo -E apt-get -y clean
         sudo timedatectl set-timezone "$TZ"
 
-    - 名字: Combine Disks
+    - name: Combine Disks
       uses: easimon/maximize-build-space@master
       with:
         swap-size-mb: 1024
         temp-reserve-mb: 100
         root-reserve-mb: 1024
 
-    - 名字: Checkout
+    - name: Checkout
       uses: actions/checkout@main
 
     - name: Clone Source Code

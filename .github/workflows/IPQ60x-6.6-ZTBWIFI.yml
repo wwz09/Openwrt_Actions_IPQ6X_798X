@@ -1,4 +1,4 @@
-name: IPQ60XX-ZTBWIFI
+name: IPQ60XX-6.6-ZTBWIFI
 
 on:
   workflow_dispatch:
@@ -6,7 +6,7 @@ on:
     # - cron: 0 19 * * *
 
 env:
-  REPO_URL: https://github.com/breeze303/ipq60xx-6.1.git
+  REPO_URL: https://github.com/breeze303/ipq60xx-6.6.git
   REPO_BRANCH: main
   CONFIG_FILE: configs/ipq60xx-ZTWIFI.config
   DIY_P1_SH: ./scripts/BWIFI.sh
@@ -15,7 +15,7 @@ env:
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: IPQ60XX-ZTBWIFI
+  FIRMWARE_TAG: IPQ60XX-6.6-ZTBWIFI
   TZ: Asia/Shanghai
 
 jobs:

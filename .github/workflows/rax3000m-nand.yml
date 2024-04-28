@@ -1,4 +1,4 @@
-name: Build_mt7981_rax3000m-nand
+name: rax3000m-nand
 
 on: 
   repository_dispatch:

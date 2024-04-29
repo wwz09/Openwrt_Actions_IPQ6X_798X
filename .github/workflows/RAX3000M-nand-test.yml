@@ -9,7 +9,7 @@ env:
   REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x
   REPO_BRANCH: openwrt-21.02
   CONFIG_FILE: configs/rax3000m-test.config
-  DIY_P1_SH: ./scripts/rax3000m/diy1.sh
+  DIY_P1_SH: ./scripts/rax3000m/diy09.sh
   DIY_P2_SH: ./scripts/rax3000m/diy2.sh
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false

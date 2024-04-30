@@ -101,6 +101,11 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
+    - name: 导入files文件夹
+      run: |
+        [ -e ./scripts/rax3000m/Imm/files ] && mv ./scripts/rax3000m/Imm/files $OPENWRT_PATH/files  
+        chmod +x $OPENWRT_PATH/files   
+
     - name: Load Custom Configuration
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_PATH/.config

@@ -9,8 +9,8 @@ env:
   REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x
   REPO_BRANCH: openwrt-21.02
   CONFIG_FILE: configs/rax3000m-test.config
-  DIY_P1_SH: ./scripts/rax3000m/diy09.sh
-  DIY_P2_SH: ./scripts/rax3000m/diy2.sh
+  DIY_P1_SH: ./scripts/rax3000m/Imm/diy09.sh
+  DIY_P2_SH: ./scripts/rax3000m/Imm/diy2.sh
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
@@ -100,6 +100,11 @@ jobs:
         cd $OPENWRT_PATH
         ./scripts/feeds update -a
         ./scripts/feeds install -a
+
+    - name: 导入files文件夹
+      run: |
+        [ -e ./scripts/rax3000m/Imm/files ] && mv ./scripts/rax3000m/Imm/files $OPENWRT_PATH/files  
+        chmod +x $OPENWRT_PATH/files
 
     - name: Load Custom Configuration
       run: |

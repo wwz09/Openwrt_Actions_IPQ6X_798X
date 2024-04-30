@@ -9,8 +9,8 @@ env:
   REPO_URL: https://github.com/breeze303/ipq60xx-6.6.git
   REPO_BRANCH: main
   CONFIG_FILE: configs/ipq60xx-ZYWIFI.config
-  DIY_P1_SH: ./scripts/AWIFI.sh
-  DIY_P2_SH: ./scripts/ZYWIFI.sh
+  DIY_P1_SH: ./scripts/360v6/AWIFI.sh
+  DIY_P2_SH: ./scripts/360v6/ZYWIFI.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
@@ -119,7 +119,7 @@ jobs:
 
     - name: Load Custom Configuration
       run: |
-        [ -e ./files ] && mv ./files $OPENWRT_PATH/files
+        [ -e ./scripts/360v6/A/files ] && mv ./scripts/360v6/A/files $OPENWRT_PATH/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_PATH/.config
 
     - name: Download DL Package

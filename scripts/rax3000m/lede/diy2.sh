@@ -31,6 +31,19 @@ rm -rf ./package/feeds/extraipk/theme/luci-theme-ifit
 rm -rf ./package/feeds/extraipk/theme/luci-theme-opentopd
 rm -rf ./package/feeds/extraipk/theme/luci-theme-neobird
 
+# Git稀疏克隆，只克隆指定目录到本地
+function git_sparse_clone() {
+  branch="$1" repourl="$2" && shift 2
+  git clone --depth=1 -b $branch --single-branch --filter=blob:none --sparse $repourl
+  repodir=$(echo $repourl | awk -F '/' '{print $(NF)}')
+  cd $repodir && git sparse-checkout set $@
+  mv -f $@ ../package
+  cd .. && rm -rf $repodir
+
+# 添加额外插件
+
+git_sparse_clone main https://github.com/Lienol/openwrt-package luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl
+git_sparse_clone main https://github.com/wwz09/RAX3000MIPK luci-app-parentcontrol
 
 ##取消bootstrap为默认主题
 sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap

@@ -39,6 +39,7 @@ function git_sparse_clone() {
   cd $repodir && git sparse-checkout set $@
   mv -f $@ ../package
   cd .. && rm -rf $repodir
+}
 
 # 添加额外插件
 

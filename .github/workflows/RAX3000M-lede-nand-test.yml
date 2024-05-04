@@ -18,6 +18,7 @@ on:
     # - cron: 0 19 * * *
 
 env:
+  #REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_URL: https://github.com/wwz09/lede
   REPO_BRANCH: master
   FEEDS_CONF: ./scripts/rax3000m/lede/feeds.conf.default

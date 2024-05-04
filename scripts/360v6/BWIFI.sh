@@ -22,6 +22,8 @@ sed -i "s/hostname='OpenWrt'/hostname='QihooV6'/g" package/base-files/files/bin/
 # 删除luci所在行
 # sed -i '/luci/d' feeds.conf.default
 # sed -i '/packages/d' feeds.conf.default
+# 删除空行
+# sed -i '/^$/d' feeds.conf.default
 sed -i '/small/d' feeds.conf.default
 
 # 删除所有空白行

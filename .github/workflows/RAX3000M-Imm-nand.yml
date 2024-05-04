@@ -6,8 +6,10 @@ on:
     # - cron: 0 19 * * *
 
 env:
-  REPO_URL: https://github.com/immortalwrt/immortalwrt
-  REPO_BRANCH: openwrt-23.05
+  #REPO_URL: https://github.com/immortalwrt/immortalwrt
+  REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x
+  REPO_BRANCH: openwrt-21.02
+  #REPO_BRANCH: openwrt-23.05
   CONFIG_FILE: configs/rax3000m.config
   DIY_P1_SH: ./scripts/rax3000m/Imm/diy1.sh
   DIY_P2_SH: ./scripts/rax3000m/Imm/diy2.sh

@@ -1,58 +1,40 @@
 #!/bin/bash
 #=================================================
-# MZwrt script
-#=================================================             
+# File name: preset-clash-core.sh
+# Usage: <preset-clash-core.sh $platform> | example: <preset-clash-core.sh armv8>
+# System Required: Linux
+# Version: 1.0
+# Lisence: MIT
+# Author: SuLingGG
+# Blog: https://mlapp.cn
+#=================================================
 
 
-
-##配置IP
-sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
-
-##
-rm -rf ./feeds/extraipk/theme/luci-theme-argon-18.06
-rm -rf ./feeds/extraipk/theme/luci-app-argon-config-18.06
-rm -rf ./feeds/extraipk/theme/luci-theme-design
-rm -rf ./feeds/extraipk/theme/luci-theme-ifit
-rm -rf ./feeds/extraipk/theme/luci-theme-opentopd
-rm -rf ./feeds/extraipk/theme/luci-theme-neobird
-
-rm -rf ./package/feeds/extraipk/luci-theme-argon-18.06
-rm -rf ./package/feeds/extraipk/luci-app-argon-config-18.06
-rm -rf ./package/feeds/extraipk/theme/luci-theme-design
-rm -rf ./package/feeds/extraipk/theme/luci-theme-ifit
-rm -rf ./package/feeds/extraipk/theme/luci-theme-opentopd
-rm -rf ./package/feeds/extraipk/theme/luci-theme-neobird
-
-rm -rf ./feeds/luci/luci-theme-argon
-rm -rf ./feeds/luci/luci-theme-openwrt
-rm -rf ./feeds/luci/luci-theme-openwrt-2020
-rm -rf ./feeds/luci/luci-theme-bootstrap-mod
-
-##取消bootstrap为默认主题
-sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap
-sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
-sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci-nginx/Makefile
-
-##更改主机名
-sed -i "s/hostname='.*'/hostname='RAX3000M'/g" package/base-files/files/bin/config_generate
-
-##加入作者信息
-sed -i "s/DISTRIB_DESCRIPTION='*.*'/DISTRIB_DESCRIPTION='wwz09-$(date +%Y%m%d)'/g"  package/base-files/files/etc/openwrt_release
-sed -i "s/DISTRIB_REVISION='*.*'/DISTRIB_REVISION=' By Mz'/g" package/base-files/files/etc/openwrt_release
-# cp -af feeds/extraipk/patch/diy/banner-MZwrt  package/base-files/files/etc/banner
-
-# sed -i "2iuci set istore.istore.channel='MZ_wrt'" package/emortal/default-settings/files/99-default-settings
-sed -i "2iuci set istore.istore.channel='wwz09'" package/emortal/default-settings/files/99-default-settings
-sed -i "3iuci commit istore" package/emortal/default-settings/files/99-default-settings
-sed -i.bak "s,mirrors.vsean.net/openwrt,mirrors.vsean.net/openwrt,g" package/emortal/default-settings/files/99-default-settings
+# 预置openclash内核
+mkdir -p files/etc/openclash/core
 
 
-##WiFi
-sed -i "s/MT7981_AX3000_2.4G/YM520-2.4G/g" package/mtk/drivers/wifi-profile/files/mt7981/mt7981.dbdc.b0.dat
-sed -i "s/MT7981_AX3000_5G/YM520-5G/g" package/mtk/drivers/wifi-profile/files/mt7981/mt7981.dbdc.b1.dat
+# dev内核
+CLASH_DEV_URL="https://github.com/vernesong/OpenClash/raw/core/dev/dev/clash-linux-arm64.tar.gz"
+# premium内核
+CLASH_TUN_URL="https://github.com/vernesong/OpenClash/raw/core/dev/premium/clash-linux-arm64-2023.08.17-13-gdcc8d87.gz"
+# Meta内核版本
+CLASH_META_URL="https://github.com/vernesong/OpenClash/raw/core/dev/meta/clash-linux-arm64.tar.gz"
 
-##New WiFi
-sed -i "s/ImmortalWrt-2.4G/YM520-2.4G/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
-sed -i "s/ImmortalWrt-5G/YM520-5G/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
+wget -qO- $CLASH_DEV_URL | gunzip -c > files/etc/openclash/core/clash
+wget -qO- $CLASH_TUN_URL | gunzip -c > files/etc/openclash/core/clash_tun
+wget -qO- $CLASH_META_URL | gunzip -c > files/etc/openclash/core/clash_meta
+# 给内核权限
+chmod +x files/etc/openclash/core/clash*
 
+# meta 要GeoIP.dat 和 GeoSite.dat
+GEOIP_URL="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat"
+GEOSITE_URL="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
+wget -qO- $GEOIP_URL > files/etc/openclash/GeoIP.dat
+wget -qO- $GEOSITE_URL > files/etc/openclash/GeoSite.dat
 
+# Country.mmdb
+COUNTRY_LITE_URL=https://raw.githubusercontent.com/alecthw/mmdb_china_ip_list/release/lite/Country.mmdb
+# COUNTRY_FULL_URL=https://raw.githubusercontent.com/alecthw/mmdb_china_ip_list/release/Country.mmdb
+wget -qO- $COUNTRY_LITE_URL > files/etc/openclash/Country.mmdb
+# wget -qO- $COUNTRY_FULL_URL > files/etc/openclash/Country.mmdb

@@ -13,7 +13,7 @@ env:
   CONFIG_FILE: configs/rax3000m-test.config
   ENV_SH: scripts/environment.sh
   DIY_P1_SH: ./scripts/rax3000m/Imm/diy09.sh
-  DIY_P2_SH: ./scripts/rax3000m/Imm/diy2.sh
+  DIY_P2_SH: ./scripts/rax3000m/Imm/preset-clash-core.sh
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true

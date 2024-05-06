@@ -10,6 +10,21 @@
 #=================================================
 
 
+# Git稀疏克隆，只克隆指定目录到本地
+function git_sparse_clone() {
+  branch="$1" repourl="$2" && shift 2
+  git clone --depth=1 -b $branch --single-branch --filter=blob:none --sparse $repourl
+  repodir=$(echo $repourl | awk -F '/' '{print $(NF)}')
+  cd $repodir && git sparse-checkout set $@
+  mv -f $@ ../package
+  cd .. && rm -rf $repodir
+}
+
+# 添加额外插件
+
+git_sparse_clone main https://github.com/Lienol/openwrt-package luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl
+git_sparse_clone main https://github.com/wwz09/RAX3000MIPK luci-app-parentcontrol
+
 # 预置openclash内核
 mkdir -p files/etc/openclash/core
 

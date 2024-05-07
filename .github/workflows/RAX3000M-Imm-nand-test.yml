@@ -99,7 +99,7 @@ jobs:
 
     - name: 导入files文件夹
       run: |
-        [ -e ./scripts/rax3000m/Imm/files ] && mv ./scripts/rax3000m/Imm/files $OPENWRT_PATH/files  
+        [ -e ./scripts/rax3000m/lmm/lmm/files ] && mv ./scripts/rax3000m/lmm/lmm/files $OPENWRT_PATH/files  
         chmod +x $OPENWRT_PATH/files
 
     - name: Load Custom Configuration

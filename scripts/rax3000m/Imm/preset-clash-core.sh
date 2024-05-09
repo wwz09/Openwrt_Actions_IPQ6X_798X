@@ -15,8 +15,9 @@ sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generat
 sed -i "s/hostname='ImmortalWrt'/hostname='RAX3000M'/g" package/base-files/files/bin/config_generate
 
 #修改wifi名
-sed -i "s/ImmortalWrt/YM520-2.4G/g" package/network/config/wifi-scripts/files/lib/wifi/mac80211.sh
-sed -i 's/encryption=none/encryption=psk-mixed+ccmp\n            set wireless.default_radio${devidx}.key=abc5124937,\n/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.sh
+# sed -i "s/ImmortalWrt/YM520-2.4G/g" package/network/config/wifi-scripts/files/lib/wifi/mac80211.sh
+sed -i "s/ssid=.*/ssid=YM520-2.4G/g" ./package/network/config/wifi-scripts/files/lib/wifi/mac80211.sh
+sed -i "s/encryption=none/encryption=psk-mixed+ccmp\n            set wireless.default_radio${devidx}.key=abc5124937,\n/g" ./package/network/config/wifi-scripts/files/lib/wifi/mac80211.sh
 
 # Git稀疏克隆，只克隆指定目录到本地
 function git_sparse_clone() {

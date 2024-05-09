@@ -16,7 +16,7 @@ sed -i "s/hostname='ImmortalWrt'/hostname='RAX3000M'/g" package/base-files/files
 
 #修改wifi名
 # sed -i "s/ImmortalWrt/YM520-2.4G/g" package/network/config/wifi-scripts/files/lib/wifi/mac80211.sh
-sed -i "s/ssid=.*/ssid=YM520-2.4G/g" ./package/network/config/wifi-scripts/files/lib/wifi/mac80211.sh
+sed -i "s/ssid=ImmortalWrt/ssid=YM520-2.4G/g" ./package/network/config/wifi-scripts/files/lib/wifi/mac80211.sh
 sed -i "s/encryption=none/encryption=psk-mixed+ccmp\n            set wireless.default_radio${devidx}.key=abc5124937,\n/g" ./package/network/config/wifi-scripts/files/lib/wifi/mac80211.sh
 
 # Git稀疏克隆，只克隆指定目录到本地

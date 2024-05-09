@@ -1,4 +1,4 @@
-name: RAX3000M-Imm-nand-test
+name: RAX3000M-Imm-nand
 
 on:
   workflow_dispatch:

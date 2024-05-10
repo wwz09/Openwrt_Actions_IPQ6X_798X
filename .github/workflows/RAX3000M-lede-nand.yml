@@ -24,7 +24,7 @@ env:
   FEEDS_CONF: ./scripts/rax3000m/lede/feeds.conf.default
   CONFIG_FILE: configs/RAX3000M-lede.config
   DIY_P1_SH: ./scripts/rax3000m/lede/diy1.sh
-  DIY_P2_SH: ./scripts/rax3000m/lede/diy2.sh
+  DIY_P2_SH: ./scripts/rax3000m/lede/diy3.sh
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
@@ -118,7 +118,7 @@ jobs:
 
     - name: 导入files文件夹
       run: |
-        [ -e ./scripts/rax3000m/lede/files ] && mv ./scripts/rax3000m/lede/files $OPENWRT_PATH/files  
+        [ -e ./scripts/rax3000m/lede/KT/files ] && mv ./scripts/rax3000m/lede/KT/files $OPENWRT_PATH/files  
         chmod +x $OPENWRT_PATH/files   
 
     - name: Load Custom Configuration
@@ -188,8 +188,8 @@ jobs:
           - 💻 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 RAX3000M-LEDE 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
-          - 🌐 默认地址: 192.168.2.1
-          - 🔑 默认密码: password
+          - 🌐 默认地址: 192.168.3.1
+          - 🔑 默认密码: 自用不方便说
           ### 🧊 固件版本
           - 固件编译前最后一次➦[主源码](${{ env.REPO_URL }})更新记录
           - ${{ env.VERSION_INFO }}

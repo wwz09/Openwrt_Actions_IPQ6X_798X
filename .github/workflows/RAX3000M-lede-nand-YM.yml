@@ -95,7 +95,7 @@ jobs:
         chmod +x $DIY_P2_SH
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_P2_SH
-
+        sed -i 's/IMG_PREFIX:=$(VERSION_DIST_SANITIZED)/IMG_PREFIX:=LEDEYT-$(VERSION_DIST_SANITIZED)/g' include/image.mk
     - name: Cache Toolchain
       if: env.CACHE_TOOLCHAIN == 'true'
       uses: HiGarfield/cachewrtbuild@main
@@ -179,7 +179,7 @@ jobs:
           **This is OpenWrt Firmware for ${{ env.FIRMWARE_TAG }}**
           ### 📒 固件信息(WIFI版本)
           - 这是带WIFI-YM-RAX3000M固件
-          - 💻 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 RAX3000M-LEDE-TEST 固件
+          - 💻 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 RAX3000M-LEDE-YM 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
           - 🌐 默认地址: 192.168.2.1

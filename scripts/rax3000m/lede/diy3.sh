@@ -43,7 +43,7 @@ function git_sparse_clone() {
 
 # 添加额外插件
 
-git_sparse_clone main https://github.com/Lienol/openwrt-package luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl
+git_sparse_clone main https://github.com/Lienol/openwrt-package luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl luci-app-timecontrol
 # git_sparse_clone main https://github.com/wwz09/RAX3000MIPK luci-app-parentcontrol
 git clone  https://github.com/sirpdboy/luci-app-parentcontrol.git feeds/luci/applications/luci-app-parentcontrol
 

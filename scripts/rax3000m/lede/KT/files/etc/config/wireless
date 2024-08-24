@@ -15,7 +15,7 @@ config wifi-iface 'default_radio2'
 	option mode 'ap'
 	option encryption 'sae-mixed'
 	option key 'abc5124937,'
-	option ssid 'YM520－2.4G'
+	option ssid 'BM520－2.4G'
 
 config wifi-device 'radio1'
 	option type 'mac80211'
@@ -39,7 +39,7 @@ config wifi-iface 'default_radio3'
 config wifi-iface
 	option device 'radio0'
 	option mode 'ap'
-	option ssid 'YM520-2.4G'
+	option ssid 'BM520-2.4G'
 	option encryption 'sae-mixed'
 	option key 'abc5124937,'
 

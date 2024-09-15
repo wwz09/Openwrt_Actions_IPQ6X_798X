@@ -50,6 +50,7 @@ git_sparse_clone main https://github.com/ksong008/sirpdboy-package luci-app-cont
 git_sparse_clone main https://github.com/linkease/nas-packages-luci luci
 # git_sparse_clone main https://github.com/wwz09/RAX3000MIPK luci-app-parentcontrol
 # git clone  https://github.com/sirpdboy/luci-app-parentcontrol.git feeds/luci/applications/luci-app-parentcontrol
+# git clone  https://github.com/firkerword/luci-app-parentcontrol.git ./package/luci-app-parentcontrol
 
 ##取消bootstrap为默认主题
 sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap

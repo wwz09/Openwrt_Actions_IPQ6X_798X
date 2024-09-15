@@ -47,6 +47,7 @@ git_sparse_clone main https://github.com/Lienol/openwrt-package  luci-app-contro
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-parentcontrol
 git_sparse_clone main https://github.com/sirpdboy/sirpdboy-package luci-app-control-timewol
 git_sparse_clone main https://github.com/ksong008/sirpdboy-package luci-app-control-weburl
+git_sparse_clone main https://github.com/linkease/nas-packages-luci luci
 # git_sparse_clone main https://github.com/wwz09/RAX3000MIPK luci-app-parentcontrol
 # git clone  https://github.com/sirpdboy/luci-app-parentcontrol.git feeds/luci/applications/luci-app-parentcontrol
 

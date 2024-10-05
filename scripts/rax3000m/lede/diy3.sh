@@ -45,7 +45,7 @@ function git_sparse_clone() {
 
 git_sparse_clone main https://github.com/Lienol/openwrt-package  luci-app-control-webrestriction 
 # git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-parentcontrol
-git_sparse_clone main https://github.com/1164141025/timecontrol luci-app-timecontrol
+git_sparse_clone main https://github.com/Lienol/openwrt-package luci-app-timecontrol
 git_sparse_clone main https://github.com/sirpdboy/sirpdboy-package luci-app-control-timewol
 git_sparse_clone main https://github.com/ksong008/sirpdboy-package luci-app-control-weburl
 # git_sparse_clone main https://github.com/linkease/nas-packages-luci luci

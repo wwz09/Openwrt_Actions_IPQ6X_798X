@@ -78,9 +78,9 @@ jobs:
         
     - name: DIY执行脚本
       run: |
-        chmod +x $ DIY_SCRIPT
+        chmod +x $DIY_SCRIPT
         cd $OPENWRT_PATH
-        $GITHUB_WORKSPACE/$ DIY_SCRIPT
+        $GITHUB_WORKSPACE/$DIY_SCRIPT
         sed -i 's/IMG_PREFIX:=$(VERSION_DIST_SANITIZED)/IMG_PREFIX:=ZYAWIFI-$(VERSION_DIST_SANITIZED)/g' include/image.mk
         
     - name: Generate Variables(生成变量)

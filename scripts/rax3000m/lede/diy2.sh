@@ -50,7 +50,7 @@ git_sparse_clone main https://github.com/Lienol/openwrt-package luci-app-timecon
 git_sparse_clone main https://github.com/ksong008/sirpdboy-package luci-app-control-weburl
 # git_sparse_clone main https://github.com/linkease/nas-packages-luci luci
 # git_sparse_clone main https://github.com/wwz09/RAX3000MIPK luci-app-parentcontrol
-# git clone  https://github.com/sirpdboy/luci-app-parentcontrol.git feeds/luci/applications/luci-app-parentcontrol
+git clone  https://github.com/linkease/nas-packages.git ./package/nas-packages
 # git clone  https://github.com/firkerword/luci-app-parentcontrol.git ./package/luci-app-parentcontrol
 
 ##取消bootstrap为默认主题

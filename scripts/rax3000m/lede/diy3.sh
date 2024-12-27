@@ -42,8 +42,10 @@ function git_sparse_clone() {
 }
 
 # 添加额外插件
+rm -rf ./feeds/luci/collections
 rm -rf ./feeds/luci/applications/luci-app-firewall
 git_sparse_clone master https://github.com/immortalwrt/luci  applications/luci-app-firewall
+git_sparse_clone master https://github.com/immortalwrt/luci  collections
 
 git_sparse_clone main https://github.com/Lienol/openwrt-package  luci-app-control-webrestriction 
 # git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-parentcontrol

@@ -30,9 +30,9 @@ rm -rf ./package/feeds/extraipk/theme/luci-theme-edge
 rm -rf ./package/feeds/extraipk/theme/luci-theme-ifit
 rm -rf ./package/feeds/extraipk/theme/luci-theme-opentopd
 rm -rf ./package/feeds/extraipk/theme/luci-theme-neobird
-rm -rf ./package/feeds/luci/luci-ssl-nginx
-rm -rf ./package/feeds/luci/luci-nginx
-rm -rf ./package/feeds/luci/luci
+#rm -rf ./package/feeds/luci/luci-ssl-nginx
+#rm -rf ./package/feeds/luci/luci-nginx
+#rm -rf ./package/feeds/luci/luci
 
 
 # Git稀疏克隆，只克隆指定目录到本地
@@ -46,10 +46,10 @@ function git_sparse_clone() {
 }
 
 # 添加额外插件
-rm -rf ./feeds/luci/collections/luci-nginx
-rm -rf ./feeds/luci/collections/luci-ssl-nginx
-rm -rf ./feeds/luci/collections/luci
-rm -rf ./feeds/luci/applications/luci-app-firewall
+#rm -rf ./feeds/luci/collections/luci-nginx
+#rm -rf ./feeds/luci/collections/luci-ssl-nginx
+#rm -rf ./feeds/luci/collections/luci
+#rm -rf ./feeds/luci/applications/luci-app-firewall
 git_sparse_clone main https://github.com/wwz09/RAX3000MIPK  immo
 
 

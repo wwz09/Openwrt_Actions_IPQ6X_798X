@@ -42,7 +42,7 @@ function git_sparse_clone() {
   mv -f $@ ../package
   cd .. && rm -rf $repodir
 }
-
+git clone --depth=1 -b main https://github.com/kenzok78/luci-app-argone-config package/luci-app-argone-config
 # 添加额外插件
 
 

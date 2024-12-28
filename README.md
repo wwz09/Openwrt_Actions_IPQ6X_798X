@@ -1,4 +1,4 @@
-<h1>OpenWrt — IPQ60XX云编译</h1>
+<h1>OpenWrt — 360 V6 6.1内核 RAX3000M云编译</h1>
 
 
 ## 项目说明 [![](https://img.shields.io/badge/-项目基本介绍-FFFFFF.svg)](#项目说明-)

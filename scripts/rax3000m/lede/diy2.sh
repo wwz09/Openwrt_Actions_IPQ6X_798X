@@ -63,7 +63,7 @@ git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclas
 # iStore
 git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
 git_sparse_clone main https://github.com/linkease/istore luci
-git_sparse_clone main https://github.com/linkease/nas-packages-luci luci
+git clone --depth=1 https://github.com/linkease/nas-packages-luci package/nas-packages-luci
 git_sparse_clone main https://github.com/linkease/nas-packages network
 
 ##取消bootstrap为默认主题

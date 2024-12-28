@@ -42,10 +42,10 @@ function git_sparse_clone() {
   cd .. && rm -rf $repodir
 }
 
-git clone --depth=1 -b main https://github.com/kenzok78/luci-app-argone-config package/luci-app-argone-config
+# 添加主题目
+git_sparse_clone main https://github.com/JianShiYao/small-package  luci-app-argone luci-app-argone-config luci-app-design-config
+
 # 添加额外插件
-
-
 git_sparse_clone main https://github.com/Lienol/openwrt-package  luci-app-control-webrestriction 
 # git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-parentcontrol
 git_sparse_clone main https://github.com/Lienol/openwrt-package luci-app-timecontrol
@@ -75,7 +75,7 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci-n
 sed -i 's/\/bin\/login/\/bin\/login -f root/' feeds/packages/utils/ttyd/files/ttyd.config
 
 #修改默认无线名称
-sed -i 's/OpenWrt/YM520/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i 's/LEDE/YM520-2.4G/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 #修改无线加密及密码
 sed -i 's/encryption=none/encryption=psk-mixed+ccmp\n            set wireless.default_radio${devidx}.key=abc5124937,\n/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh

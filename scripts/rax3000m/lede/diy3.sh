@@ -50,8 +50,8 @@ rm -rf ./feeds/luci/collections/luci-nginx
 rm -rf ./feeds/luci/collections/luci-ssl-nginx
 rm -rf ./feeds/luci/collections/luci
 rm -rf ./feeds/luci/applications/luci-app-firewall
-git_sparse_clone master https://github.com/immortalwrt/luci  applications/luci-app-firewall
-git_sparse_clone master https://github.com/immortalwrt/luci  collections/luci-ssl-nginx luci luci-nginx
+git_sparse_clone main https://github.com/wwz09/RAX3000MIPK  immo
+
 
 git_sparse_clone main https://github.com/Lienol/openwrt-package  luci-app-control-webrestriction 
 # git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-parentcontrol

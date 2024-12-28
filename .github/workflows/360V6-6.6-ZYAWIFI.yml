@@ -1,4 +1,4 @@
-name: IPQ60XX-6.6-ZYAWIFI
+name: 360V6-6.6-ZYAWIFI
 
 on:
   workflow_dispatch:

@@ -47,13 +47,17 @@ function git_sparse_clone() {
 
 git_sparse_clone main https://github.com/Lienol/openwrt-package  luci-app-control-webrestriction 
 # git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-parentcontrol
-git_sparse_clone main https://github.com/sirpdboy/sirpdboy-package luci-app-control-timewol
 git_sparse_clone main https://github.com/Lienol/openwrt-package luci-app-timecontrol
+git_sparse_clone main https://github.com/sirpdboy/sirpdboy-package luci-app-control-timewol
 git_sparse_clone main https://github.com/ksong008/sirpdboy-package luci-app-control-weburl
-# git_sparse_clone main https://github.com/linkease/nas-packages-luci luci
-# git_sparse_clone main https://github.com/wwz09/RAX3000MIPK luci-app-parentcontrol
-# git clone  https://github.com/linkease/nas-packages.git ./package/nas-packages
-# git clone  https://github.com/firkerword/luci-app-parentcontrol.git ./package/luci-app-parentcontrol
+
+
+# 科学上网插件
+git clone --depth=1 -b main https://github.com/fw876/helloworld package/luci-app-ssr-plus
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages package/openwrt-passwall
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
+# git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2 package/luci-app-passwall2
+git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
 
 ##取消bootstrap为默认主题
 sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap

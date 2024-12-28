@@ -30,6 +30,10 @@ rm -rf ./package/feeds/extraipk/theme/luci-theme-edge
 rm -rf ./package/feeds/extraipk/theme/luci-theme-ifit
 rm -rf ./package/feeds/extraipk/theme/luci-theme-opentopd
 rm -rf ./package/feeds/extraipk/theme/luci-theme-neobird
+rm -rf ./package/feeds/luci/luci-ssl-nginx
+rm -rf ./package/feeds/luci/luci-nginx
+rm -rf ./package/feeds/luci/luci
+
 
 # Git稀疏克隆，只克隆指定目录到本地
 function git_sparse_clone() {

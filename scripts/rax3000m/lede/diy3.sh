@@ -58,16 +58,16 @@ git_sparse_clone main https://github.com/ksong008/sirpdboy-package luci-app-cont
 # git clone  https://github.com/firkerword/luci-app-parentcontrol.git ./package/luci-app-parentcontrol
 
 ##取消bootstrap为默认主题
-sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap
-sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
-sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci-nginx/Makefile
+sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' chmod +r feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap
+sed -i 's/luci-theme-bootstrap/luci-theme-argone/g' chmod +r feeds/luci/collections/luci/Makefile
+sed -i 's/luci-theme-bootstrap/luci-theme-argone/g' chmod +r feeds/luci/collections/luci-nginx/Makefile
 
 # 设置ttyd免帐号登录
-sed -i 's/\/bin\/login/\/bin\/login -f root/' feeds/packages/utils/ttyd/files/ttyd.config
+sed -i 's/\/bin\/login/\/bin\/login -f root/' fchmod +r eeds/packages/utils/ttyd/files/ttyd.config
 
 
 #修改默认无线名称
-sed -i 's/LEDE/BM520-2.4G/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i 's/LEDE/BM520-2.4G/g' chmod +r package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 #修改无线加密及密码
 sed -i 's/encryption=none/encryption=psk-mixed+ccmp\n            set wireless.default_radio${devidx}.key=abc5124937,\n/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh

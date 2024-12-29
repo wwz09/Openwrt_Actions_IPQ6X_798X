@@ -44,7 +44,7 @@ function git_sparse_clone() {
 }
 
 # 添加主题目
-git_sparse_clone main https://github.com/kenzok8/small-package  luci-theme-argone luci-app-argone-config luci-app-design-config
+# git_sparse_clone main https://github.com/kenzok8/small-package  luci-theme-argone luci-app-argone-config luci-app-design-config
 
 # 添加额外插件
 

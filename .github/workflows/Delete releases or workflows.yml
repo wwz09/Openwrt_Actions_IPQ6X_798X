@@ -33,8 +33,8 @@ on:
         default: '6'
         type: string
 # 定时触发开启开始编译(把下面两个#去掉开启,时间设置请看定时开启编译说明)
-  schedule:
-   - cron: 0 20 * * *
+ # schedule:
+   #- cron: 0 20 * * *
    
 jobs:
   build:

@@ -83,6 +83,7 @@ jobs:
         
     - name: DIY执行脚本
       run: |
+        chmod +r $OPENWRT_PATH
         chmod +x $DIY_P2_SH
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_P2_SH
@@ -97,7 +98,7 @@ jobs:
     
     - name: 安装 Feeds
       run: |
-        chmod +x $OPENWRT_PATH
+        chmod +r $OPENWRT_PATH
         cd $OPENWRT_PATH
         ./scripts/feeds update -a
         ./scripts/feeds install -a

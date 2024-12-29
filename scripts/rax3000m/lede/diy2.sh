@@ -43,29 +43,17 @@ function git_sparse_clone() {
   cd .. && rm -rf $repodir
 }
 
-# 添加主题目
-# git_sparse_clone main https://github.com/kenzok8/small-package  luci-theme-argone luci-app-argone-config luci-app-design-config
+## 添加额外插件
 
-# 添加额外插件
 git_sparse_clone main https://github.com/Lienol/openwrt-package  luci-app-control-webrestriction 
 # git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-parentcontrol
 git_sparse_clone main https://github.com/Lienol/openwrt-package luci-app-timecontrol
 git_sparse_clone main https://github.com/sirpdboy/sirpdboy-package luci-app-control-timewol
 git_sparse_clone main https://github.com/ksong008/sirpdboy-package luci-app-control-weburl
-
-
-# 科学上网插件
-git clone --depth=1 -b main https://github.com/fw876/helloworld package/luci-app-ssr-plus
-git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages package/openwrt-passwall
-git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
-# git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2 package/luci-app-passwall2
-git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
-
-# iStore
-git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
-git_sparse_clone main https://github.com/linkease/istore luci
-git clone --depth=1 https://github.com/linkease/nas-packages-luci package/nas-packages-luci
-git clone --depth=1 https://github.com/linkease/nas-packages package/nas-packages
+# git_sparse_clone main https://github.com/linkease/nas-packages-luci luci
+# git_sparse_clone main https://github.com/wwz09/RAX3000MIPK luci-app-parentcontrol
+# git clone  https://github.com/sirpdboy/luci-app-parentcontrol.git feeds/luci/applications/luci-app-parentcontrol
+# git clone  https://github.com/firkerword/luci-app-parentcontrol.git ./package/luci-app-parentcontrol
 
 ##取消bootstrap为默认主题
 sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap
@@ -75,8 +63,9 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci-n
 # 设置ttyd免帐号登录
 sed -i 's/\/bin\/login/\/bin\/login -f root/' feeds/packages/utils/ttyd/files/ttyd.config
 
+
 #修改默认无线名称
-sed -i 's/LEDE/YM520-2.4G/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i 's/LEDE/BM520-2.4G/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 #修改无线加密及密码
 sed -i 's/encryption=none/encryption=psk-mixed+ccmp\n            set wireless.default_radio${devidx}.key=abc5124937,\n/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh

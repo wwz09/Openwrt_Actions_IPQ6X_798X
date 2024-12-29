@@ -68,7 +68,7 @@ git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclas
 git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
 git_sparse_clone main https://github.com/linkease/istore luci
 git clone --depth=1 https://github.com/linkease/nas-packages-luci package/nas-packages-luci
-git_sparse_clone main https://github.com/linkease/nas-packages network
+git_sparse_clone master https://github.com/linkease/nas-packages network
 
 ##取消bootstrap为默认主题
 sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap

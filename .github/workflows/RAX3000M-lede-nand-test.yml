@@ -12,7 +12,7 @@ env:
   FEEDS_CONF: ./scripts/rax3000m/lede/feeds.conf.default
   CONFIG_FILE: configs/RAX3000M-lede.config
   DIY_P1_SH: ./scripts/rax3000m/lede/test1.sh
-  DIY_P2_SH: ./scripts/rax3000m/lede/text2.sh
+  DIY_P2_SH: ./scripts/rax3000m/lede/test2.sh
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true

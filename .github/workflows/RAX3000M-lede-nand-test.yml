@@ -81,6 +81,13 @@ jobs:
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_P1_SH 
         
+    - name: DIY执行脚本
+      run: |
+        chmod +r $OPENWRT_PATH
+        chmod +x $DIY_P2_SH
+        cd $OPENWRT_PATH
+        $GITHUB_WORKSPACE/$DIY_P2_SH
+        sed -i 's/IMG_PREFIX:=$(VERSION_DIST_SANITIZED)/IMG_PREFIX:=LEDEYT-$(VERSION_DIST_SANITIZED)/g' include/image.mk
         
     - name: Cache Toolchain
       if: env.CACHE_TOOLCHAIN == 'true'
@@ -96,14 +103,6 @@ jobs:
         cd $OPENWRT_PATH
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-        
-    - name: DIY执行脚本
-      run: |
-        chmod +r $OPENWRT_PATH
-        chmod +x $DIY_P2_SH
-        cd $OPENWRT_PATH
-        $GITHUB_WORKSPACE/$DIY_P2_SH
-        sed -i 's/IMG_PREFIX:=$(VERSION_DIST_SANITIZED)/IMG_PREFIX:=LEDEYT-$(VERSION_DIST_SANITIZED)/g' include/image.mk
 
     - name: 加载自定义配置
       run: |

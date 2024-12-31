@@ -10,7 +10,8 @@ env:
   REPO_URL: https://github.com/LiBwrt-op/openwrt-6.x.git
   REPO_BRANCH: main
   CONFIG_FILE: configs/ipq60xx-ZYWIFI.config
-  DIY_SCRIPT: scripts/360v6/AWIFI.sh
+  DIY_P1_SH: scripts/360v6/360.sh
+  DIY_P2_SH: scripts/360v6/AWIFI.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
@@ -70,30 +71,17 @@ jobs:
         VERSION_INFO=$(git show -s --date=short --format="作者: %an<br/>时间: %cd<br/>内容: %s<br/>hash: %H")
         echo "VERSION_INFO=$VERSION_INFO" >> $GITHUB_ENV
      
-    #- name: 更新 & 安装 feeds & 执行脚本
-     # run: |
-        #chmod +x $DIY_P1_SH
-        #cd $OPENWRT_PATH
-        #$GITHUB_WORKSPACE/$DIY_P1_SH 
+    - name: 更新 & 安装 feeds & 执行脚本
+      run: |
+        chmod +x $DIY_P1_SH
+        cd $OPENWRT_PATH
+        $GITHUB_WORKSPACE/$DIY_P1_SH 
         
     - name: DIY执行脚本
       run: |
-        chmod +x $DIY_SCRIPT
+        chmod +x $DIY_P2_SH
         cd $OPENWRT_PATH
-        $GITHUB_WORKSPACE/$DIY_SCRIPT
-        sed -i 's/IMG_PREFIX:=$(VERSION_DIST_SANITIZED)/IMG_PREFIX:=ZYAWIFI-$(VERSION_DIST_SANITIZED)/g' include/image.mk
-        
-    - name: Generate Variables(生成变量)
-      run: |
-        cp $CONFIG_FILE $OPENWRT_PATH/.config
-        cd $OPENWRT_PATH
-        make defconfig > /dev/null 2>&1
-        SOURCE_REPO="$(echo $REPO_URL | awk -F '/' '{print $(NF)}')"
-        echo "SOURCE_REPO=$SOURCE_REPO" >> $GITHUB_ENV
-        DEVICE_TARGET=$(cat .config | grep CONFIG_TARGET_BOARD | awk -F '"' '{print $2}')
-        echo "DEVICE_TARGET=$DEVICE_TARGET" >> $GITHUB_ENV
-        DEVICE_SUBTARGET=$(cat .config | grep CONFIG_TARGET_SUBTARGET | awk -F '"' '{print $2}')
-        echo "DEVICE_SUBTARGET=$DEVICE_SUBTARGET" >> $GITHUB_ENV
+        $GITHUB_WORKSPACE/$DIY_P2_SH
 
     - name: Cache Toolchain(缓存工具链)
       if: env.CACHE_TOOLCHAIN == 'true'

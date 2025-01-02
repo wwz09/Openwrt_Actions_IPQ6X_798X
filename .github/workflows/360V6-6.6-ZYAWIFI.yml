@@ -6,17 +6,15 @@ on:
     # - cron: 0 19 * * *
 
 env:
-  #REPO_URL: https://github.com/breeze303/openwrt-6.x.git
-  REPO_URL: https://github.com/LiBwrt-op/openwrt-6.x.git
+  REPO_URL: https://github.com/277598414/openwrt-6.x.git
   REPO_BRANCH: kernel-6.12
   CONFIG_FILE: configs/ipq60xx-ZYWIFI.config
-  DIY_P1_SH: scripts/360v6/360.sh
-  DIY_P2_SH: scripts/360v6/AWIFI.sh
+  DIY_SCRIPT: scripts/360v6/AWIFI.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: IPQ60XX-6.6-ZYAWIFI
+  FIRMWARE_TAG: IPQ60XX-6.12-WIFI
   TZ: Asia/Shanghai
 
 jobs:
@@ -70,18 +68,18 @@ jobs:
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         VERSION_INFO=$(git show -s --date=short --format="作者: %an<br/>时间: %cd<br/>内容: %s<br/>hash: %H")
         echo "VERSION_INFO=$VERSION_INFO" >> $GITHUB_ENV
-     
-    - name: 更新 & 安装 feeds & 执行脚本
+
+    - name: Generate Variables(生成变量)
       run: |
-        chmod +x $DIY_P1_SH
+        cp $CONFIG_FILE $OPENWRT_PATH/.config
         cd $OPENWRT_PATH
-        $GITHUB_WORKSPACE/$DIY_P1_SH 
-        
-    - name: DIY执行脚本
-      run: |
-        chmod +x $DIY_P2_SH
-        cd $OPENWRT_PATH
-        $GITHUB_WORKSPACE/$DIY_P2_SH
+        make defconfig > /dev/null 2>&1
+        SOURCE_REPO="$(echo $REPO_URL | awk -F '/' '{print $(NF)}')"
+        echo "SOURCE_REPO=$SOURCE_REPO" >> $GITHUB_ENV
+        DEVICE_TARGET=$(cat .config | grep CONFIG_TARGET_BOARD | awk -F '"' '{print $2}')
+        echo "DEVICE_TARGET=$DEVICE_TARGET" >> $GITHUB_ENV
+        DEVICE_SUBTARGET=$(cat .config | grep CONFIG_TARGET_SUBTARGET | awk -F '"' '{print $2}')
+        echo "DEVICE_SUBTARGET=$DEVICE_SUBTARGET" >> $GITHUB_ENV
 
     - name: Cache Toolchain(缓存工具链)
       if: env.CACHE_TOOLCHAIN == 'true'
@@ -161,12 +159,12 @@ jobs:
         body: |
           **This is OpenWrt Firmware for ${{ env.FIRMWARE_TAG }}**
           ###  固件信息(WIFI版本)
-          - 这是带WIFI以及NSS的6.6内核固件
-          -  这是 ${{ env.FIRMWARE_TAG }} 平台使用的 OpenWrt 固件
-          -  固件源码: ${{ env.REPO_URL }}
-          -  源码分支: ${{ env.REPO_BRANCH }}
-          -  默认地址: 192.168.1.1
-          -  默认密码: password
-          ###  固件版本
+          - 带WIFI带有线NSS的6.12内核固件
+          - 💻 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 OpenWrt 固件
+          - ⚽ 固件源码: ${{ env.REPO_URL }}
+          - 💝 源码分支: ${{ env.REPO_BRANCH }}
+          - 🌐 默认地址: 192.168.1.1
+          - 🔑 默认密码: password
+          ### 🧊 固件版本
           - 固件编译前最后一次➦[主源码](${{ env.REPO_URL }})更新记录
           - ${{ env.VERSION_INFO }}

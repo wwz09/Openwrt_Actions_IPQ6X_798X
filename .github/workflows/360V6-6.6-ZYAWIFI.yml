@@ -6,7 +6,7 @@ on:
     # - cron: 0 19 * * *
 
 env:
-  REPO_URL: https://github.com/277598414/openwrt-6.x.git
+  REPO_URL: https://github.com/LiBwrt/openwrt-6.x.git
   REPO_BRANCH: kernel-6.12
   CONFIG_FILE: configs/ipq60xx-ZYWIFI.config
   DIY_SCRIPT: scripts/360v6/AWIFI.sh
@@ -158,7 +158,7 @@ jobs:
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
           **This is OpenWrt Firmware for ${{ env.FIRMWARE_TAG }}**
-          ###  固件信息(WIFI版本)
+          ### 📒 固件信息(WIFI)
           - 带WIFI带有线NSS的6.12内核固件
           - 💻 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 OpenWrt 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}

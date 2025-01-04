@@ -1,4 +1,4 @@
-name: 360V6-6.6-ZYBWIFI
+name: 360V6-6.12-ZYBWIFI
 
 on:
   workflow_dispatch:

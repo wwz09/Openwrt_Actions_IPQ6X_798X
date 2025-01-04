@@ -54,9 +54,8 @@ git_sparse_clone main https://github.com/haiibo/packages luci-theme-atmaterial l
 git clone --depth=1 -b lede https://github.com/pymumu/luci-app-smartdns package/luci-app-smartdns
 git clone --depth=1 https://github.com/pymumu/openwrt-smartdns package/smartdns
 
-git_sparse_clone master  https://github.com/wwz09/luci_small luci-base  luci-compat luci vlmcsd
-git_sparse_clone main https://github.com/wwz09/luci_app luci-app-p910nd luci-app-usb-printer luci-app-vlmcsd  luci-app-wolplus  luci-app-frpc luci-app-filebrowser
-git_sparse_clone main https://github.com/wwz09/luci_app luci-app-filetransfer luci-app-control-timewol luci-app-control-weburl  luci-app-control-webrestriction luci-app-wolplus
+# git_sparse_clone master  https://github.com/wwz09/luci_small luci-base  luci-compat luci vlmcsd
+git_sparse_clone main https://github.com/wwz09/luci_app luci-app-filetransfer luci-app-control-timewol luci-app-control-weburl  luci-app-control-webrestriction luci-app-wolplus  luci-app-frpc luci-app-filebrowser
 git_sparse_clone main https://github.com/Lienol/openwrt-package luci-app-timecontrol
 git clone  https://github.com/sirpdboy/luci-app-parentcontrol.git feeds/luci/applications/luci-app-parentcontrol
 

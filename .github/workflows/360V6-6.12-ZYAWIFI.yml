@@ -99,6 +99,7 @@ jobs:
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
+        ./scripts/feeds clean
         ./scripts/feeds update -a
         ./scripts/feeds install -a
   

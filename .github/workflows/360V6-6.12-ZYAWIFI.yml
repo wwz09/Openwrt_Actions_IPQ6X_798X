@@ -7,7 +7,7 @@ on:
 
 env:
   REPO_URL: https://github.com/LiBwrt/openwrt-6.x.git
-  REPO_BRANCH: kernel-6.12
+  REPO_BRANCH: main
   CONFIG_FILE: configs/ipq60xx-ZYWIFI.config
   DIY_SCRIPT: scripts/360v6/AWIFI.sh
   CLASH_KERNEL: amd64

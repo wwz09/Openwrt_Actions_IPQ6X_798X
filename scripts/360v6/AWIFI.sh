@@ -3,7 +3,7 @@
 # sed -i '/luci/d' feeds.conf.default
 # sed -i '/packages/d' feeds.conf.default
 # sed -i '/small/d' feeds.conf.default
-
+echo -e "\nsrc-git extraipk https://github.com/wwz09/RAX3000MIPK" >> feeds.conf.default
 # 修改默认IP
 sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
 

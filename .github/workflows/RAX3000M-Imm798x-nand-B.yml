@@ -13,6 +13,7 @@ env:
   CONFIG_FILE: configs/rax3000m-Imm798x.config
   DIY_P1_SH: ./scripts/rax3000m/Imm/diy1.sh
   DIY_P2_SH: ./scripts/rax3000m/Imm/diy3.sh
+  DIY_P3_SH: ./scripts/rax3000m/Imm/diy4.sh
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
@@ -102,6 +103,12 @@ jobs:
         cd $OPENWRT_PATH
         ./scripts/feeds update -a
         ./scripts/feeds install -a
+
+    - name: Install DIY4
+      run: |
+        chmod +x $DIY_P3_SH
+        cd $OPENWRT_PATH
+        $GITHUB_WORKSPACE/$DIY_P3_SH
 
     - name: 导入files文件夹
       run: |

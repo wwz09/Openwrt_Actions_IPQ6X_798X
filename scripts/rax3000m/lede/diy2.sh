@@ -74,3 +74,7 @@ sed -i 's/encryption=none/encryption=psk-mixed+ccmp\n            set wireless.de
 
 ##更改主机名
 sed -i "s/hostname='.*'/hostname='RAX3000M'/g" package/base-files/files/bin/config_generate
+
+# 加入OpenClash核心
+chmod -R a+x $GITHUB_WORKSPACE/scripts/rax3000m/Imm/preset-clash-core.sh
+$GITHUB_WORKSPACE/scripts/rax3000m/Imm/preset-clash-core.sh

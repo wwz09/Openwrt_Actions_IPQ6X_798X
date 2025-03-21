@@ -40,6 +40,16 @@ sed -i "s/ImmortalWrt-5G/YM520-5G/g" package/mtk/applications/mtwifi-cfg/files/m
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
 
+## 加入 luci-app-socat
+rm -rf feeds/packages/net/socat
+git clone https://github.com/immortalwrt/packages package/new/immortalwrt-packages
+mv package/new/immortalwrt-packages/net/socat package/new/socat
+rm -rf package/new/immortalwrt-packages
+rm -rf feeds/luci/applications/luci-app-socat
+git clone --depth 1 https://github.com/chenmozhijin/luci-app-socat package/new/chenmozhijin-socat
+mv -n package/new/chenmozhijin-socat/luci-app-socat package/new/
+rm -rf package/new/chenmozhijin-socat
+
 # 加入OpenClash核心
 chmod -R a+x $GITHUB_WORKSPACE/scripts/rax3000m/Imm/preset-clash-core.sh
 $GITHUB_WORKSPACE/scripts/rax3000m/Imm/preset-clash-core.sh

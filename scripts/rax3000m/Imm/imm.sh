@@ -71,14 +71,14 @@ mv -n package/new/chenmozhijin-socat/luci-app-socat package/new/
 rm -rf package/new/chenmozhijin-socat
 
 ## adguardhome
-git clone -b patch-1 https://github.com/kiddin9/openwrt-adguardhome package/new/openwrt-adguardhome
-mv package/new/openwrt-adguardhome/*adguardhome package/new/
-rm -rf package/new/luci-app-adguardhome/root/usr/share/AdGuardHome/AdGuardHome_template.yaml
-cp -rf $GITHUB_WORKSPACE/patches/AdGuardHome/AdGuardHome_template.yaml package/new/luci-app-adguardhome/root/usr/share/AdGuardHome/AdGuardHome_template.yaml
-rm -rf package/new/luci-app-adguardhome/root/usr/share/AdGuardHome/links.txt
-cp -rf $GITHUB_WORKSPACE/patches/AdGuardHome/links.txt package/new/luci-app-adguardhome/root/usr/share/AdGuardHome/links.txt
+#git clone -b patch-1 https://github.com/kiddin9/openwrt-adguardhome package/new/openwrt-adguardhome
+#mv package/new/openwrt-adguardhome/*adguardhome package/new/
+#rm -rf package/new/luci-app-adguardhome/root/usr/share/AdGuardHome/AdGuardHome_template.yaml
+#cp -rf $GITHUB_WORKSPACE/patches/AdGuardHome/AdGuardHome_template.yaml #package/new/luci-app-adguardhome/root/usr/share/AdGuardHome/AdGuardHome_template.yaml
+#rm -rf package/new/luci-app-adguardhome/root/usr/share/AdGuardHome/links.txt
+#cp -rf $GITHUB_WORKSPACE/patches/AdGuardHome/links.txt package/new/luci-app-adguardhome/root/usr/share/AdGuardHome/links.txt
 # sed -i 's/+adguardhome/+PACKAGE_$(PKG_NAME)_INCLUDE_binary:adguardhome/g' package/new/luci-app-adguardhome/Makefile
-rm -rf package/new/openwrt-adguardhome
+#rm -rf package/new/openwrt-adguardhome
 
 # 加入OpenClash核心
 chmod -R a+x $GITHUB_WORKSPACE/scripts/rax3000m/Imm/preset-clash-core.sh

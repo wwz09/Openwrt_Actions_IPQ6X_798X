@@ -40,6 +40,23 @@ sed -i "s/ImmortalWrt-5G/YM520-5G/g" package/mtk/applications/mtwifi-cfg/files/m
 #rm -rf feeds/packages/lang/golang
 #git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
 
+
+# Git稀疏克隆，只克隆指定目录到本地
+function git_sparse_clone() {
+  branch="$1" repourl="$2" && shift 2
+  git clone --depth=1 -b $branch --single-branch --filter=blob:none --sparse $repourl
+  repodir=$(echo $repourl | awk -F '/' '{print $(NF)}')
+  cd $repodir && git sparse-checkout set $@
+  mv -f $@ ../package
+  cd .. && rm -rf $repodir
+}
+
+## 添加额外插件
+
+git_sparse_clone main https://github.com/mzwrt/mzwrt_package_Lite  luci-app-ikoolproxy luci-app-store luci-app-quickstart luci-app-openclash luci-app-easymesh luci-app-ddnsto luci-app-vlmcsd luci-theme-argon luci-theme-design luci-app-design-config luci-app-argon-config luci-app-adguardhome luci-app-lucky luci-app-smartdns luci-lib-xterm luci-lib-taskd luci-lib-iform
+
+git_sparse_clone main https://github.com/mzwrt/mzwrt_package_Lite  quickstart adguardhome ucl upx taskd ddnsto filebrowser lua-maxminddb lucky smartdns upx-static
+
 # 新建new目录
 mkdir -p package/new
 

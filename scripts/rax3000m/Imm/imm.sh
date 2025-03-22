@@ -40,6 +40,9 @@ sed -i "s/ImmortalWrt-5G/YM520-5G/g" package/mtk/applications/mtwifi-cfg/files/m
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
 
+# 新建new目录
+mkdir -p package/new
+
 ## 加入 luci-app-socat
 rm -rf feeds/packages/net/socat
 git clone https://github.com/immortalwrt/packages package/new/immortalwrt-packages

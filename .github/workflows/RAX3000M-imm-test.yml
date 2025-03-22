@@ -75,15 +75,15 @@ jobs:
      
     - name: 更新 & 安装 feeds & 执行脚本
       run: |
-        chmod +x $DIY_P1_SH
-        cd $OPENWRT_PATH
-        $GITHUB_WORKSPACE/$DIY_P1_SH 
-        
-    - name: DIY执行脚本
-      run: |
         chmod +x $DIY_P2_SH
         cd $OPENWRT_PATH
-        $GITHUB_WORKSPACE/$DIY_P2_SH
+        $GITHUB_WORKSPACE/$DIY_P2_SH 
+        
+    #- name: DIY执行脚本
+     # run: |
+       # chmod +x $DIY_P2_SH
+       # cd $OPENWRT_PATH
+        #$GITHUB_WORKSPACE/$DIY_P2_SH
 
     - name: Cache Toolchain
       if: env.CACHE_TOOLCHAIN == 'true'

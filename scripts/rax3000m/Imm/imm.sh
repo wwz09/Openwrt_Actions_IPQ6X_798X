@@ -37,8 +37,8 @@ sed -i "s/ImmortalWrt-2.4G/YM520-2.4G/g" package/mtk/applications/mtwifi-cfg/fil
 sed -i "s/ImmortalWrt-5G/YM520-5G/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 
 ## golang编译环境
-#rm -rf feeds/packages/lang/golang
-#git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
 
 
 # Git稀疏克隆，只克隆指定目录到本地
@@ -53,9 +53,9 @@ function git_sparse_clone() {
 
 ## 添加额外插件
 
-git_sparse_clone main https://github.com/mzwrt/mzwrt_package_Lite  luci-app-ikoolproxy luci-app-store luci-app-quickstart luci-app-openclash luci-app-easymesh luci-app-ddnsto luci-app-vlmcsd luci-theme-argon luci-theme-design luci-app-design-config luci-app-argon-config luci-app-adguardhome luci-app-lucky luci-app-smartdns luci-lib-xterm luci-lib-taskd luci-lib-iform
+git_sparse_clone main https://github.com/mzwrt/mzwrt_package_Lite  luci-app-ikoolproxy luci-app-store luci-app-quickstart luci-app-openclash luci-app-easymesh luci-app-ddnsto luci-app-vlmcsd luci-theme-argon luci-theme-design luci-app-design-config luci-app-argon-config luci-app-lucky luci-app-smartdns luci-lib-xterm luci-lib-taskd luci-lib-iform
 
-git_sparse_clone main https://github.com/mzwrt/mzwrt_package_Lite  quickstart adguardhome ucl upx taskd ddnsto filebrowser lua-maxminddb lucky smartdns upx-static
+git_sparse_clone main https://github.com/mzwrt/mzwrt_package_Lite  quickstart ucl upx taskd ddnsto filebrowser lua-maxminddb lucky smartdns upx-static docker
 
 # 新建new目录
 mkdir -p package/new
@@ -69,6 +69,16 @@ rm -rf feeds/luci/applications/luci-app-socat
 git clone --depth 1 https://github.com/chenmozhijin/luci-app-socat package/new/chenmozhijin-socat
 mv -n package/new/chenmozhijin-socat/luci-app-socat package/new/
 rm -rf package/new/chenmozhijin-socat
+
+## adguardhome
+git clone -b patch-1 https://github.com/kiddin9/openwrt-adguardhome package/new/openwrt-adguardhome
+mv package/new/openwrt-adguardhome/*adguardhome package/new/
+rm -rf package/new/luci-app-adguardhome/root/usr/share/AdGuardHome/AdGuardHome_template.yaml
+cp -rf $GITHUB_WORKSPACE/patches/AdGuardHome/AdGuardHome_template.yaml package/new/luci-app-adguardhome/root/usr/share/AdGuardHome/AdGuardHome_template.yaml
+rm -rf package/new/luci-app-adguardhome/root/usr/share/AdGuardHome/links.txt
+cp -rf $GITHUB_WORKSPACE/patches/AdGuardHome/links.txt package/new/luci-app-adguardhome/root/usr/share/AdGuardHome/links.txt
+# sed -i 's/+adguardhome/+PACKAGE_$(PKG_NAME)_INCLUDE_binary:adguardhome/g' package/new/luci-app-adguardhome/Makefile
+rm -rf package/new/openwrt-adguardhome
 
 # 加入OpenClash核心
 chmod -R a+x $GITHUB_WORKSPACE/scripts/rax3000m/Imm/preset-clash-core.sh

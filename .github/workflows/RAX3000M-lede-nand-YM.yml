@@ -151,11 +151,11 @@ jobs:
         rm -rf sha256sums
         rm -rf profiles.json
         rm -rf version.buildinfo
-        rm -rf LEDEBM-openwrt-mediatek-filogic-cmcc_rax3000m-nand-initramfs-kernel.bin
-        rm -rf LEDEBM-openwrt-mediatek-filogic-cmcc_rax3000m-nand.manifest
+        rm -rf LEDEYM-openwrt-mediatek-filogic-cmcc_rax3000m-nand-initramfs-kernel.bin
+        rm -rf LEDEYM-openwrt-mediatek-filogic-cmcc_rax3000m-nand.manifest
         mv config.buildinfo rax3000m.buildinfo
-        mv LEDEBM-openwrt-mediatek-filogic-cmcc_rax3000m-nand-squashfs-factory.bin ${{ env.FIRMWARE_TAG }}-factory.bin
-        mv LEDEBM-openwrt-mediatek-filogic-cmcc_rax3000m-nand-squashfs-sysupgrade.bin ${{ env.FIRMWARE_TAG }}-sysupgrade.bin
+        mv LEDEYM-openwrt-mediatek-filogic-cmcc_rax3000m-nand-squashfs-factory.bin ${{ env.FIRMWARE_TAG }}-factory.bin
+        mv LEDEYM-openwrt-mediatek-filogic-cmcc_rax3000m-nand-squashfs-sysupgrade.bin ${{ env.FIRMWARE_TAG }}-sysupgrade.bin
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
 
     - name: 固件上传到工件

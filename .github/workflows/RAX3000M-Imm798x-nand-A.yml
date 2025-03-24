@@ -157,8 +157,8 @@ jobs:
         mv config.buildinfo rax3000m.buildinfo
         rm -rf immortalwrt-mediatek-mt7981-cmcc_rax3000m.manifest
         rm -rf immortalwrt-mediatek-mt7981-cmcc_rax3000m-initramfs-kernel.bin
-        mv immortalwrt-mediatek-mt7981-cmcc_rax3000m-squashfs-factory.bin immortalwrt-rax3000m-nand-a-factory.bin
-        mv immortalwrt-mediatek-mt7981-cmcc_rax3000m-squashfs-sysupgrade.bin immortalwrt-rax3000m-nand-a-sysupgrade.bin
+        mv immortalwrt-mediatek-mt7981-cmcc_rax3000m-squashfs-factory.bin immortalwrt-${{ env.FIRMWARE_TAG }}-factory.bin
+        mv immortalwrt-mediatek-mt7981-cmcc_rax3000m-squashfs-sysupgrade.bin immortalwrt-${{ env.FIRMWARE_TAG }}-sysupgrade.bin
         mv -f $OPENWRT_PATH/bin/packages/*/*/*.ipk packages
         tar -zcf Packages.tar.gz packages
         rm -rf packages feeds.buildinfo version.buildinfo
@@ -184,7 +184,7 @@ jobs:
           **This is OpenWrt Firmware for ${{ env.FIRMWARE_TAG }}**
           ### � 固件信息(WIFI版本)
           - 这是带WIFI-immo-RAX3000M固件
-          - � 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 RAX3000M-immo-A 固件
+          - � 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 RAX3000M-immo 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - � 源码分支: ${{ env.REPO_BRANCH }}
           - � 默认地址: 192.168.2.1

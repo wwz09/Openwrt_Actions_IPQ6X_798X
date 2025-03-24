@@ -17,7 +17,7 @@ env:
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: rax3000m-nand-A
+  FIRMWARE_TAG: rax3000m-immo-A
   TZ: Asia/Shanghai
 
 jobs:

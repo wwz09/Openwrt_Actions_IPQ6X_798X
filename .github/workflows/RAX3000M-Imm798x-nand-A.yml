@@ -14,9 +14,10 @@ env:
   DIY_P1_SH: ./scripts/rax3000m/Imm/diy1.sh
   DIY_P2_SH: ./scripts/rax3000m/Imm/diy2.sh
   DIY_P3_SH: ./scripts/rax3000m/Imm/diy4.sh
+  CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
-  UPLOAD_FIRMWARE: true
-  UPLOAD_RELEASE: true
+  FIRMWARE_RELEASE: true
+  FIRMWARE_TAG: rax3000m-immo-nand-A
   TZ: Asia/Shanghai
 
 jobs:
@@ -140,48 +141,31 @@ jobs:
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
 
-    - name: Generate release tag
-      id: tag
-      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
-      run: |
-        echo "release_tag=$(date +"%Y.%m.%d")-immo" >> $GITHUB_OUTPUT
-        echo "release_date=$(date +"%Y.%m.%d")" >> $GITHUB_OUTPUT
-        touch release.txt
-        echo "后台地址：192.168.2.1
-              默认密码：password" >> release.txt
-        echo "status=success" >> $GITHUB_OUTPUT
-
-    - name: Upload firmware directory
+    - name: 固件上传到工件
+      if: steps.compile.outputs.status == 'success' && env.FIRMWARE_RELEASE != 'true'
       uses: actions/upload-artifact@main
-      if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-        path: ${{ env.FIRMWARE }}
+        name: ${{ env.SOURCE_REPO }}-firmware-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-${{ env.FILE_DATE }}
+        path: ${{ env.FIRMWARE_PATH }}
 
-    - name: Upload firmware to release
-      uses: softprops/action-gh-release@v2
-      if: steps.tag.outputs.status == 'success' && !cancelled()
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: 将固件上传到Release
+      if: steps.compile.outputs.status == 'success' && env.FIRMWARE_RELEASE == 'true'
+      uses: ncipollo/release-action@v1
       with:
-        name: ${{ steps.tag.outputs.release_date }} immortalwrt-rax3000m-nand-a
-        tag_name: ${{ steps.tag.outputs.release_tag }}
-        body_path: release.txt
-        files: ${{ env.FIRMWARE }}/*
-
-
-    - name: Delete workflow runs
-      uses: Mattraks/delete-workflow-runs@v2
-      with:
-          retain_days: 1
-          keep_minimum_runs: 1
-
-    - name: Remove old Releases
-      uses: dev-drprasad/delete-older-releases@v0.3.3
-      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
-      with:
-        keep_latest: 20
-        delete_tags: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+        name: R${{ env.DATE }} for ${{ env.FIRMWARE_TAG }}
+        allowUpdates: true
+        tag: ${{ env.FIRMWARE_TAG }}
+        token: ${{ secrets.GITHUB_TOKEN }}
+        artifacts: ${{ env.FIRMWARE_PATH }}/*
+        body: |
+          **This is OpenWrt Firmware for ${{ env.FIRMWARE_TAG }}**
+          ### � 固件信息(WIFI版本)
+          - 这是带WIFI-YM-RAX3000M固件
+          - � 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 RAX3000M-immo-A 固件
+          - ⚽ 固件源码: ${{ env.REPO_URL }}
+          - � 源码分支: ${{ env.REPO_BRANCH }}
+          - � 默认地址: 192.168.2.1
+          - � 默认密码: 自用不方便说
+          ### � 固件版本
+          - 固件编译前最后一次➦[主源码](${{ env.REPO_URL }})更新记录
+          - ${{ env.VERSION_INFO }}

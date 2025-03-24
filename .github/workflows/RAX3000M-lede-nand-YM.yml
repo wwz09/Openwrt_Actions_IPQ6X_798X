@@ -157,6 +157,7 @@ jobs:
         mv LEDEYM-openwrt-mediatek-filogic-cmcc_rax3000m-nand-squashfs-factory.bin ${{ env.FIRMWARE_TAG }}-factory.bin
         mv LEDEYM-openwrt-mediatek-filogic-cmcc_rax3000m-nand-squashfs-sysupgrade.bin ${{ env.FIRMWARE_TAG }}-sysupgrade.bin
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
+        echo "status=success" >> $GITHUB_OUTPUT
 
     - name: 固件上传到工件
       if: steps.compile.outputs.status == 'success' && env.FIRMWARE_RELEASE != 'true'

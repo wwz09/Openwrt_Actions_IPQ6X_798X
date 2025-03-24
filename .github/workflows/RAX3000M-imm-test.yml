@@ -158,7 +158,7 @@ jobs:
         mv immortalwrt-mediatek-mt7981-cmcc_rax3000m-squashfs-factory.bin immortalwrt-${{ env.FIRMWARE_TAG }}-factory.bin
         mv immortalwrt-mediatek-mt7981-cmcc_rax3000m-squashfs-sysupgrade.bin immortalwrt-${{ env.FIRMWARE_TAG }}-sysupgrade.bin
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
-        echo "status=success" >> $GITHUB_OUTPUT
+       
 
     - name: Upload Firmware To Artifact
       if: steps.compile.outputs.status == 'success' && env.FIRMWARE_RELEASE != 'true'

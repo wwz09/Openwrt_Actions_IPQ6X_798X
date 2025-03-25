@@ -148,8 +148,8 @@ jobs:
         cp $OPENWRT_PATH/.config build.config
         rm -rf sha256sums
         rm -rf profiles.json
-        rm -rf LEDEYM-openwrt-mediatek-filogic-cmcc_rax3000m-nand-initramfs-kernel.bin
-        rm -rf LEDEYM-openwrt-mediatek-filogic-cmcc_rax3000m-nand.manifest
+        rm -rf LEDEBM-openwrt-mediatek-filogic-cmcc_rax3000m-nand-initramfs-kernel.bin
+        rm -rf LEDEBM-openwrt-mediatek-filogic-cmcc_rax3000m-nand.manifest
         mv config.buildinfo rax3000m.buildinfo
         #mv -f $OPENWRT_PATH/bin/packages/*/*/*.ipk packages
         #tar -zcf Packages.tar.gz packages

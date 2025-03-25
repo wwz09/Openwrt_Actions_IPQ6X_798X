@@ -30,7 +30,7 @@ env:
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: rax3000m-lede-nand-test
+  FIRMWARE_TAG: rax3000m-lede-test
   TZ: Asia/Shanghai
 
 jobs:

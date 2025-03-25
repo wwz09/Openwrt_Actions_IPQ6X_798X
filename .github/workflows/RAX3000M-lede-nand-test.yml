@@ -159,7 +159,7 @@ jobs:
     - name: 整理文件
       if: steps.compile.outputs.status == 'success'
       run: |
-        cd openwrt/bin/targets/*/*
+        cd $OPENWRT_PATH/bin/targets/*/*
         cp $OPENWRT_PATH/.config build.config
         rm -rf packages
         rm -rf feeds.buildinfo

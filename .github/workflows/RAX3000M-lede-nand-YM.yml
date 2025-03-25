@@ -16,7 +16,7 @@ env:
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: rax3000m-lede-YM
+  FIRMWARE_TAG: lede-rax3000m-YM
   TZ: Asia/Shanghai
 
 jobs:

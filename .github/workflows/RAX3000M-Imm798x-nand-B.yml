@@ -179,8 +179,8 @@ jobs:
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
           **This is OpenWrt Firmware for ${{ env.FIRMWARE_TAG }}**
-          ### � 固件信息(WIFI版本)
-          - 这是带WIFI-immo-RAX3000M固件
+          ### ⚽ 固件信息(WIFI版本)
+          - ⚽这是带WIFI-immo-RAX3000M固件
           - ⚽ 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 immortalwrt-immo 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - ⚽ 源码分支: ${{ env.REPO_BRANCH }}

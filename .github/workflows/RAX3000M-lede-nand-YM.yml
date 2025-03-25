@@ -16,7 +16,7 @@ env:
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: rax3000m-lede-nand-YM
+  FIRMWARE_TAG: rax3000m-lede-YM
   TZ: Asia/Shanghai
 
 jobs:
@@ -87,7 +87,7 @@ jobs:
         chmod +x $DIY_P2_SH
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_P2_SH
-        sed -i 's/IMG_PREFIX:=$(VERSION_DIST_SANITIZED)/IMG_PREFIX:=LEDEYM-$(VERSION_DIST_SANITIZED)/g' include/image.mk
+        #sed -i 's/IMG_PREFIX:=$(VERSION_DIST_SANITIZED)/IMG_PREFIX:=LEDEYM-$(VERSION_DIST_SANITIZED)/g' include/image.mk
         
     - name: Cache Toolchain
       if: env.CACHE_TOOLCHAIN == 'true'
@@ -149,9 +149,11 @@ jobs:
         cp $OPENWRT_PATH/.config build.config
         rm -rf sha256sums
         rm -rf profiles.json
-        rm -rf LEDEYM-openwrt-mediatek-filogic-cmcc_rax3000m-nand-initramfs-kernel.bin
-        rm -rf LEDEYM-openwrt-mediatek-filogic-cmcc_rax3000m-nand.manifest
+        rm -rf openwrt-mediatek-filogic-cmcc_rax3000m-nand-initramfs-kernel.bin
+        rm -rf openwrt-mediatek-filogic-cmcc_rax3000m-nand.manifest
         mv config.buildinfo rax3000m.buildinfo
+        mv openwrt-mediatek-filogic-cmcc_rax3000m-nand-squashfs-sysupgrade.bin ${{ env.FIRMWARE_TAG }}-squashfs-sysupgrade.bin
+        mv openwrt-mediatek-filogic-cmcc_rax3000m-nand-squashfs-factory.bin ${{ env.FIRMWARE_TAG }}-squashfs-factory.bin
         #mv -f $OPENWRT_PATH/bin/packages/*/*/*.ipk packages
         #tar -zcf Packages.tar.gz packages
         rm -rf packages feeds.buildinfo version.buildinfo

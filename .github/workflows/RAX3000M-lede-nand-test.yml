@@ -95,7 +95,7 @@ jobs:
         chmod +x $DIY_P2_SH
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_P2_SH
-        sed -i 's/IMG_PREFIX:=$(VERSION_DIST_SANITIZED)/IMG_PREFIX:=LEDEST-$(VERSION_DIST_SANITIZED)/g' include/image.mk
+        #sed -i 's/IMG_PREFIX:=$(VERSION_DIST_SANITIZED)/IMG_PREFIX:=LEDEST-$(VERSION_DIST_SANITIZED)/g' include/image.mk
         
     - name: Cache Toolchain
       if: env.CACHE_TOOLCHAIN == 'true'
@@ -159,11 +159,11 @@ jobs:
         rm -rf sha256sums
         rm -rf profiles.json
         rm -rf version.buildinfo
-        rm -rf LEDEST-openwrt-mediatek-filogic-cmcc_rax3000m-nand-initramfs-kernel.bin
-        rm -rf LEDEST-openwrt-mediatek-filogic-cmcc_rax3000m-nand.manifest
+        rm -rf openwrt-mediatek-filogic-cmcc_rax3000m-nand-initramfs-kernel.bin
+        rm -rf openwrt-mediatek-filogic-cmcc_rax3000m-nand.manifest
         mv config.buildinfo rax3000m.buildinfo
-        mv LEDEST-openwrt-mediatek-filogic-cmcc_rax3000m-nand-squashfs-factory.bin ${{ env.FIRMWARE_TAG }}-factory.bin
-        mv LEDEST-openwrt-mediatek-filogic-cmcc_rax3000m-nand-squashfs-sysupgrade.bin ${{ env.FIRMWARE_TAG }}-sysupgrade.bin
+        mv openwrt-mediatek-filogic-cmcc_rax3000m-nand-squashfs-sysupgrade.bin ${{ env.FIRMWARE_TAG }}-squashfs-sysupgrade.bin
+        mv openwrt-mediatek-filogic-cmcc_rax3000m-nand-squashfs-factory.bin ${{ env.FIRMWARE_TAG }}-squashfs-factory.bin
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
 
     - name: 固件上传到工件

@@ -84,6 +84,12 @@ jobs:
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_P1_SH 
         
+    - name: DIY执行脚本
+      run: |
+        chmod +x $DIY_P2_SH
+        cd $OPENWRT_PATH
+        $GITHUB_WORKSPACE/$DIY_P2_SH
+
     - name: Cache Toolchain
       if: env.CACHE_TOOLCHAIN == 'true'
       uses: HiGarfield/cachewrtbuild@main
@@ -97,16 +103,16 @@ jobs:
         cd $OPENWRT_PATH
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-
-    - name: DIY执行脚本
-      run: |
-        chmod +x $DIY_P2_SH
-        cd $OPENWRT_PATH
-        $GITHUB_WORKSPACE/$DIY_P2_SH
         
+    #- name: Install DIY4
+      #run: |
+        #chmod +x $DIY_P3_SH
+        #cd $OPENWRT_PATH
+       # $GITHUB_WORKSPACE/$DIY_P3_SH
+
     #- name: 导入files文件夹
      # run: |
-       # [ -e ./scripts/rax3000m/Imm/798x/B/files ] && mv ./scripts/rax3000m/Imm/798x/B/files $OPENWRT_PATH/files  
+        #[ -e ./scripts/rax3000m/Imm/798x/B/files ] && mv ./scripts/rax3000m/Imm/798x/B/files $OPENWRT_PATH/files  
         #chmod +x $OPENWRT_PATH/files   
 
     - name: Load Custom Configuration
@@ -179,9 +185,8 @@ jobs:
           **This is OpenWrt Firmware for ${{ env.FIRMWARE_TAG }}**
           ### ⚽ 固件信息(WIFI版本)
           - ⚽这是带WIFI-immo-RAX3000M固件
-          - ⚽ 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 immortalwrt-immo 固件
+          - ⚽ 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 RAX3000M-immo 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - ⚽ 源码分支: ${{ env.REPO_BRANCH }}
           - ⚽ 默认地址: 192.168.3.1
           - ⚽ 默认密码: 自用不方便说
-          

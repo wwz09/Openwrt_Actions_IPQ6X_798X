@@ -11,7 +11,7 @@ env:
   REPO_BRANCH: openwrt-21.02
   #REPO_BRANCH: openwrt-23.05
   CONFIG_FILE: configs/rax3000m-imm.config
-  DIY_P1_SH: ./scripts/rax3000m/Imm/diy1.sh
+  #DIY_P1_SH: ./scripts/rax3000m/Imm/diy1.sh
   DIY_P2_SH: ./scripts/rax3000m/Imm/imm.sh
   DIY_P3_SH: ./scripts/rax3000m/Imm/diy4.sh
   CACHE_TOOLCHAIN: true
@@ -77,6 +77,12 @@ jobs:
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         VERSION_INFO=$(git show -s --date=short --format="作者: %an<br/>时间: %cd<br/>内容: %s<br/>hash: %H")
         echo "VERSION_INFO=$VERSION_INFO" >> $GITHUB_ENV
+
+    #- name: DIY执行脚本
+     # run: |
+       # chmod +x $DIY_P1_SH
+       # cd $OPENWRT_PATH
+        #$GITHUB_WORKSPACE/$DIY_P1_SH    
      
     - name: 更新 & 安装 feeds & 执行脚本
       run: |
@@ -84,12 +90,6 @@ jobs:
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_P2_SH 
         
-    #- name: DIY执行脚本
-     # run: |
-       # chmod +x $DIY_P2_SH
-       # cd $OPENWRT_PATH
-        #$GITHUB_WORKSPACE/$DIY_P2_SH
-
     - name: Cache Toolchain
       if: env.CACHE_TOOLCHAIN == 'true'
       uses: HiGarfield/cachewrtbuild@main
@@ -104,7 +104,7 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         
-    - name: Install DIY4
+    - name: Install DIY脚本
       run: |
         chmod +x $DIY_P3_SH
         cd $OPENWRT_PATH

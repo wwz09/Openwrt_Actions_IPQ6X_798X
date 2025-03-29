@@ -104,11 +104,11 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         
-    #- name: Install DIY4
-      #run: |
-        #chmod +x $DIY_P3_SH
-        #cd $OPENWRT_PATH
-       # $GITHUB_WORKSPACE/$DIY_P3_SH
+    - name: Install DIY脚本
+      run: |
+        chmod +x $DIY_P3_SH
+        cd $OPENWRT_PATH
+        $GITHUB_WORKSPACE/$DIY_P3_SH
 
     #- name: 导入files文件夹
      # run: |

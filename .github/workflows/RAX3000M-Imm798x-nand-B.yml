@@ -104,7 +104,7 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         
-    - name: Install DIY4
+    - name: Install DIY脚本
       run: |
         chmod +x $DIY_P3_SH
         cd $OPENWRT_PATH

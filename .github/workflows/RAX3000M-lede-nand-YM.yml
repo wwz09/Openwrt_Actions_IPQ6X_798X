@@ -104,10 +104,10 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
-    - name: 加载自定义配置
-      run: |
-        [ -e ./scripts/rax3000m/lede/files ] && mv ./scripts/rax3000m/lede/files $OPENWRT_PATH/files  
-        chmod +x $OPENWRT_PATH/files   
+    #- name: 加载自定义配置
+      #run: |
+        #[ -e ./scripts/rax3000m/lede/files ] && mv ./scripts/rax3000m/lede/files $OPENWRT_PATH/files  
+        #chmod +x $OPENWRT_PATH/files   
 
     - name: Load Custom Configuration
       run: |

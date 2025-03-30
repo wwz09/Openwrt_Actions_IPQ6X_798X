@@ -1,4 +1,4 @@
-name: RAX3000M-Imm798x-nand-A
+name: RAX3000M-Imm798x-nand-B
 
 on:
   workflow_dispatch:

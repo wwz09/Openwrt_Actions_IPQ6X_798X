@@ -67,7 +67,7 @@ sed -i 's/\/bin\/login/\/bin\/login -f root/' feeds/packages/utils/ttyd/files/tt
 
 
 #修改默认无线名称
-sed -i 's/LEDE/BM520-2.4G/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i 's/Openwrt/BM520-2.4G/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 #修改无线加密及密码
 sed -i 's/encryption=none/encryption=psk-mixed+ccmp\n            set wireless.default_radio${devidx}.key=abc5124937,\n/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh

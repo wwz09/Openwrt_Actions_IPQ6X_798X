@@ -1,23 +1,9 @@
-name: RAX3000M-lede-nand-test
+name: RAX3000M-lede-nand-YM
 
 on:
-  repository_dispatch:
-  # schedule:
-  #   - cron: "0 0 1 * *"
   workflow_dispatch:
-    inputs:
-      ssh:
-        description: 'SSH connection to Actions'
-        required: false
-        default: 'false'
-      chosen-os:
-        required: true
-        default: ubuntu-22.04
-        type: choice
-        options:
-          - ubuntu-20.04
-          - ubuntu-22.04
-          - ubuntu-24.04
+  # schedule:
+    # - cron: 0 19 * * *
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
@@ -55,19 +41,19 @@ jobs:
 
     - name: 初始化环境
       env:
-          DEBIAN_FRONTEND: noninteractive
-          CHOSEN_OS: ${{ github.event.inputs.chosen-os }}
+        DEBIAN_FRONTEND: noninteractive
       run: |
-         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
-         sudo -E apt-get -qq update
-         sudo bash -c 'bash <(curl -s https://build-scripts.immortalwrt.org/init_build_environment.sh)'
-         # sudo -E apt-get -qq install $(curl -fsSL https://raw.githubusercontent.com/Huanyueyichen/openwrt-list/master/openwrt-ubuntu-2204)
-         sudo -E apt-get -qq install libfuse-dev
-         sudo -E apt-get -qq autoremove --purge
-         sudo -E apt-get -qq clean
-         sudo timedatectl set-timezone "$TZ"
-         sudo mkdir -p /workdir
-         sudo chown $USER:$GROUPS /workdir
+        docker rmi $(docker images -q)
+        sudo rm -rf /usr/share/dotnet /etc/apt/sources.list.d /usr/local/lib/android $AGENT_TOOLSDIRECTORY
+        sudo -E apt-get -y purge azure-cli ghc* zulu* llvm* firefox google* dotnet* powershell openjdk* mongodb* moby* || true
+        sudo -E apt-get -y update
+        sudo -E apt-get -y install $(curl -fsSL is.gd/depends_ubuntu_2204)
+        sudo -E systemctl daemon-reload
+        sudo -E apt-get -y autoremove --purge
+        sudo -E apt-get -y clean
+        sudo timedatectl set-timezone "$TZ"
+        sudo mkdir -p /workdir
+        sudo chown $USER:$GROUPS /workdir
 
     - name: 合并磁盘
       uses: easimon/maximize-build-space@master
@@ -118,10 +104,10 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
-    - name: 加载自定义配置
-      run: |
-        [ -e ./scripts/rax3000m/lede/files ] && mv ./scripts/rax3000m/lede/files $OPENWRT_PATH/files  
-        chmod +x $OPENWRT_PATH/files   
+    #- name: 加载自定义配置
+      #run: |
+        #[ -e ./scripts/rax3000m/lede/files ] && mv ./scripts/rax3000m/lede/files $OPENWRT_PATH/files  
+        #chmod +x $OPENWRT_PATH/files   
 
     - name: Load Custom Configuration
       run: |
@@ -191,11 +177,11 @@ jobs:
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
           **This is OpenWrt Firmware for ${{ env.FIRMWARE_TAG }}**
-          ### 📒 固件信息(WIFI版本)
+          ### � 固件信息(WIFI版本)
           - 这是带WIFI-YM-RAX3000M固件
-          - 💻 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 RAX3000M-LEDE-YM 固件
+          - � 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 RAX3000M-LEDE-YM 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
-          - 💝 源码分支: ${{ env.REPO_BRANCH }}
-          - 🌐 默认地址: 192.168.2.1
-          - 🔑 默认密码: 自用不方便说
+          - � 源码分支: ${{ env.REPO_BRANCH }}
+          - � 默认地址: 192.168.2.1
+          - � 默认密码: 自用不方便说
           

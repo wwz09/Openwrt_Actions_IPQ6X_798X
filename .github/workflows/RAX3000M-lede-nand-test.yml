@@ -1,4 +1,4 @@
-name: RAX3000M-lede-nand-YM
+name: RAX3000M-lede-nand-test
 
 on:
   workflow_dispatch:

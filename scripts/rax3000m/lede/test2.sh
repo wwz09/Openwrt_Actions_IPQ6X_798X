@@ -69,10 +69,47 @@ sed -i 's/\/bin\/login/\/bin\/login -f root/' feeds/packages/utils/ttyd/files/tt
 sed -i 's/set wireless.radio[0-9]*.country=.*/set wireless.radio$devidx.country=CN/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 #修改默认无线名称
-sed -i 's/LEDE/TEST520-2.4G/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+# sed -i 's/LEDE/TEST520-2.4G/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 #修改无线加密及密码
-sed -i 's/encryption=none/encryption=psk-mixed+ccmp\n            set wireless.default_radio${devidx}.key=abc5124937,\n/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+# sed -i 's/encryption=none/encryption=psk-mixed+ccmp\n            set wireless.default_radio${devidx}.key=abc5124937,\n/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+
+# 加入 2.4G 和 5G 名称及密码配置
+sed -i '/set wireless.radio0/,/option disabled/d' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i '/set wireless.radio1/,/option disabled/d' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+
+cat >> package/kernel/mac80211/files/lib/wifi/mac80211.sh << EOF
+  set wireless.radio0=wifi-device
+  set wireless.radio0.type=mac80211
+  set wireless.radio0.path='platform/18000000.wmac'
+  set wireless.radio0.channel=11
+  set wireless.radio0.htmode=HT40
+  set wireless.radio0.country=CN
+  set wireless.radio0.disabled=0
+  set wireless.default_radio0=wifi-iface
+  set wireless.default_radio0.device=radio0
+  set wireless.default_radio0.network=lan
+  set wireless.default_radio0.mode=ap
+  set wireless.default_radio0.ssid=YM520-2.4G
+  set wireless.default_radio0.encryption=psk-mixed+ccmp
+  set wireless.default_radio0.key=abc5124937，
+
+  set wireless.radio1=wifi-device
+  set wireless.radio1.type=mac80211
+  set wireless.radio1.path='platform/18000000.wmac+1'
+  set wireless.radio1.channel=36
+  set wireless.radio1.htmode=VHT80
+  set wireless.radio1.country=CN
+  set wireless.radio1.disabled=0
+  set wireless.default_radio1=wifi-iface
+  set wireless.default_radio1.device=radio1
+  set wireless.default_radio1.network=lan
+  set wireless.default_radio1.mode=ap
+  set wireless.default_radio1.ssid=YM520-5G
+  set wireless.default_radio1.encryption=psk-mixed+ccmp
+  set wireless.default_radio1.key=abc5124937，
+EOF
+
 
 ##更改主机名
 sed -i "s/hostname='.*'/hostname='RAX3000M'/g" package/base-files/files/bin/config_generate

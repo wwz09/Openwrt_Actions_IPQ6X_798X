@@ -114,18 +114,6 @@ EOF
 ##更改主机名
 sed -i "s/hostname='.*'/hostname='RAX3000M'/g" package/base-files/files/bin/config_generate
 
-# 加入OpenClash
-git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
-
-# 预置OpenClash内核
-CLASH_CORE_DIR="files/etc/openclash/core"
-mkdir -p $CLASH_CORE_DIR
-
-# 获取Clash Meta最新版本下载链接
-CLASH_META_API_URL="https://api.github.com/repos/MetaCubeX/Clash.Meta/releases/latest"
-CLASH_META_DOWNLOAD_URL=$(curl -s $CLASH_META_API_URL | grep -o '"browser_download_url": "[^"]*clash.meta-linux-amd64[^"]*"' | cut -d '"' -f 4)
-CLASH_META_FILE=$(basename $CLASH_META_DOWNLOAD_URL)
-wget -qO $CLASH_CORE_DIR/$CLASH_META_FILE $CLASH_META_DOWNLOAD_URL
-gzip -d $CLASH_CORE_DIR/$CLASH_META_FILE
-mv $CLASH_CORE_DIR/${CLASH_META_FILE%.gz} $CLASH_CORE_DIR/clash.meta
-chmod +x $CLASH_CORE_DIR/clash.meta    
+# 加入OpenClash核心
+# chmod -R a+x $GITHUB_WORKSPACE/scripts/rax3000m/Imm/preset-clash-core.sh
+# $GITHUB_WORKSPACE/scripts/rax3000m/Imm/preset-clash-core.sh

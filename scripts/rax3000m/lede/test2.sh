@@ -82,7 +82,7 @@ sed -i 's/encryption=none/encryption=psk-mixed+ccmp\n            set wireless.de
 sed -i "s/hostname='.*'/hostname='RAX3000M'/g" package/base-files/files/bin/config_generate
 
 # 修改插件名字
-sed -i 's/"Socat"/"端口映射"/g' `egrep "Socat" -rl ./`
+sed -i 's/"Socat"/"端口转发"/g' `egrep "Socat" -rl ./`
 #sed -i 's/"终端"/"TTYD"/g' `egrep "终端" -rl ./`
 #sed -i 's/"网络存储"/"NAS"/g' `egrep "网络存储" -rl ./`
 #sed -i 's/"实时流量监测"/"流量"/g' `egrep "实时流量监测" -rl ./`

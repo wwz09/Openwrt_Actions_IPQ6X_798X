@@ -32,7 +32,8 @@ rm -rf ./package/feeds/extraipk/theme/luci-theme-ifit
 rm -rf ./package/feeds/extraipk/theme/luci-theme-opentopd
 rm -rf ./package/feeds/extraipk/theme/luci-theme-neobird
 
-
+# 设置 root 密码
+sed -i "s/root:[^:]*/root:\$1\$KejhO3Om\$wf8JAUSNHj0y2RiewTObe1:20185:0:99999:7:::/" package/base-files/files/etc/shadow
 
 # Git稀疏克隆，只克隆指定目录到本地
 function git_sparse_clone() {

@@ -66,77 +66,14 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argone/g' feeds/luci/collections/luci-
 sed -i 's/\/bin\/login/\/bin\/login -f root/' feeds/packages/utils/ttyd/files/ttyd.config
 
 # 修改 Wi-Fi 国家代码为中国
-# sed -i 's/set wireless.radio[0-9]*.country=.*/set wireless.radio$devidx.country=CN/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i 's/set wireless.radio[0-9]*.country=.*/set wireless.radio$devidx.country=CN/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 #修改默认无线名称
-# sed -i 's/LEDE/TEST520-2.4G/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i 's/LEDE/YM520-2.4G/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 #修改无线加密及密码
-# sed -i 's/encryption=none/encryption=psk-mixed+ccmp\n            set wireless.default_radio${devidx}.key=abc5124937,\n/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i 's/encryption=none/encryption=psk-mixed+ccmp\n            set wireless.default_radio${devidx}.key=abc5124937,\n/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
-# 加入 2.4G 和 5G 名称及密码配置
-# 定义要替换的旧代码块
-old_code=$(cat << 'EOF'
-uci -q batch <<-EOF
-            set wireless.radio${devidx}=wifi-device
-            set wireless.radio${devidx}.type=mac80211
-            ${dev_id}
-            set wireless.radio${devidx}.channel=${channel}
-            set wireless.radio${devidx}.band=${mode_band}
-            set wireless.radio${devidx}.htmode=$htmode
-            set wireless.radio${devidx}.disabled=0
-            set wireless.radio${devidx}.country=US
-
-            set wireless.default_radio${devidx}=wifi-iface
-            set wireless.default_radio${devidx}.device=radio${devidx}
-            set wireless.default_radio${devidx}.network=lan
-            set wireless.default_radio${devidx}.mode=ap
-            set wireless.default_radio${devidx}.ssid=LEDE
-            set wireless.default_radio${devidx}.encryption=none
-EOF
-EOF
-)
-
-# 定义要替换成的新代码块
-new_code=$(cat << 'EOF'
-# 根据频段设置不同的配置
-        if [ "$mode_band" = "2g" ]; then
-            ssid="YM520-2.4G"
-            encryption="psk-mixed+ccmp"
-            key="abc514937,"
-        elif [ "$mode_band" = "5g" ]; then
-            ssid="YM520-5G"
-            encryption="psk-mixed+ccmp"
-            key="abc514937,"
-        else
-            ssid="YM520"
-            encryption="none"
-            key=""
-        fi
-
-        uci -q batch <<-EOF
-            set wireless.radio${devidx}=wifi-device
-            set wireless.radio${devidx}.type=mac80211
-            ${dev_id}
-            set wireless.radio${devidx}.channel=${channel}
-            set wireless.radio${devidx}.band=${mode_band}
-            set wireless.radio${devidx}.htmode=$htmode
-            set wireless.radio${devidx}.disabled=0
-            set wireless.radio${devidx}.country=CN
-
-            set wireless.default_radio${devidx}=wifi-iface
-            set wireless.default_radio${devidx}.device=radio${devidx}
-            set wireless.default_radio${devidx}.network=lan
-            set wireless.default_radio${devidx}.mode=ap
-            set wireless.default_radio${devidx}.ssid=${ssid}
-            set wireless.default_radio${devidx}.encryption=${encryption}
-            $(if [ -n "$key" ]; then echo "set wireless.default_radio${devidx}.key=${key}"; fi)
-EOF
-EOF
-)
-
-# 使用 sed 进行替换
-sed -i "s|$(echo "$old_code" | sed 's/[\/&]/\\&/g')|$(echo "$new_code" | sed 's/[\/&]/\\&/g')|g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 ##更改主机名
 sed -i "s/hostname='.*'/hostname='RAX3000M'/g" package/base-files/files/bin/config_generate

@@ -62,7 +62,7 @@ sed -i 's/\/bin\/login/\/bin\/login -f root/' feeds/packages/utils/ttyd/files/tt
 
 # 设置 root 密码
 
-sed -i 's/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/root:$1$KejhO3Om$wf8JAUSNHj0y2RiewTObe1:20185:0:99999:7:::/g' package/lean/default-settings/files/zzz-default-settings
+#sed -i 's/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/root:$1$KejhO3Om$wf8JAUSNHj0y2RiewTObe1:20185:0:99999:7:::/g' package/lean/default-settings/files/zzz-default-settings
 
 # 修改 Wi-Fi 国家代码为中国
 sed -i 's/set wireless.radio[0-9]*.country=.*/set wireless.radio$devidx.country=CN/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
@@ -78,12 +78,12 @@ sed -i 's/encryption=none/encryption=psk-mixed+ccmp\n            set wireless.de
 sed -i "s/hostname='.*'/hostname='RAX3000M'/g" package/base-files/files/bin/config_generate
 
 # 修改插件名字
-sed -i 's/"Socat"/"端口转发"/g' `egrep "Socat" -rl ./`
+#sed -i 's/"Socat"/"端口转发"/g' `egrep "Socat" -rl ./`
 #sed -i 's/"终端"/"TTYD"/g' `egrep "终端" -rl ./`
 #sed -i 's/"网络存储"/"NAS"/g' `egrep "网络存储" -rl ./`
 #sed -i 's/"实时流量监测"/"流量"/g' `egrep "实时流量监测" -rl ./`
 #sed -i 's/"KMS 服务器"/"KMS激活"/g' `egrep "KMS 服务器" -rl ./`
-sed -i 's/"USB 打印服务器"/"打印服务"/g' `egrep "USB 打印服务器" -rl ./`
+#sed -i 's/"USB 打印服务器"/"打印服务"/g' `egrep "USB 打印服务器" -rl ./`
 #sed -i 's/"Web 管理"/"Web管理"/g' `egrep "Web 管理" -rl ./`
 #sed -i 's/"管理权"/"改密码"/g' `egrep "管理权" -rl ./`
 #sed -i 's/"带宽监控"/"监控"/g' `egrep "带宽监控" -rl ./`

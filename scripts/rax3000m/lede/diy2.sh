@@ -23,7 +23,6 @@ rm -rf ./feeds/extraipk/theme/luci-theme-edge
 rm -rf ./feeds/extraipk/theme/luci-theme-ifit
 rm -rf ./feeds/extraipk/theme/luci-theme-opentopd
 rm -rf ./feeds/extraipk/theme/luci-theme-neobird
-rm -rf ./feeds/mzwrt_package/luci-app-socat
 
 
 rm -rf ./package/feeds/extraipk/luci-theme-argon-18.06
@@ -53,7 +52,7 @@ function git_sparse_clone() {
 # git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite  luci-app-control-webrestriction  luci-app-timecontrol luci-app-control-timewol luci-app-control-weburl
 # git_sparse_clone main https://github.com/Lienol/openwrt-package luci-app-parentcontrol
 # git_sparse_clone main https://github.com/linkease/nas-packages-luci luci
-git_sparse_clone main https://github.com/chenmozhijin/luci-app-socat luci-app-socat
+# git_sparse_clone main https://github.com/chenmozhijin/luci-app-socat luci-app-socat
 # git clone  https://github.com/sirpdboy/luci-app-parentcontrol.git feeds/luci/applications/luci-app-parentcontrol
 
 ##取消bootstrap为默认主题

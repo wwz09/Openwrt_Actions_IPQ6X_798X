@@ -10,7 +10,8 @@ env:
   REPO_BRANCH: kernel-6.12
   CONFIG_FILE: configs/qihoo360v6.config
   DIY_SCRIPT: scripts/diy-script.sh
-  CLASH_KERNEL: amd64
+  DIY_P2_SH: ./scripts/diy2.sh
+  DIY_P3_SH: ./scripts/diy4.sh
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
@@ -19,7 +20,7 @@ env:
 
 jobs:
   Build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
 
     steps:
     - name: Check Server Performance(检查服务器性能)
@@ -40,15 +41,21 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        docker rmi $(docker images -q)
-        sudo rm -rf /usr/share/dotnet /etc/apt/sources.list.d /usr/local/lib/android $AGENT_TOOLSDIRECTORY
-        sudo -E apt-get -y purge azure-cli ghc* zulu* llvm* firefox google* dotnet* powershell openjdk* mongodb* moby* || true
-        sudo -E apt-get -y update
-        sudo -E apt-get -y install $(curl -fsSL is.gd/depends_ubuntu_2204)
-        sudo -E systemctl daemon-reload
+        sudo timedatectl set-timezone "Asia/Shanghai" 
+        sudo -E swapoff -a
+        sudo -E rm -f /swapfile
+        sudo -E docker image prune -a -f
+        sudo -E snap set system refresh.retain=2
+        sudo -E apt-get -y purge dotnet* firefox ghc* google* hhvm llvm* mono* mysql* openjdk* php* zulu*
         sudo -E apt-get -y autoremove --purge
-        sudo -E apt-get -y clean
-        sudo timedatectl set-timezone "$TZ"
+        sudo -E rm -rf /usr/share/dotnet /usr/local/lib/android/sdk /etc/mysql /etc/php /usr/local/share/boost
+        [ -n "$AGENT_TOOLSDIRECTORY" ] && sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+        sudo -E apt-get update -y
+        sudo -E apt full-upgrade -y
+        sudo -E apt-get install -y ack antlr3 aria2 asciidoc autoconf automake autopoint binutils bison build-essential bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool lrzsz mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3.8 python3-pip libpython3-dev qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev libfuse-dev libfuse-dev python3-setuptools
+        sudo -E apt-get clean
+        git config --global user.name 'GitHub Actions' && git config --global user.email 'waiquwang@gmail.com'
+        df -h
 
     - name: Combine Disks(合并磁盘)
       uses: easimon/maximize-build-space@master
@@ -63,25 +70,23 @@ jobs:
     - name: Clone Source Code(克隆源代码)
       run: |
         df -hT $GITHUB_WORKSPACE
-        git clone --depth 1 -b $REPO_BRANCH $REPO_URL openwrt
+        git clone $REPO_URL -b $REPO_BRANCH openwrt
         cd openwrt
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         VERSION_INFO=$(git show -s --date=short --format="作者: %an<br/>时间: %cd<br/>内容: %s<br/>hash: %H")
         echo "VERSION_INFO=$VERSION_INFO" >> $GITHUB_ENV
-        VERSION_KERNEL=$(grep -oP 'LINUX_KERNEL_HASH-\K[0-9]+\.[0-9]+\.[0-9]+' include/kernel-6.12)
-        echo "VERSION_KERNEL=$VERSION_KERNEL" >> $GITHUB_ENV
-
-    - name: Generate Variables(生成变量)
+     
+    - name: 更新 & 安装 feeds & 执行脚本
       run: |
-        cp $CONFIG_FILE $OPENWRT_PATH/.config
+        chmod +x $DIY_P1_SH
         cd $OPENWRT_PATH
-        make defconfig > /dev/null 2>&1
-        SOURCE_REPO="$(echo $REPO_URL | awk -F '/' '{print $(NF)}')"
-        echo "SOURCE_REPO=$SOURCE_REPO" >> $GITHUB_ENV
-        DEVICE_TARGET=$(cat .config | grep CONFIG_TARGET_BOARD | awk -F '"' '{print $2}')
-        echo "DEVICE_TARGET=$DEVICE_TARGET" >> $GITHUB_ENV
-        DEVICE_SUBTARGET=$(cat .config | grep CONFIG_TARGET_SUBTARGET | awk -F '"' '{print $2}')
-        echo "DEVICE_SUBTARGET=$DEVICE_SUBTARGET" >> $GITHUB_ENV
+        $GITHUB_WORKSPACE/$DIY_P1_SH 
+        
+    - name: DIY执行脚本
+      run: |
+        chmod +x $DIY_P2_SH
+        cd $OPENWRT_PATH
+        $GITHUB_WORKSPACE/$DIY_P2_SH
 
     - name: Cache Toolchain(缓存工具链)
       if: env.CACHE_TOOLCHAIN == 'true'
@@ -95,15 +100,10 @@ jobs:
       run: |
         cd $OPENWRT_PATH
         ./scripts/feeds update -a
-        git clone --depth 1 https://github.com/sbwml/openwrt_pkgs.git package/new/custom
-        mv package/new/custom/luci-app-netspeedtest  package/new
-        mv package/new/custom/speedtest-cli package/new
-        rm -rf package/new/custom
         ./scripts/feeds install -a
   
     - name: Load Custom Configuration(加载自定义配置)
       run: |
-        [ -e files ] && mv files $OPENWRT_PATH/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_PATH/.config
 
     - name: Download DL Package(下载DL软件包)
@@ -139,10 +139,16 @@ jobs:
       if: steps.compile.outputs.status == 'success'
       run: |
         cd $OPENWRT_PATH/bin/targets/*/*
-        cat sha256sums
+        rm -rf sha256sums
+        rm -rf profiles.json
         cp $OPENWRT_PATH/.config build.config
-        mv -f $OPENWRT_PATH/bin/packages/*/*/*.apk packages
-        tar -zcf Packages.tar.gz packages
+        mv config.buildinfo 360v6.buildinfo
+        #rm -rf immortalwrt-mediatek-mt7981-cmcc_rax3000m.manifest
+        #rm -rf immortalwrt-mediatek-mt7981-cmcc_rax3000m-initramfs-kernel.bin
+        #mv immortalwrt-mediatek-mt7981-cmcc_rax3000m-squashfs-factory.bin immortalwrt-${{ env.FIRMWARE_TAG }}-factory.bin
+        #mv immortalwrt-mediatek-mt7981-cmcc_rax3000m-squashfs-sysupgrade.bin immortalwrt-${{ env.FIRMWARE_TAG }}-sysupgrade.bin
+        #mv -f $OPENWRT_PATH/bin/packages/*/*/*.ipk packages
+        #tar -zcf Packages.tar.gz packages
         rm -rf packages feeds.buildinfo version.buildinfo
         echo "FIRMWARE_PATH=$PWD" >> $GITHUB_ENV
 
@@ -171,7 +177,4 @@ jobs:
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
           - 🌐 默认地址: 192.168.1.1
           - 🔑 默认密码: password
-          ### 🧊 固件版本
-          - 固件内核版本：${{ env.VERSION_KERNEL }}
-          - 固件编译前最后一次➦[主源码](${{ env.REPO_URL }})更新记录
-          - ${{ env.VERSION_INFO }}
+         

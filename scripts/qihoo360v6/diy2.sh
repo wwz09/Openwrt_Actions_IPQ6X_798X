@@ -70,13 +70,13 @@ sed -i 's/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/root:$1$KejhO3O
 sed -i 's/set wireless.radio[0-9]*.country=.*/set wireless.radio$devidx.country=CN/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 #修改默认无线名称
-sed -i 's/LEDE/YM520-2.4G/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+# sed -i 's/LEDE/YM520-2.4G/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 #修改无线加密及密码
 sed -i 's/encryption=none/encryption=psk-mixed+ccmp\n            set wireless.default_radio${devidx}.key=abc5124937,\n/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 ##更改主机名
-sed -i "s/hostname='.*'/hostname='RAX3000M'/g" package/base-files/files/bin/config_generate
+sed -i "s/hostname='.*'/hostname='Qihoo 360V6'/g" package/base-files/files/bin/config_generate
 
 # 修改插件名字
 #sed -i 's/"Socat"/"端口转发"/g' `egrep "Socat" -rl ./`

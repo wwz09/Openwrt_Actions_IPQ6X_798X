@@ -48,6 +48,10 @@ rm -rf new/mzwrt/luci-app-bypass
 rm -rf new/mzwrt/luci-app-bandwidthd
 rm -rf new/mzwrt/luci-app-ssr-plus
 rm -rf new/mzwrt/luci-app-gowebdav
+rm -rf new/mzwrt/luci-app-ddnsto
+rm -rf new/mzwrt/ddnsto
+rm -rf new/mzwrt/dockerd
+rm -rf new/mzwrt/luci-app-dockerman
 
 cp -rf new/mzwrt package/mzwrt
 rm -rf new

@@ -41,26 +41,6 @@ rm -rf ./package/feeds/extraipk/theme/luci-theme-neobird
 # rm -rf ./feeds/mzwrt_package/luci-app-gowebdav
 
 
-mkdir -p new
-git clone --depth=1  https://github.com/mzwrt/mzwrt_package_Lite.git new/mzwrt
-rm -rf new/mzwrt/luci-app-shadowsocks
-rm -rf new/mzwrt/luci-app-bypass
-rm -rf new/mzwrt/luci-app-bandwidthd
-rm -rf new/mzwrt/luci-app-ssr-plus
-rm -rf new/mzwrt/luci-app-gowebdav
-rm -rf new/mzwrt/luci-app-ddnsto
-rm -rf new/mzwrt/ddnsto
-rm -rf new/mzwrt/dockerd
-rm -rf new/mzwrt/luci-app-dockerman
-rm -rf new/mzwrt/luci-app-smartdns
-rm -rf new/mzwrt/smartdns
-# rm -rf new/mzwrt/luci-lib-taskd
-rm -rf new/mzwrt/coremark
-
-
-cp -rf new/mzwrt package/mzwrt
-rm -rf new
-
 # Git稀疏克隆，只克隆指定目录到本地
 function git_sparse_clone() {
   branch="$1" repourl="$2" && shift 2
@@ -74,8 +54,9 @@ function git_sparse_clone() {
 
 ## 添加额外插件
 
-# git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite  luci-app-control-webrestriction  luci-app-timecontrol luci-app-control-timewol luci-app-control-weburl
-# git_sparse_clone main https://github.com/Lienol/openwrt-package luci-app-parentcontrol
+git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite  luci-app-quickstart luci-app-adguardhome luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl luci-app-filebrowser luci-app-ikoolproxy luci-app-linkease luci-app-socat luci-app-vlmcsd luci-app-smartdns luci-theme-design luci-app-eqos
+git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite  quickstart adguardhome filebrowser linkease smartdns lua-maxminddb ucl upx
+# git_sparse_clone main https://github.com/Lienol/openwrt-package luci-app-parentcontrol 
 # git_sparse_clone main https://github.com/linkease/nas-packages-luci luci
 # git_sparse_clone main https://github.com/chenmozhijin/luci-app-socat luci-app-socat
 # git clone  https://github.com/sirpdboy/luci-app-parentcontrol.git feeds/luci/applications/luci-app-parentcontrol
@@ -83,8 +64,8 @@ git clone --depth=1 -b lede https://github.com/pymumu/luci-app-smartdns package/
 git clone --depth=1 https://github.com/pymumu/openwrt-smartdns package/smartdns
 git_sparse_clone main https://github.com/linkease/nas-packages-luci luci/luci-app-ddnsto
 git_sparse_clone master https://github.com/linkease/nas-packages network/services/ddnsto
-# git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
-# git_sparse_clone main https://github.com/linkease/istore luci
+git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
+git_sparse_clone main https://github.com/linkease/istore luci
 
 ##取消bootstrap为默认主题
 sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap

@@ -54,7 +54,7 @@ rm -rf new/mzwrt/dockerd
 rm -rf new/mzwrt/luci-app-dockerman
 rm -rf new/mzwrt/luci-app-smartdns
 rm -rf new/mzwrt/smartdns
-# rm -rf new/mzwrt/luci-lib-taskd
+rm -rf new/mzwrt/luci-lib-taskd
 rm -rf new/mzwrt/coremark
 
 cp -rf new/mzwrt package/mzwrt
@@ -82,8 +82,8 @@ git clone --depth=1 -b lede https://github.com/pymumu/luci-app-smartdns package/
 git clone --depth=1 https://github.com/pymumu/openwrt-smartdns package/smartdns
 git_sparse_clone main https://github.com/linkease/nas-packages-luci luci/luci-app-ddnsto
 git_sparse_clone master https://github.com/linkease/nas-packages network/services/ddnsto
-# git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
-# git_sparse_clone main https://github.com/linkease/istore luci
+git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
+git_sparse_clone main https://github.com/linkease/istore luci
 
 ##取消bootstrap为默认主题
 sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap

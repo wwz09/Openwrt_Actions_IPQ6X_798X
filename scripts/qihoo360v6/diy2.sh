@@ -50,7 +50,7 @@ rm -rf new/mzwrt/luci-app-ssr-plus
 rm -rf new/mzwrt/luci-app-gowebdav
 
 cp -rf new/mzwrt package/mzwrt
-
+rm -rf new
 
 # Git稀疏克隆，只克隆指定目录到本地
 function git_sparse_clone() {

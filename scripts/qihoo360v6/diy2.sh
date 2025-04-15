@@ -52,6 +52,9 @@ rm -rf new/mzwrt/luci-app-ddnsto
 rm -rf new/mzwrt/ddnsto
 rm -rf new/mzwrt/dockerd
 rm -rf new/mzwrt/luci-app-dockerman
+rm -rf new/mzwrt/luci-app-smartdns
+rm -rf new/mzwrt/smartdns
+rm -rf new/mzwrt/luci-lib-taskd
 
 cp -rf new/mzwrt package/mzwrt
 rm -rf new
@@ -74,6 +77,12 @@ function git_sparse_clone() {
 # git_sparse_clone main https://github.com/linkease/nas-packages-luci luci
 # git_sparse_clone main https://github.com/chenmozhijin/luci-app-socat luci-app-socat
 # git clone  https://github.com/sirpdboy/luci-app-parentcontrol.git feeds/luci/applications/luci-app-parentcontrol
+git clone --depth=1 -b lede https://github.com/pymumu/luci-app-smartdns package/luci-app-smartdns
+git clone --depth=1 https://github.com/pymumu/openwrt-smartdns package/smartdns
+git_sparse_clone main https://github.com/linkease/nas-packages-luci luci/luci-app-ddnsto
+git_sparse_clone master https://github.com/linkease/nas-packages network/services/ddnsto
+# git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
+# git_sparse_clone main https://github.com/linkease/istore luci
 
 ##取消bootstrap为默认主题
 sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap

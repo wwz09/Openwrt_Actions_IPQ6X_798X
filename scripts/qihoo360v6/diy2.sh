@@ -73,8 +73,8 @@ function git_sparse_clone() {
 
 ## 添加额外插件
 
-git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite  luci-app-quickstart luci-app-adguardhome luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl luci-app-filebrowser luci-app-ikoolproxy luci-app-linkease luci-app-socat luci-app-vlmcsd luci-app-smartdns luci-theme-design luci-app-eqos
-git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite  quickstart adguardhome filebrowser linkease smartdns lua-maxminddb ucl upx
+git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite  luci-app-quickstart luci-app-store luci-app-adguardhome luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl luci-app-filebrowser luci-app-ikoolproxy luci-app-linkease luci-app-socat luci-app-vlmcsd luci-app-smartdns luci-theme-design luci-app-eqos 
+git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite  quickstart adguardhome filebrowser linkease smartdns lua-maxminddb ucl upx linkmount luci-lib-taskd taskd luci-lib-xterm
 # git_sparse_clone main https://github.com/Lienol/openwrt-package luci-app-parentcontrol 
 # git_sparse_clone main https://github.com/linkease/nas-packages-luci luci
 # git_sparse_clone main https://github.com/chenmozhijin/luci-app-socat luci-app-socat
@@ -83,8 +83,8 @@ git clone --depth=1 -b lede https://github.com/pymumu/luci-app-smartdns package/
 git clone --depth=1 https://github.com/pymumu/openwrt-smartdns package/smartdns
 git_sparse_clone main https://github.com/linkease/nas-packages-luci luci/luci-app-ddnsto
 git_sparse_clone master https://github.com/linkease/nas-packages network/services/ddnsto
-git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
-git_sparse_clone main https://github.com/linkease/istore luci
+# git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
+# git_sparse_clone main https://github.com/linkease/istore luci
 
 ##取消bootstrap为默认主题
 sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap

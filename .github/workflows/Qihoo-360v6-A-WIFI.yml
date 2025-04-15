@@ -1,4 +1,4 @@
-name: Qihoo-360v6-6.12-WIFI
+name: Qihoo-360v6-A-WIFI
 
 on:
   workflow_dispatch:
@@ -15,7 +15,7 @@ env:
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: Qihoo-360v6-6.12-WIFI
+  FIRMWARE_TAG: Qihoo-360v6-A-WIFI
   TZ: Asia/Shanghai
 
 jobs:

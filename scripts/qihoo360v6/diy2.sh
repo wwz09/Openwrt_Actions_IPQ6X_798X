@@ -82,7 +82,8 @@ sed -i 's/set wireless.radio[0-9]*.country=.*/set wireless.radio$devidx.country=
 sed -i 's/libwrt/YM520/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 #修改无线加密及密码
-sed -i 's/encryption=none/encryption=psk-mixed+ccmp\n            set wireless.default_radio${devidx}.key=abc5124937,\n/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i 's/BASE_SSID='LiBwrt'/BASE_SSID='YM520'/g' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
+sed -i 's/BASE_WORD='12345678'/BASE_WORD='abc5124937,'/g' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
 
 ##更改主机名
 sed -i "s/hostname='.*'/hostname='Qihoo360V6'/g" package/base-files/files/bin/config_generate

@@ -34,11 +34,22 @@ rm -rf ./package/feeds/extraipk/theme/luci-theme-opentopd
 rm -rf ./package/feeds/extraipk/theme/luci-theme-neobird
 
 
-rm -rf ./feeds/mzwrt_package/luci-app-shadowsocks
-rm -rf ./feeds/mzwrt_package/luci-app-bypass
-rm -rf ./feeds/mzwrt_package/luci-app-bandwidthd
-rm -rf ./feeds/mzwrt_package/luci-app-ssr-plus
-rm -rf ./feeds/mzwrt_package/luci-app-gowebdav
+# rm -rf ./feeds/mzwrt_package/luci-app-shadowsocks
+# rm -rf ./feeds/mzwrt_package/luci-app-bypass
+# rm -rf ./feeds/mzwrt_package/luci-app-bandwidthd
+# rm -rf ./feeds/mzwrt_package/luci-app-ssr-plus
+# rm -rf ./feeds/mzwrt_package/luci-app-gowebdav
+
+
+mkdir -p new
+git clone --depth=1  https://github.com/mzwrt/mzwrt_package_Lite.git new/mzwrt
+rm -rf new/mzwrt/luci-app-shadowsocks
+rm -rf new/mzwrt/luci-app-bypass
+rm -rf new/mzwrt/luci-app-bandwidthd
+rm -rf new/mzwrt/luci-app-ssr-plus
+rm -rf new/mzwrt/luci-app-gowebdav
+
+cp -rf new/mzwrt ./package
 
 
 # Git稀疏克隆，只克隆指定目录到本地

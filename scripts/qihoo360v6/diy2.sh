@@ -84,7 +84,7 @@ sed -i 's/libwrt/YM520/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 sed -i 's/encryption=none/encryption=psk-mixed+ccmp\n            set wireless.default_radio${devidx}.key=abc5124937,\n/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 ##更改主机名
-sed -i "s/hostname='.*'/hostname='Qihoo 360V6'/g" package/base-files/files/bin/config_generate
+sed -i "s/hostname='.*'/hostname='Qihoo360V6'/g" package/base-files/files/bin/config_generate
 
 # 修改插件名字
 #sed -i 's/"Socat"/"端口转发"/g' `egrep "Socat" -rl ./`

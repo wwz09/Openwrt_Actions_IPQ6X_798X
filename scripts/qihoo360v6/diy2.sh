@@ -76,12 +76,10 @@ cp -f $GITHUB_WORKSPACE/scripts/qihoo360v6/011-fix-mbo-modules-build.patch packa
 sed -i 's/root:::0:99999:7:::/root:$1$KejhO3Om$wf8JAUSNHj0y2RiewTObe1:20185:0:99999:7:::/g' package/base-files/files/etc/shadow
 
 # 修改 Wi-Fi 国家代码为中国
-sed -i 's/set wireless.radio[0-9]*.country=.*/set wireless.radio$devidx.country=CN/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+# sed -i 's/set wireless.radio[0-9]*.country=.*/set wireless.radio$devidx.country=CN/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
-#修改默认无线名称
-sed -i 's/libwrt/YM520/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
-
-#修改无线加密及密码
+#修改默认无线名称及密码
+# sed -i 's/libwrt/YM520/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 sed -i 's/BASE_SSID='LiBwrt'/BASE_SSID='YM520'/g' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
 sed -i 's/BASE_WORD='12345678'/BASE_WORD='abc5124937,'/g' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
 

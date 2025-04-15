@@ -107,3 +107,6 @@ sed -i "s/hostname='.*'/hostname='Qihoo360V6'/g" package/base-files/files/bin/co
 #sed -i 's/"Web 管理"/"Web管理"/g' `egrep "Web 管理" -rl ./`
 #sed -i 's/"管理权"/"改密码"/g' `egrep "管理权" -rl ./`
 #sed -i 's/"带宽监控"/"监控"/g' `egrep "带宽监控" -rl ./`
+
+./scripts/feeds update -a
+./scripts/feeds install -a

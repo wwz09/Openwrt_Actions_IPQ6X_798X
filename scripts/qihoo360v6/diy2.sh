@@ -34,11 +34,11 @@ rm -rf ./package/feeds/extraipk/theme/luci-theme-opentopd
 rm -rf ./package/feeds/extraipk/theme/luci-theme-neobird
 
 
-rm -rf ./package/feeds/mzwrt_package/luci-app-shadowsocks
-rm -rf ./package/feeds/mzwrt_package/luci-app-bypass
-rm -rf ./package/feeds/mzwrt_package/luci-app-bandwidthd
-rm -rf ./package/feeds/mzwrt_package/luci-app-ssr-plus
-rm -rf ./package/feeds/mzwrt_package/luci-app-gowebdav
+rm -rf ./feeds/mzwrt_package/luci-app-shadowsocks
+rm -rf ./feeds/mzwrt_package/luci-app-bypass
+rm -rf ./feeds/mzwrt_package/luci-app-bandwidthd
+rm -rf ./feeds/mzwrt_package/luci-app-ssr-plus
+rm -rf ./feeds/mzwrt_package/luci-app-gowebdav
 
 
 # Git稀疏克隆，只克隆指定目录到本地

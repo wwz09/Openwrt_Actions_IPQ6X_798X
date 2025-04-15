@@ -55,6 +55,7 @@ rm -rf new/mzwrt/luci-app-dockerman
 rm -rf new/mzwrt/luci-app-smartdns
 rm -rf new/mzwrt/smartdns
 rm -rf new/mzwrt/luci-lib-taskd
+rm -rf new/mzwrt/coremark
 
 cp -rf new/mzwrt package/mzwrt
 rm -rf new

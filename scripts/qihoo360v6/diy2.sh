@@ -32,6 +32,7 @@ rm -rf ./package/feeds/extraipk/theme/luci-theme-edge
 rm -rf ./package/feeds/extraipk/theme/luci-theme-ifit
 rm -rf ./package/feeds/extraipk/theme/luci-theme-opentopd
 rm -rf ./package/feeds/extraipk/theme/luci-theme-neobird
+rm -rf ./feeds/packages/utils/coremark
 
 
 # rm -rf ./feeds/mzwrt_package/luci-app-shadowsocks
@@ -74,7 +75,7 @@ function git_sparse_clone() {
 ## 添加额外插件
 
 git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite  luci-app-quickstart luci-app-store luci-app-adguardhome luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl luci-app-filebrowser luci-app-ikoolproxy luci-app-linkease luci-app-socat luci-app-vlmcsd luci-app-smartdns luci-theme-design luci-app-eqos 
-git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite  quickstart adguardhome filebrowser linkease smartdns lua-maxminddb ucl upx linkmount luci-lib-taskd taskd luci-lib-xterm
+git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite  quickstart adguardhome filebrowser linkease smartdns lua-maxminddb ucl upx linkmount luci-lib-taskd taskd luci-lib-xterm coremark
 # git_sparse_clone main https://github.com/Lienol/openwrt-package luci-app-parentcontrol 
 # git_sparse_clone main https://github.com/linkease/nas-packages-luci luci
 # git_sparse_clone main https://github.com/chenmozhijin/luci-app-socat luci-app-socat

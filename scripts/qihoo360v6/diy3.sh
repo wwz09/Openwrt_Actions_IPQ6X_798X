@@ -40,7 +40,7 @@ function git_sparse_clone() {
 ## 添加额外插件
 
 git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite  luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl luci-app-filebrowser  luci-app-socat luci-app-vlmcsd   
-git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite  filebrowser 
+git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite   filebrowser luci-theme-argon luci-app-argon-config luci-theme-design
 # 添加额外插件
 git clone --depth=1 https://github.com/kongfl888/luci-app-adguardhome package/luci-app-adguardhome
 git clone --depth=1 -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush package/luci-app-serverchan
@@ -59,20 +59,20 @@ git_sparse_clone openwrt-18.06 https://github.com/immortalwrt/luci applications/
 #git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2 package/luci-app-passwall2
 git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
 git clone --depth=1 https://github.com/littletao12/openwrt-bin package/openwrt-bin
-git clone --depth=1 https://github.com/asvow/luci-app-tailscale package/luci-app-tailscale
-git clone --depth=1 https://github.com/nikkinikki-org/OpenWrt-nikki package/OpenWrt-nikki
+#git clone --depth=1 https://github.com/asvow/luci-app-tailscale package/luci-app-tailscale
+#git clone --depth=1 https://github.com/nikkinikki-org/OpenWrt-nikki package/OpenWrt-nikki
 # Themes
-git clone --depth=1 -b 18.06 https://github.com/kiddin9/luci-theme-edge package/luci-theme-edge
-git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
-git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
+# git clone --depth=1 -b 18.06 https://github.com/kiddin9/luci-theme-edge package/luci-theme-edge
+# git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
+# git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 git clone --depth=1 https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom package/luci-theme-infinityfreedom
-git_sparse_clone main https://github.com/haiibo/packages luci-theme-atmaterial luci-theme-opentomcat luci-theme-netgear
+# git_sparse_clone main https://github.com/haiibo/packages luci-theme-atmaterial luci-theme-opentomcat luci-theme-netgear
 
 # 晶晨宝盒
-git_sparse_clone main https://github.com/ophub/luci-app-amlogic luci-app-amlogic
-sed -i "s|firmware_repo.*|firmware_repo 'https://github.com/haiibo/OpenWrt'|g" package/luci-app-amlogic/root/etc/config/amlogic
+#git_sparse_clone main https://github.com/ophub/luci-app-amlogic luci-app-amlogic
+#sed -i "s|firmware_repo.*|firmware_repo 'https://github.com/haiibo/OpenWrt'|g" package/luci-app-amlogic/root/etc/config/amlogic
 # sed -i "s|kernel_path.*|kernel_path 'https://github.com/ophub/kernel'|g" package/luci-app-amlogic/root/etc/config/amlogic
-sed -i "s|ARMv8|ARMv8_PLUS|g" package/luci-app-amlogic/root/etc/config/amlogic
+#sed -i "s|ARMv8|ARMv8_PLUS|g" package/luci-app-amlogic/root/etc/config/amlogic
 
 # SmartDNS
 # git clone --depth=1 -b lede https://github.com/pymumu/luci-app-smartdns package/luci-app-smartdns
@@ -86,7 +86,7 @@ git clone --depth=1 https://github.com/ximiTech/msd_lite package/msd_lite
 git clone --depth=1 https://github.com/sbwml/luci-app-mosdns package/luci-app-mosdns
 
 # Alist
-git clone --depth=1 https://github.com/sbwml/luci-app-alist package/luci-app-alist
+#git clone --depth=1 https://github.com/sbwml/luci-app-alist package/luci-app-alist
 
 # DDNS.to
 git_sparse_clone main https://github.com/linkease/nas-packages-luci luci/luci-app-ddnsto
@@ -97,10 +97,8 @@ git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
 git_sparse_clone main https://github.com/linkease/istore luci
 
 
-##取消bootstrap为默认主题
-sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap
-sed -i 's/luci-theme-bootstrap/luci-theme-argone/g' feeds/luci/collections/luci/Makefile
-sed -i 's/luci-theme-bootstrap/luci-theme-argone/g' feeds/luci/collections/luci-nginx/Makefile
+# 取消主题默认设置
+find package/luci-theme-*/* -type f -name '*luci-theme-*' -print -exec sed -i '/set luci.main.mediaurlbase/d' {} \;
 
 # 设置ttyd免帐号登录
 sed -i 's/\/bin\/login/\/bin\/login -f root/' feeds/packages/utils/ttyd/files/ttyd.config

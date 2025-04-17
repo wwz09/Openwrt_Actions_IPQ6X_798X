@@ -7,6 +7,7 @@ on:
 
 env:
   REPO_URL: https://github.com/LiBwrt/openwrt-6.x.git
+  #REPO_URL: https://github.com/277598414/openwrt.git
   REPO_BRANCH: kernel-6.12
   FEEDS_CONF: feeds.conf.default 
   CONFIG_FILE: configs/qihoo360v6.config

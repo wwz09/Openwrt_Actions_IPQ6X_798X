@@ -6,12 +6,13 @@ on:
     - cron: 0 19 * * *
 
 env:
-  REPO_URL: https://github.com/LiBwrt/openwrt-6.x.git
-  #REPO_URL: https://github.com/VIKINGYFY/immortalwrt.git
-  REPO_BRANCH: kernel-6.12
-  #REPO_BRANCH: main
+  #REPO_URL: https://github.com/LiBwrt/openwrt-6.x.git
+  REPO_URL: https://github.com/VIKINGYFY/immortalwrt.git
+  #REPO_BRANCH: kernel-6.12
+  REPO_BRANCH: main
   FEEDS_CONF: feeds.conf.default 
-  CONFIG_FILE: configs/qihoo360v6-test.config
+  #CONFIG_FILE: configs/qihoo360v6-test.config
+  CONFIG_FILE: configs/360v6.config
   DIY_P1_SH: ./scripts/qihoo360v6/test.sh
   DIY_P2_SH: ./scripts/qihoo360v6/test2.sh
   DIY_P3_SH: ./scripts/qihoo360v6/diy4.sh

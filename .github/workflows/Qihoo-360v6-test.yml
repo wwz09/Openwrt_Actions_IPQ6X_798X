@@ -8,6 +8,7 @@ on:
 env:
   REPO_URL: https://github.com/LiBwrt/openwrt-6.x.git
   REPO_BRANCH: kernel-6.12
+  FEEDS_CONF: ./scripts/qihoo360v6/feeds.conf.default 
   CONFIG_FILE: configs/qihoo360v6.config
   DIY_P1_SH: ./scripts/qihoo360v6/test.sh
   DIY_P2_SH: ./scripts/qihoo360v6/diy2.sh
@@ -64,7 +65,7 @@ jobs:
     - name: Clone Source Code(克隆源代码)
       run: |
         df -hT $GITHUB_WORKSPACE
-        git clone $REPO_URL -b $REPO_BRANCH openwrt
+        git clone $REPO_URL -b $REPO_BRANCH $OPENWRT_PATH
         cd openwrt
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         VERSION_INFO=$(git show -s --date=short --format="作者: %an<br/>时间: %cd<br/>内容: %s<br/>hash: %H")
@@ -72,6 +73,7 @@ jobs:
      
     - name: 更新 & 安装 feeds & 执行脚本
       run: |
+        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF $OPENWRT_PATH/feeds.conf.default
         chmod +x $DIY_P1_SH
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_P1_SH 

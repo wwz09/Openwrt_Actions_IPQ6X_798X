@@ -19,7 +19,7 @@ sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generat
 rm -rf feeds/packages/net/mosdns
 rm -rf feeds/packages/net/msd_lite
 rm -rf feeds/packages/net/smartdns
-# rm -rf feeds/luci/themes/luci-theme-argon
+rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf feeds/luci/themes/luci-theme-netgear
 rm -rf feeds/luci/applications/luci-app-mosdns
 rm -rf feeds/luci/applications/luci-app-netdata
@@ -40,7 +40,7 @@ function git_sparse_clone() {
 ## 添加额外插件
 
 git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite  luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl luci-app-filebrowser  luci-app-socat luci-app-vlmcsd   
-git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite  filebrowser luci-app-argon-config luci-theme-design
+git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite   filebrowser luci-theme-argon luci-app-argon-config luci-theme-design
 # 添加额外插件
 git clone --depth=1 https://github.com/kongfl888/luci-app-adguardhome package/luci-app-adguardhome
 git clone --depth=1 -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush package/luci-app-serverchan
@@ -97,7 +97,7 @@ git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
 git_sparse_clone main https://github.com/linkease/istore luci
 
 # 取消主题默认设置
-# find package/luci-theme-*/* -type f -name '*luci-theme-*' -print -exec sed -i '/set luci.main.mediaurlbase/d' {} \;
+find package/luci-theme-*/* -type f -name '*luci-theme-*' -print -exec sed -i '/set luci.main.mediaurlbase/d' {} \;
 
 # 设置ttyd免帐号登录
 sed -i 's/\/bin\/login/\/bin\/login -f root/' feeds/packages/utils/ttyd/files/ttyd.config

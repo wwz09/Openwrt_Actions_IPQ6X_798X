@@ -8,10 +8,11 @@ on:
 env:
   REPO_URL: https://github.com/LiBwrt/openwrt-6.x.git
   REPO_BRANCH: kernel-6.12
+  FEEDS_CONF: scripts/qihoo360v6/feeds.conf.default
   CONFIG_FILE: configs/qihoo360v6.config
-  DIY_P1_SH: ./scripts/qihoo360v6/diy1.sh
-  DIY_P2_SH: ./scripts/qihoo360v6/diy2.sh
-  DIY_P3_SH: ./scripts/qihoo360v6/diy4.sh
+  DIY_P1_SH: scripts/qihoo360v6/diy1.sh
+  DIY_P2_SH: scripts/qihoo360v6/diy2.sh
+  DIY_P3_SH: scripts/qihoo360v6/diy4.sh
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
@@ -72,6 +73,7 @@ jobs:
      
     - name: 更新 & 安装 feeds & 执行脚本
       run: |
+        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         chmod +x $DIY_P1_SH
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_P1_SH 

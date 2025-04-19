@@ -10,8 +10,8 @@ env:
   REPO_URL: https://github.com/wwz09/immortalwrt-360v6.git
   #REPO_BRANCH: kernel-6.12
   REPO_BRANCH: main
-  CONFIG1: configs/immor/IPQ60XX-WIFI.txt
-  CONFIG2: configs/immor/GENERAL.txt
+  CONFIG1: configs/immor/360v6.config
+  #CONFIG2: configs/immor/GENERAL.txt
   DIY_P1_SH: scripts/qihoo360v6/immor/Packages.sh
   DIY_P2_SH: scripts/qihoo360v6/immor/Handles.sh
   DIY_P3_SH: scripts/qihoo360v6/immor/Settings.sh
@@ -101,7 +101,7 @@ jobs:
       run: |
         # cat  $GITHUB_WORKSPACE/$CONFIG1 $GITHUB_WORKSPACE/$CONFIG2 >> .config
         [ -e $CONFIG1 ] && mv $CONFIG1 $OPENWRT_PATH/.config
-        [ -e $CONFIG2 ] && mv $CONFIG2 $OPENWRT_PATH/.config
+        #[ -e $CONFIG2 ] && mv $CONFIG2 $OPENWRT_PATH/.config
 
     - name: Download DL Package(下载DL软件包)
       run: |

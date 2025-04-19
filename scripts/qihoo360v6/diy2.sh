@@ -116,7 +116,7 @@ sed -i 's/root:::0:99999:7:::/root:$1$KejhO3Om$wf8JAUSNHj0y2RiewTObe1:20185:0:99
 
 #修改默认无线名称及密码
 # sed -i 's/libwrt/BM520/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
-sed -i 's/BASE_SSID='LiBwrt'/BASE_SSID='BM520'/g' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
+sed -i 's/BASE_SSID='LiBwrt'/BASE_SSID='YM520'/g' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
 sed -i 's/BASE_WORD='12345678'/BASE_WORD='abc5124937,'/g' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
 
 ##更改主机名

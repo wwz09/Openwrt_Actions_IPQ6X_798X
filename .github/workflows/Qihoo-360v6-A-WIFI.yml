@@ -6,13 +6,15 @@ on:
     - cron: 0 19 * * *
 
 env:
-  REPO_URL: https://github.com/LiBwrt/openwrt-6.x.git
-  REPO_BRANCH: kernel-6.12
-  FEEDS_CONF: scripts/qihoo360v6/feeds.conf.default
-  CONFIG_FILE: configs/qihoo360v6.config
-  DIY_P1_SH: scripts/qihoo360v6/diy1.sh
-  DIY_P2_SH: scripts/qihoo360v6/diy2.sh
-  DIY_P3_SH: scripts/qihoo360v6/diy4.sh
+  #REPO_URL: https://github.com/LiBwrt/openwrt-6.x.git
+  REPO_URL: https://github.com/VIKINGYFY/immortalwrt.git
+  #REPO_BRANCH: kernel-6.12
+  REPO_BRANCH: main
+  CONFIG1: configs/immor/IPQ60XX-WIFI-YES.txt
+  CONFIG2: configs/immor/GENERAL.txt
+  DIY_P1_SH: Scripts/immor/Packages.sh
+  DIY_P2_SH: Scripts/immor/Handles.sh
+  DIY_P3_SH: Scripts/immor/Settings.sh
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
@@ -71,19 +73,7 @@ jobs:
         VERSION_INFO=$(git show -s --date=short --format="作者: %an<br/>时间: %cd<br/>内容: %s<br/>hash: %H")
         echo "VERSION_INFO=$VERSION_INFO" >> $GITHUB_ENV
      
-    - name: 更新 & 安装 feeds & 执行脚本
-      run: |
-       # [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
-        chmod +x $DIY_P1_SH
-        cd $OPENWRT_PATH
-        $GITHUB_WORKSPACE/$DIY_P1_SH 
-        
-    - name: DIY执行脚本
-      run: |
-        chmod +x $DIY_P2_SH
-        cd $OPENWRT_PATH
-        $GITHUB_WORKSPACE/$DIY_P2_SH
-
+          
     - name: Cache Toolchain(缓存工具链)
       if: env.CACHE_TOOLCHAIN == 'true'
       uses: HiGarfield/cachewrtbuild@main
@@ -97,10 +87,20 @@ jobs:
         cd $OPENWRT_PATH
         ./scripts/feeds update -a
         ./scripts/feeds install -a
+        
+    - name: DIY执行脚本
+      run: |
+        chmod +x $DIY_P1_SH
+        chmod +x $DIY_P2_SH
+        cd $OPENWRT_PATH/package
+        $GITHUB_WORKSPACE/$DIY_P1_SH 
+        $GITHUB_WORKSPACE/$DIY_P2_SH
   
     - name: Load Custom Configuration(加载自定义配置)
       run: |
-        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_PATH/.config
+        # cat  $GITHUB_WORKSPACE/$CONFIG1 $GITHUB_WORKSPACE/$CONFIG2 >> .config
+        [ -e $CONFIG1 ] && mv $CONFIG1 $OPENWRT_PATH/.config
+        [ -e $CONFIG2 ] && mv $CONFIG2 $OPENWRT_PATH/.config
 
     - name: Download DL Package(下载DL软件包)
       run: |
@@ -173,4 +173,3 @@ jobs:
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
           - 🌐 默认地址: 192.168.1.1
           - 🔑 默认密码: password
-         

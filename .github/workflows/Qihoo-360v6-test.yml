@@ -8,6 +8,7 @@ on:
 env:
   #REPO_URL: https://github.com/LiBwrt/openwrt-6.x.git
   REPO_URL: https://github.com/VIKINGYFY/immortalwrt.git
+  REPO_BRANCH: main
   CONFIG_FILE: configs/360v6.config
   DIY_P1_SH: ./scripts/qihoo360v6/test.sh
   DIY_P2_SH: ./scripts/qihoo360v6/test2.sh

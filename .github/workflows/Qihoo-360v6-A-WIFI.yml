@@ -51,7 +51,6 @@ jobs:
         sudo -E apt-get -y clean
         sudo timedatectl set-timezone "$TZ"
         
-
     - name: Combine Disks(合并磁盘)
       uses: easimon/maximize-build-space@master
       with:
@@ -71,7 +70,18 @@ jobs:
         VERSION_INFO=$(git show -s --date=short --format="作者: %an<br/>时间: %cd<br/>内容: %s<br/>hash: %H")
         echo "VERSION_INFO=$VERSION_INFO" >> $GITHUB_ENV
      
-          
+    - name: 更新 & 安装 feeds & 执行脚本
+      run: |
+        chmod +x $DIY_P1_SH
+        cd $OPENWRT_PATH
+        $GITHUB_WORKSPACE/$DIY_P1_SH 
+        
+    - name: DIY执行脚本
+      run: |
+        chmod +x $DIY_P2_SH
+        cd $OPENWRT_PATH
+        $GITHUB_WORKSPACE/$DIY_P2_SH
+
     - name: Cache Toolchain(缓存工具链)
       if: env.CACHE_TOOLCHAIN == 'true'
       uses: HiGarfield/cachewrtbuild@main
@@ -85,20 +95,10 @@ jobs:
         cd $OPENWRT_PATH
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-        
-    - name: DIY执行脚本
-      run: |
-        chmod +x $DIY_P1_SH
-        chmod +x $DIY_P2_SH
-        cd $OPENWRT_PATH/package
-        $GITHUB_WORKSPACE/$DIY_P1_SH 
-        $GITHUB_WORKSPACE/$DIY_P2_SH
   
     - name: Load Custom Configuration(加载自定义配置)
       run: |
-        # cat  $GITHUB_WORKSPACE/$CONFIG1 $GITHUB_WORKSPACE/$CONFIG2 >> .config
-        [ -e $CONFIG1 ] && mv $CONFIG1 $OPENWRT_PATH/.config
-        #[ -e $CONFIG2 ] && mv $CONFIG2 $OPENWRT_PATH/.config
+        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_PATH/.config
 
     - name: Download DL Package(下载DL软件包)
       run: |

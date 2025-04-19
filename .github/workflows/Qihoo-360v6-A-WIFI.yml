@@ -10,11 +10,11 @@ env:
   REPO_URL: https://github.com/VIKINGYFY/immortalwrt.git
   #REPO_BRANCH: kernel-6.12
   REPO_BRANCH: main
-  CONFIG1: configs/immor/IPQ60XX-WIFI-YES.txt
+  CONFIG1: configs/immor/IPQ60XX-WIFI.txt
   CONFIG2: configs/immor/GENERAL.txt
-  DIY_P1_SH: Scripts/immor/Packages.sh
-  DIY_P2_SH: Scripts/immor/Handles.sh
-  DIY_P3_SH: Scripts/immor/Settings.sh
+  DIY_P1_SH: scripts/qihoo360v6/immor/Packages.sh
+  DIY_P2_SH: scripts/qihoo360v6/immor/Handles.sh
+  DIY_P3_SH: scripts/qihoo360v6/immor/Settings.sh
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true

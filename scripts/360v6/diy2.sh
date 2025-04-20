@@ -37,7 +37,7 @@ function git_sparse_clone() {
 
 ## 添加额外插件
 
-# git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl  
+git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl
 git_sparse_clone main https://github.com/sirpdboy/luci-app-lucky luci-app-lucky lucky
 git_sparse_clone main https://github.com/chenmozhijin/luci-app-socat luci-app-socat
 # git clone --depth=1 https://github.com/kongfl888/luci-app-adguardhome package/luci-app-adguardhome

@@ -17,7 +17,7 @@ sed -i "s/LibWrt/QihooV6/g" package/base-files/files/bin/config_generate
 sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
 
 # 修改 wifi 无线名称
-sed -i "s/LiBwrt/YM520/g" package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+sed -i "s/ImmortalWrt/YM520/g" package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 
 # Git稀疏克隆，只克隆指定目录到本地
 function git_sparse_clone() {
@@ -112,6 +112,16 @@ git clone --depth=1 https://github.com/vernesong/OpenClash.git -b dev package/lu
 # rm -rf feeds/packages/net/alist
 # rm -rf feeds/luci/applications/luci-app-alist
 # git clone https://github.com/sbwml/luci-app-alist package/luci-app-alist
+# 取消主题默认设置
+find package/luci-theme-*/* -type f -name '*luci-theme-*' -print -exec sed -i '/set luci.main.mediaurlbase/d' {} \;
+
+# 设置ttyd免帐号登录
+sed -i 's/\/bin\/login/\/bin\/login -f root/' feeds/packages/utils/ttyd/files/ttyd.config
+
+# 设置 root 密码
+# sed -i 's/root:::0:99999:7:::/root:$1$KejhO3Om$wf8JAUSNHj0y2RiewTObe1:20185:0:99999:7:::/g' package/lean/default-settings/files/zzz-default-settings
+sed -i 's/root:::0:99999:7:::/root:$1$KejhO3Om$wf8JAUSNHj0y2RiewTObe1:20185:0:99999:7:::/g' package/base-files/files/etc/shadow
+
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a

@@ -22,7 +22,7 @@ sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generat
 
 
 # 修改 wifi 无线名称
-sed -i "s/LiBwrt/YM520/g" package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+sed -i "s/ImmortalWrt/YM520/g" package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 
 # Git稀疏克隆，只克隆指定目录到本地
 function git_sparse_clone() {

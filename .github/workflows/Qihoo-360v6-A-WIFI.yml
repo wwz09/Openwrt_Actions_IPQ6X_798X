@@ -16,7 +16,7 @@ env:
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: Qihoo-360v6-A-WIFI
+  FIRMWARE_TAG: 360v6-A-WIFI
   TZ: Asia/Shanghai
 
 jobs:
@@ -138,12 +138,13 @@ jobs:
         rm -rf profiles.json
         cp $OPENWRT_PATH/.config build.config
         mv config.buildinfo 360v6.buildinfo
-        #rm -rf immortalwrt-mediatek-mt7981-cmcc_rax3000m.manifest
-        #rm -rf immortalwrt-mediatek-mt7981-cmcc_rax3000m-initramfs-kernel.bin
-        #mv immortalwrt-mediatek-mt7981-cmcc_rax3000m-squashfs-factory.bin immortalwrt-${{ env.FIRMWARE_TAG }}-factory.bin
-        #mv immortalwrt-mediatek-mt7981-cmcc_rax3000m-squashfs-sysupgrade.bin immortalwrt-${{ env.FIRMWARE_TAG }}-sysupgrade.bin
-        #mv -f $OPENWRT_PATH/bin/packages/*/*/*.ipk packages
-        #tar -zcf Packages.tar.gz packages
+        rm -rf immortalwrt-qualcommax-ipq60xx-8devices_mango-dvk-initramfs-uImage.itb
+        rm -rf immortalwrt-qualcommax-ipq60xx-8devices_mango-dvk.manifest
+        rm -rf immortalwrt-qualcommax-ipq60xx-qihoo_360v6-initramfs-uImage.itb
+        mv immortalwrt-qualcommax-ipq60xx-qihoo_360v6-squashfs-factory.ubi Immortalwrt-IPQ-${{ env.FIRMWARE_TAG }}-factory.bin
+        mv immortalwrt-qualcommax-ipq60xx-qihoo_360v6-squashfs-sysupgrade.bin Immortalwrt-IPQ-${{ env.FIRMWARE_TAG }}-sysupgrade.bin
+        mv -f $OPENWRT_PATH/bin/packages/*/*/*.ipk packages
+        tar -zcf Packages.tar.gz packages
         rm -rf packages feeds.buildinfo version.buildinfo
         echo "FIRMWARE_PATH=$PWD" >> $GITHUB_ENV
 
@@ -166,9 +167,9 @@ jobs:
         body: |
           **This is OpenWrt Firmware for ${{ env.FIRMWARE_TAG }}**
           ### 📒 固件信息(WIFI)
-          - 带WIFI带有线NSS的6.12内核固件
+          - 带WIFI带有线NSS的6.6内核固件
           - 💻 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 OpenWrt 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
-          - 🌐 默认地址: 192.168.1.1
-          - 🔑 默认密码: password
+          - 🌐 默认地址: 192.168.2.1
+          - 🔑 默认密码: 保密

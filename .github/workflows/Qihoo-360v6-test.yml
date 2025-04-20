@@ -141,6 +141,7 @@ jobs:
         mv config.buildinfo 360v6.buildinfo
         rm -rf immortalwrt-qualcommax-ipq60xx-8devices_mango-dvk-initramfs-uImage.itb
         rm -rf immortalwrt-qualcommax-ipq60xx-8devices_mango-dvk.manifest
+        rm -rf immortalwrt-qualcommax-ipq60xx.manifest
         rm -rf immortalwrt-qualcommax-ipq60xx-qihoo_360v6-initramfs-uImage.itb
         mv immortalwrt-qualcommax-ipq60xx-qihoo_360v6-squashfs-factory.ubi Immortalwrt-IPQ-${{ env.FIRMWARE_TAG }}-factory.bin
         mv immortalwrt-qualcommax-ipq60xx-qihoo_360v6-squashfs-sysupgrade.bin Immortalwrt-IPQ-${{ env.FIRMWARE_TAG }}-sysupgrade.bin

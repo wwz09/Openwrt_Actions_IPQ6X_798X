@@ -130,7 +130,7 @@ sed -i 's/\/bin\/login/\/bin\/login -f root/' feeds/packages/utils/ttyd/files/tt
 sed -i 's/root:::0:99999:7:::/root:$1$KejhO3Om$wf8JAUSNHj0y2RiewTObe1:20185:0:99999:7:::/g' package/base-files/files/etc/shadow
 
 # 修改插件名字
-#sed -i 's/"Socat"/"端口转发"/g' `egrep "Socat" -rl ./`
+sed -i 's/"Vlmcsd KMS 服务器"/"KMS服务器"/g' `egrep "Vlmcsd KMS 服务器" -rl ./`
 #sed -i 's/"终端"/"TTYD"/g' `egrep "终端" -rl ./`
 #sed -i 's/"网络存储"/"NAS"/g' `egrep "网络存储" -rl ./`
 #sed -i 's/"实时流量监测"/"流量"/g' `egrep "实时流量监测" -rl ./`

@@ -48,8 +48,7 @@ function git_sparse_clone() {
 rm -rf feeds/packages/net/mosdns
 rm -rf feeds/luci/applications/luci-app-mosdns
 rm -rf feeds/luci/applications/luci-app-firewall
-rm -rf feeds/luci/collections
-
+find feeds/luci/collections -type d \( -name "luci-lib-docker" -o -name "luci-light" -o -name "luci-nginx"  -o -name "uci-ssl" -o -name "luci-ssl-nginx" -o -name "luci-ssl-openssl"\) -exec rm -rf {} +
 
 ## 添加额外插件
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/luci-app-mosdns

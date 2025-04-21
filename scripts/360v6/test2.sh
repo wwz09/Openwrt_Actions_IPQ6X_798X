@@ -48,11 +48,18 @@ function git_sparse_clone() {
 rm -rf feeds/packages/net/mosdns
 rm -rf feeds/luci/applications/luci-app-mosdns
 rm -rf feeds/luci/applications/luci-app-firewall
-find feeds/luci/collections -type d \( -name "luci-lib-docker" -o -name "luci-light" -o -name "luci-nginx"  -o -name "uci-ssl" -o -name "luci-ssl-nginx" -o -name "luci-ssl-openssl"\) -exec rm -rf {} +
+rm -rf feeds/luci/collections/luci-lib-docker
+rm -rf feeds/luci/collections/luci-light
+rm -rf feeds/luci/collections/luci-nginx
+rm -rf feeds/luci/collections/uci-ssl
+rm -rf feeds/luci/collections/luci-ssl-nginx
+rm -rf feeds/luci/collections/luci-ssl-openssl
+
+
 
 ## 添加额外插件
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/luci-app-mosdns
-git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl luci-app-timecontrol luci-app-firewall collections
+git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl luci-app-timecontrol luci-app-firewall luci-ssl-openssl luci-lib-docker luci-light luci-nginx uci-ssl luci-ssl-nginx luci-ssl-openssl
 git_sparse_clone main https://github.com/sirpdboy/luci-app-lucky luci-app-lucky lucky
 git_sparse_clone main https://github.com/chenmozhijin/luci-app-socat luci-app-socat
 # git clone --depth=1 https://github.com/kongfl888/luci-app-adguardhome package/luci-app-adguardhome

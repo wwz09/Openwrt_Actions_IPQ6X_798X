@@ -24,4 +24,6 @@ echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >>
 # echo "src-git openclash https://github.com/vernesong/OpenClash.git;dev" >> "feeds.conf.default"
  sed -i 's/luci.git/luci.git;openwrt-21.02/g' feeds.conf.default
  sed -i 's|https://github.com/immortalwrt/packages.git|https://github.com/immortalwrt/packages.git;openwrt-21.02|g' feeds.conf.default
+ sed -i 's|https://github.com/openwrt/routing.git|https://github.com/openwrt/routing.git;openwrt-21.02|g' feeds.conf.default
+ sed -i 's|https://github.com/openwrt/telephony.git|https://github.com/openwrt/telephony.git;openwrt-21.02|g' feeds.conf.default
  

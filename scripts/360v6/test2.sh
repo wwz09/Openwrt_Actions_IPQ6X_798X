@@ -44,11 +44,16 @@ function git_sparse_clone() {
   mv -f $@ ../package
   cd .. && rm -rf $repodir
 }
-
+# 添加 mosdns 插件
+rm -rf feeds/packages/net/mosdns
+rm -rf feeds/luci/applications/luci-app-mosdns
+rm -rf feeds/luci/applications/luci-app-firewall
+rm -rf feeds/luci/collections/luci-light
+rm -rf feeds/luci/collections/luci-nginx
 
 ## 添加额外插件
-
-git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl
+git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/luci-app-mosdns
+git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl luci-app-timecontrol luci-app-firewall luci-light luci-nginx
 git_sparse_clone main https://github.com/sirpdboy/luci-app-lucky luci-app-lucky lucky
 git_sparse_clone main https://github.com/chenmozhijin/luci-app-socat luci-app-socat
 # git clone --depth=1 https://github.com/kongfl888/luci-app-adguardhome package/luci-app-adguardhome
@@ -99,10 +104,6 @@ git_sparse_clone main https://github.com/chenmozhijin/luci-app-socat luci-app-so
 # rm -rf feeds/packages/net/v2ray-geodata
 # git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
-# 添加 mosdns 插件
-rm -rf feeds/packages/net/mosdns
-rm -rf feeds/luci/applications/luci-app-mosdns
-git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/luci-app-mosdns
 
 # 添加 smartdns 插件
 # rm -rf feeds/packages/net/smartdns

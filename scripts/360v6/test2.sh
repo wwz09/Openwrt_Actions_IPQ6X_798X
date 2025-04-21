@@ -54,12 +54,13 @@ rm -rf feeds/luci/collections/luci-nginx
 rm -rf feeds/luci/collections/uci-ssl
 rm -rf feeds/luci/collections/luci-ssl-nginx
 rm -rf feeds/luci/collections/luci-ssl-openssl
+rm -rf feeds/luci/collections/luci
 
 
 
 ## 添加额外插件
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/luci-app-mosdns
-git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl luci-app-timecontrol luci-app-firewall luci-ssl-openssl luci-light luci-nginx uci-ssl luci-ssl-nginx luci-ssl-openssl
+git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl luci-app-timecontrol luci-app-firewall luci-ssl-openssl luci-light luci-nginx uci-ssl luci-ssl-nginx luci-ssl-openssl luci
 git_sparse_clone main https://github.com/sirpdboy/luci-app-lucky luci-app-lucky lucky
 git_sparse_clone main https://github.com/chenmozhijin/luci-app-socat luci-app-socat
 # git clone --depth=1 https://github.com/kongfl888/luci-app-adguardhome package/luci-app-adguardhome

@@ -35,7 +35,7 @@ rm -rf feeds/luci/applications/luci-app-mosdns
 
 ## 添加额外插件
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/luci-app-mosdns
-git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl luci-app-timecontrol adguardhome luci-app-adguardhome
+git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl luci-app-timecontrol
 git_sparse_clone main https://github.com/sirpdboy/luci-app-lucky luci-app-lucky lucky
 git_sparse_clone main https://github.com/chenmozhijin/luci-app-socat luci-app-socat
 # git clone --depth=1 https://github.com/kongfl888/luci-app-adguardhome package/luci-app-adguardhome

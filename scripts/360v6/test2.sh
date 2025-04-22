@@ -16,7 +16,7 @@ sed -i "s/hostname='.*'/hostname='QihooV6'/g" package/base-files/files/bin/confi
 # 默认网关 ip 地址修改
 sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
 
-PKG_PATH="$OPENWRT_PATH/package/"
+PKG_PATH="$GITHUB_WORKSPACE/openwrt/package/"
 #预置HomeProxy数据
 if [ -d *"homeproxy"* ]; then
 	HP_RULE="surge"

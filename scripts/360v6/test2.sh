@@ -289,7 +289,7 @@ elif [ -f "$ROOT_UC" ]; then
 fi
 
 #删除无用文件
-cd openwrt
+
 # 定义要查找并删除的文件夹名称
 del1="luci-app-bandwidthd;luci-app-bypass;luci-app-gowebdav;luci-app-nginx-pingos;luci-app-shadowsocks;luci-app-ssr-plus;shadowsocks-libev"
 # 将文件夹名称字符串分割成数组

@@ -193,6 +193,7 @@ UPDATE_VERSION() {
 	done
 }
 
+cd openwrt
 #修改qca-nss-pbuf启动顺序
 NSS_PBUF="./kernel/mac80211/files/qca-nss-pbuf.init"
 if [ -f "$NSS_PBUF" ]; then
@@ -235,6 +236,7 @@ if [ -f "$CM_FILE" ]; then
 
 	cd $PKG_PATH && echo "coremark has been fixed!"
 fi
+
 
 # 修改 wifi 无线名称
 cd openwrt

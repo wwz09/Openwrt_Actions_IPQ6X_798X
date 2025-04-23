@@ -237,6 +237,7 @@ if [ -f "$CM_FILE" ]; then
 fi
 
 # 修改 wifi 无线名称
+cd openwrt
 WIFI_SH=$(find ./target/linux/{mediatek/filogic,qualcommax}/base-files/etc/uci-defaults/ -type f -name "*set-wireless.sh")
 WIFI_UC="./package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc"
 if [ -f "$WIFI_SH" ]; then

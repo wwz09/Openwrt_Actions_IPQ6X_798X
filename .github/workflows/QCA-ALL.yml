@@ -1,6 +1,7 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 #CI项目
 name: QCA-ALL
 
@@ -67,6 +68,8 @@ jobs:
       #仅输出配置文件
       WRT_TEST: ${{inputs.TEST}}
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
@@ -138,6 +141,9 @@ jobs:
       WRT_TEST: ${{inputs.TEST}}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes

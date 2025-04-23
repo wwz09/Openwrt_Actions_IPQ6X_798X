@@ -239,8 +239,8 @@ fi
 
 
 # 修改 wifi 无线名称
-cd openwrt
-WIFI_SH=$(find ./target/linux/{mediatek/filogic,qualcommax}/base-files/etc/uci-defaults/ -type f -name "*set-wireless.sh")
+
+WIFI_SH="./target/linux/qualcommax/base-files/etc/uci-defaults/*_set-wireless.sh"
 WIFI_UC="./package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc"
 if [ -f "$WIFI_SH" ]; then
 	#修改WIFI名称
@@ -259,7 +259,7 @@ elif [ -f "$WIFI_UC" ]; then
 fi
 
 #高通平台调整
-cd openwrt
+
 DTS_PATH="./target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/"
 if [[ $WRT_TARGET == *"QUALCOMMAX"* ]]; then
 	#取消nss相关feed

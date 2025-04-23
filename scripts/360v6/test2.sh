@@ -193,7 +193,7 @@ UPDATE_VERSION() {
 	done
 }
 
-cd openwrt
+
 #修改qca-nss-pbuf启动顺序
 NSS_PBUF="./kernel/mac80211/files/qca-nss-pbuf.init"
 if [ -f "$NSS_PBUF" ]; then

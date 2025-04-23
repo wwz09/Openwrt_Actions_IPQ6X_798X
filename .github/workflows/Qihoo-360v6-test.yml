@@ -77,12 +77,6 @@ jobs:
         chmod +x $DIY_P1_SH
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_P1_SH 
-        
-    - name: DIY执行脚本
-      run: |
-        chmod +x $DIY_P2_SH
-        cd $OPENWRT_PATH
-        $GITHUB_WORKSPACE/$DIY_P2_SH
 
     - name: Cache Toolchain(缓存工具链)
       if: env.CACHE_TOOLCHAIN == 'true'
@@ -100,7 +94,12 @@ jobs:
   
     - name: Load Custom Configuration(加载自定义配置)
       run: |
-        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_PATH/.config
+        cat $GITHUB_WORKSPACE/Config/qihoo.txt $GITHUB_WORKSPACE/Config/360v6.txt >> .config
+        chmod +x $DIY_P2_SH
+        cd $OPENWRT_PATH
+        $GITHUB_WORKSPACE/$DIY_P2_SH
+        
+        # [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_PATH/.config
 
     - name: Download DL Package(下载DL软件包)
       run: |

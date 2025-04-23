@@ -276,7 +276,7 @@ if [[ $WRT_TARGET == *"QUALCOMMAX"* ]]; then
 fi
 
 #修改root密码
-cd openwrt
+
 ROOT_SH="./package/lean/default-settings/files/zzz-default-settings"
 ROOT_UC="./package/base-files/files/etc/shadow"
 if [ -f "$ROOT_SH" ]; then

@@ -154,8 +154,8 @@ jobs:
         run: |
           cd ./wrt/package/
 
-          $GITHUB_WORKSPACE/Scripts/Packages.sh
-          $GITHUB_WORKSPACE/Scripts/Handles.sh
+          $GITHUB_WORKSPACE/Scripts/360v6/Packages.sh
+          $GITHUB_WORKSPACE/Scripts/360v6/Handles.sh
 
       - name: Custom Settings
         run: |
@@ -163,7 +163,7 @@ jobs:
 
           cat $GITHUB_WORKSPACE/Config/$WRT_CONFIG.txt $GITHUB_WORKSPACE/Config/GENERAL.txt >> .config
 
-          $GITHUB_WORKSPACE/Scripts/Settings.sh
+          $GITHUB_WORKSPACE/Scripts/360v6/Settings.sh
 
           make defconfig -j$(nproc) && make clean -j$(nproc)
 

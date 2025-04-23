@@ -82,13 +82,13 @@ jobs:
      
     - name: 更新 & 安装 feeds & 执行脚本
       run: |
-        sudo chmod 777 $DIY_P1_SH
+        sudo chmod -R 777 $DIY_P1_SH
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_P1_SH 
         
     - name: DIY执行脚本
       run: |
-        sudo chmod 777 $DIY_P2_SH
+        sudo chmod -R 777 $DIY_P2_SH
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_P2_SH
 
@@ -108,7 +108,7 @@ jobs:
         
     - name: Install DIY脚本
       run: |
-        sudo chmod 777 $DIY_P3_SH
+        sudo chmod -R 777 $DIY_P3_SH
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_P3_SH
 

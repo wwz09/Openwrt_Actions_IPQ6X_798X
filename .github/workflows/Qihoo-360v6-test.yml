@@ -94,7 +94,7 @@ jobs:
   
     - name: Load Custom Configuration(加载自定义配置)
       run: |
-        cat $GITHUB_WORKSPACE/configs/qihoo.txt $GITHUB_WORKSPACE/Config/360v6.txt >> .config
+        cat $GITHUB_WORKSPACE/configs/qihoo.txt $GITHUB_WORKSPACE/configs/360v6.txt >> .config
         chmod +x $DIY_P2_SH
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_P2_SH

@@ -153,7 +153,7 @@ jobs:
       - name: Custom Packages
         run: |
           cd ./wrt/package/
-
+          sudo chmod -R 777 $GITHUB_WORKSPACE/Scripts
           $GITHUB_WORKSPACE/Scripts/360v6/Packages.sh
           $GITHUB_WORKSPACE/Scripts/360v6/Handles.sh
 
@@ -162,7 +162,7 @@ jobs:
           cd ./wrt/
 
           cat $GITHUB_WORKSPACE/Config/$WRT_CONFIG.txt $GITHUB_WORKSPACE/Config/GENERAL.txt >> .config
-
+          sudo chmod -R 777 $GITHUB_WORKSPACE/Scripts
           $GITHUB_WORKSPACE/Scripts/360v6/Settings.sh
 
           make defconfig -j$(nproc) && make clean -j$(nproc)

@@ -11,9 +11,9 @@ env:
   REPO_BRANCH: openwrt-21.02
   #REPO_BRANCH: openwrt-23.05
   CONFIG_FILE: Config/rax3000m-Imm798x.config
-  DIY_P1_SH: ./scripts/rax3000m/Imm/diy1.sh
-  DIY_P2_SH: ./scripts/rax3000m/Imm/diy3.sh
-  DIY_P3_SH: ./scripts/rax3000m/Imm/diy4.sh
+  DIY_P1_SH: ./Scripts/rax3000m/Imm/diy1.sh
+  DIY_P2_SH: ./Scripts/rax3000m/Imm/diy3.sh
+  DIY_P3_SH: ./Scripts/rax3000m/Imm/diy4.sh
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true

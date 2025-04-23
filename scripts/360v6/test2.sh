@@ -26,91 +26,20 @@ function git_sparse_clone() {
   cd .. && rm -rf $repodir
 }
 # 添加 mosdns 插件
-rm -rf feeds/packages/net/mosdns
-rm -rf feeds/luci/applications/luci-app-mosdns
+#rm -rf feeds/packages/net/mosdns
+#rm -rf feeds/luci/applications/luci-app-mosdns
 # rm -rf feeds/luci/applications/luci-app-firewall
 
 
 
-
 ## 添加额外插件
-git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/luci-app-mosdns
-git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl luci-app-timecontrol
-git_sparse_clone main https://github.com/sirpdboy/luci-app-lucky luci-app-lucky lucky
-git_sparse_clone main https://github.com/chenmozhijin/luci-app-socat luci-app-socat
+# git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/luci-app-mosdns
+# git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl luci-app-timecontrol
+# git_sparse_clone main https://github.com/sirpdboy/luci-app-lucky luci-app-lucky lucky
+# git_sparse_clone main https://github.com/chenmozhijin/luci-app-socat luci-app-socat
 # git clone --depth=1 https://github.com/kongfl888/luci-app-adguardhome package/luci-app-adguardhome
 
-# 最大连接数修改为65535
-# sed -i "s/nf_conntrack_max=.*/nf_conntrack_max=65535/g" package/kernel/linux/files/sysctl-nf-conntrack.conf
-# sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
 
-# 修改指定 luci 文件，添加 NSS Load 相关状态显示
-# sed -i "s#const fd = popen('top -n1 | awk \\\'/^CPU/ {printf(\"%d%\", 100 - \$8)}\\\'')#const fd = popen(access('/sbin/cpuusage') ? '/sbin/cpuusage' : \"top -n1 | awk \\'/^CPU/ {printf(\"%d%\", 100 - \$8)}\\'\")#g"
-
-# 修改 wifi 默认打开
-# sed -i "s/disabled='${defaults ? 0 : 1}'/disabled='0'/g" package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
-
-# 更换 6.6 内核为 6.1 内核
-# sed -i "s/KERNEL_PATCHVER:=6.6/KERNEL_PATCHVER:=6.1/g" target/linux/qualcommax/Makefile
-
-# samba 解除 root 限制
-# sed -i 's/invalid users = root/#&/g' feeds/packages/net/samba4/files/smb.conf.template
-
-# 取消 bootstrap 为默认主题，添加 argon 主题设置为默认
-# rm -rf feeds/luci/themes/luci-theme-argon
-# git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
-# git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
-
-# sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap
-# sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' ./feeds/luci/collections/luci/Makefile
-
-# 添加 kucat 主题，搭配 luci-app-advancedplus 设置参数 
-# git clone -b js https://github.com/sirpdboy/luci-theme-kucat.git package/luci-theme-kucat
-
-# 添加 advanced 系统设置插件
-# git clone https://github.com/sirpdboy/luci-app-advanced.git package/luci-app-advanced
-# git clone https://github.com/sirpdboy/luci-app-advancedplus.git package/luci-app-advancedplus
-
-# 删除自带 AdguardHome 文件，添加 AdguardHome 广告过滤插件
-# rm -rf feeds/packages/net/adguardhome
-# rm -rf feeds/luci/applications/luci-app-adguardhome
-# git clone https://github.com/xptsp/luci-app-adguardhome package/luci-app-adguardhome
-# git clone https://github.com/kongfl888/luci-app-adguardhome package/luci-app-adguardhome
-# git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
-
-# 更新 golang 依赖（ mosdns & alist 插件 )
-# rm -rf feeds/packages/lang/golang
-# git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
-
-# 替换 geodata 依赖
-# rm -rf feeds/packages/net/v2ray-geodata
-# git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
-
-
-# 添加 smartdns 插件
-# rm -rf feeds/packages/net/smartdns
-# rm -rf feeds/luci/applications/luci-app-smartdns
-# git clone https://github.com/pymumu/openwrt-smartdns.git package/smartdns
-# git clone https://github.com/pymumu/luci-app-smartdns.git package/luci-app-smartdns
-
-# nekobox
-# git clone --depth=1 https://github.com/Thaolga/openwrt-nekobox.git -b main package/openwrt-nekobox
-
-# neko
-# git clone --depth=1 https://github.com/nosignals/openwrt-neko.git -b main package/openwrt-neko
-
-# nikki
-# git clone --depth=1 https://github.com/nikkinikki-org/OpenWrt-nikki.gitt -b main package/luci-app-nikki
-
-# OpenClash（ dev 版 ）
-rm -rf feeds/luci/applications/luci-app-openclash
-# git clone -b dev https://github.com/vernesong/OpenClash.git package/luci-app-openclash
-git clone --depth=1 https://github.com/vernesong/OpenClash.git -b dev package/luci-app-openclash
-
-# alist
-# rm -rf feeds/packages/net/alist
-# rm -rf feeds/luci/applications/luci-app-alist
-# git clone https://github.com/sbwml/luci-app-alist package/luci-app-alist
 
 PKG_PATH="$GITHUB_WORKSPACE/openwrt/package/"
 #预置HomeProxy数据
@@ -143,6 +72,78 @@ fi
 	#cd $PKG_PATH && echo "theme-argon has been fixed!"
 #fi
 
+#安装和更新软件包
+UPDATE_PACKAGE() {
+	local PKG_NAME=$1
+	local PKG_REPO=$2
+	local PKG_BRANCH=$3
+	local PKG_SPECIAL=$4
+	local PKG_LIST=("$PKG_NAME" $5)  # 第5个参数为自定义名称列表
+	local REPO_NAME=${PKG_REPO#*/}
+
+	echo " "
+
+	# 删除本地可能存在的不同名称的软件包
+	for NAME in "${PKG_LIST[@]}"; do
+		# 查找匹配的目录
+		echo "Search directory: $NAME"
+		local FOUND_DIRS=$(find ../feeds/luci/ ../feeds/packages/ -maxdepth 3 -type d -iname "*$NAME*" 2>/dev/null)
+
+		# 删除找到的目录
+		if [ -n "$FOUND_DIRS" ]; then
+			while read -r DIR; do
+				rm -rf "$DIR"
+				echo "Delete directory: $DIR"
+			done <<< "$FOUND_DIRS"
+		else
+			echo "Not fonud directory: $NAME"
+		fi
+	done
+
+	# 克隆 GitHub 仓库
+	git clone --depth=1 --single-branch --branch $PKG_BRANCH "https://github.com/$PKG_REPO.git"
+
+	# 处理克隆的仓库
+	if [[ $PKG_SPECIAL == "pkg" ]]; then
+		find ./$REPO_NAME/*/ -maxdepth 3 -type d -iname "*$PKG_NAME*" -prune -exec cp -rf {} ./ \;
+		rm -rf ./$REPO_NAME/
+	elif [[ $PKG_SPECIAL == "name" ]]; then
+		mv -f $REPO_NAME $PKG_NAME
+	fi
+}
+	
+# 调用示例
+# UPDATE_PACKAGE "OpenAppFilter" "destan19/OpenAppFilter" "master" "" "custom_name1 custom_name2"
+# UPDATE_PACKAGE "open-app-filter" "destan19/OpenAppFilter" "master" "" "luci-app-appfilter oaf" 这样会把原有的open-app-filter，luci-app-appfilter，oaf相关组件删除，不会出现coremark错误。
+
+# UPDATE_PACKAGE "包名" "项目地址" "项目分支" "pkg/name，可选，pkg为从大杂烩中单独提取包名插件；name为重命名为包名"
+# UPDATE_PACKAGE "argon" "sbwml/luci-theme-argon" "openwrt-24.10"
+UPDATE_PACKAGE "kucat" "sirpdboy/luci-theme-kucat" "js"
+
+UPDATE_PACKAGE "homeproxy" "VIKINGYFY/homeproxy" "main"
+UPDATE_PACKAGE "nikki" "nikkinikki-org/OpenWrt-nikki" "main"
+UPDATE_PACKAGE "openclash" "vernesong/OpenClash" "dev" "pkg"
+UPDATE_PACKAGE "passwall" "xiaorouji/openwrt-passwall" "main" "pkg"
+UPDATE_PACKAGE "passwall2" "xiaorouji/openwrt-passwall2" "main" "pkg"
+
+UPDATE_PACKAGE "luci-app-control-timewol" "wwz09/mzwrt_package_Lite" "main" "pkg"
+UPDATE_PACKAGE "luci-app-control-weburl" "wwz09/mzwrt_package_Lite" "main" "pkg"
+UPDATE_PACKAGE "luci-app-control-webrestriction" "wwz09/mzwrt_package_Lite" "main" "pkg"
+UPDATE_PACKAGE "luci-app-timecontrol" "wwz09/mzwrt_package_Lite" "main" "pkg"
+UPDATE_PACKAGE "adguardhome" "wwz09/mzwrt_package_Lite" "main" "" "adguardhome luci-app-adguardhome"
+# UPDATE_PACKAGE "luci-app-socat" "Lienol/openwrt-package" "main" "pkg"
+
+
+UPDATE_PACKAGE "luci-app-tailscale" "asvow/luci-app-tailscale" "main"
+UPDATE_PACKAGE "luci-app-lucky" "sirpdboy/luci-app-lucky" "main" 
+UPDATE_PACKAGE "alist" "sbwml/luci-app-alist" "main"
+UPDATE_PACKAGE "easytier" "EasyTier/luci-app-easytier" "main"
+UPDATE_PACKAGE "gecoosac" "lwb1978/openwrt-gecoosac" "main"
+UPDATE_PACKAGE "mosdns" "sbwml/luci-app-mosdns" "v5" "" "v2dat"
+# UPDATE_PACKAGE "qmodem" "FUjr/modem_feeds" "main"
+UPDATE_PACKAGE "viking" "VIKINGYFY/packages" "main" "" "luci-app-timewol luci-app-wolplus"
+UPDATE_PACKAGE "vnt" "lmq8267/luci-app-vnt" "main"
+
 #修改qca-nss-drv启动顺序
 NSS_DRV="../feeds/nss_packages/qca-nss-drv/files/qca-nss-drv.init"
 if [ -f "$NSS_DRV" ]; then
@@ -150,6 +151,47 @@ if [ -f "$NSS_DRV" ]; then
 
 	cd $PKG_PATH && echo "qca-nss-drv has been fixed!"
 fi
+
+#更新软件包版本
+UPDATE_VERSION() {
+	local PKG_NAME=$1
+	local PKG_MARK=${2:-false}
+	local PKG_FILES=$(find ./ ../feeds/packages/ -maxdepth 3 -type f -wholename "*/$PKG_NAME/Makefile")
+
+	if [ -z "$PKG_FILES" ]; then
+		echo "$PKG_NAME not found!"
+		return
+	fi
+
+	echo -e "\n$PKG_NAME version update has started!"
+
+	for PKG_FILE in $PKG_FILES; do
+		local PKG_REPO=$(grep -Po "PKG_SOURCE_URL:=https://.*github.com/\K[^/]+/[^/]+(?=.*)" $PKG_FILE)
+		local PKG_TAG=$(curl -sL "https://api.github.com/repos/$PKG_REPO/releases" | jq -r "map(select(.prerelease == $PKG_MARK)) | first | .tag_name")
+
+		local OLD_VER=$(grep -Po "PKG_VERSION:=\K.*" "$PKG_FILE")
+		local OLD_URL=$(grep -Po "PKG_SOURCE_URL:=\K.*" "$PKG_FILE")
+		local OLD_FILE=$(grep -Po "PKG_SOURCE:=\K.*" "$PKG_FILE")
+		local OLD_HASH=$(grep -Po "PKG_HASH:=\K.*" "$PKG_FILE")
+
+		local PKG_URL=$([[ $OLD_URL == *"releases"* ]] && echo "${OLD_URL%/}/$OLD_FILE" || echo "${OLD_URL%/}")
+
+		local NEW_VER=$(echo $PKG_TAG | sed -E 's/[^0-9]+/\./g; s/^\.|\.$//g')
+		local NEW_URL=$(echo $PKG_URL | sed "s/\$(PKG_VERSION)/$NEW_VER/g; s/\$(PKG_NAME)/$PKG_NAME/g")
+		local NEW_HASH=$(curl -sL "$NEW_URL" | sha256sum | cut -d ' ' -f 1)
+
+		echo "old version: $OLD_VER $OLD_HASH"
+		echo "new version: $NEW_VER $NEW_HASH"
+
+		if [[ $NEW_VER =~ ^[0-9].* ]] && dpkg --compare-versions "$OLD_VER" lt "$NEW_VER"; then
+			sed -i "s/PKG_VERSION:=.*/PKG_VERSION:=$NEW_VER/g" "$PKG_FILE"
+			sed -i "s/PKG_HASH:=.*/PKG_HASH:=$NEW_HASH/g" "$PKG_FILE"
+			echo "$PKG_FILE version has been updated!"
+		else
+			echo "$PKG_FILE version is already the latest!"
+		fi
+	done
+}
 
 #修改qca-nss-pbuf启动顺序
 NSS_PBUF="./kernel/mac80211/files/qca-nss-pbuf.init"

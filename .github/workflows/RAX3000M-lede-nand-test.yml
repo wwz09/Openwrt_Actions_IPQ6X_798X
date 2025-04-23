@@ -10,7 +10,7 @@ env:
   #REPO_URL: https://github.com/wwz09/lede
   REPO_BRANCH: master
   FEEDS_CONF: ./scripts/rax3000m/lede/feeds.conf.default
-  CONFIG_FILE: configs/RAX3000M-lede-test.config
+  CONFIG_FILE: Config/RAX3000M-lede-test.config
   DIY_P1_SH: ./scripts/rax3000m/lede/test1.sh
   DIY_P2_SH: ./scripts/rax3000m/lede/test2.sh
   CACHE_TOOLCHAIN: true

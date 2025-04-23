@@ -256,6 +256,58 @@ elif [ -f "$WIFI_UC" ]; then
 	sed -i "s/encryption='.*'/encryption='psk2+ccmp'/g" $WIFI_UC
 fi
 
+#高通平台调整
+cd openwrt
+DTS_PATH="./target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/"
+if [[ $WRT_TARGET == *"QUALCOMMAX"* ]]; then
+	#取消nss相关feed
+	echo "CONFIG_FEED_nss_packages=n" >> ./.config
+	echo "CONFIG_FEED_sqm_scripts_nss=n" >> ./.config
+	#设置NSS版本
+	echo "CONFIG_NSS_FIRMWARE_VERSION_11_4=n" >> ./.config
+	echo "CONFIG_NSS_FIRMWARE_VERSION_12_5=y" >> ./.config
+	#无WIFI配置调整Q6大小
+	if [[ "${WRT_CONFIG,,}" == *"wifi"* && "${WRT_CONFIG,,}" == *"no"* ]]; then
+		find $DTS_PATH -type f ! -iname '*nowifi*' -exec sed -i 's/ipq\(6018\|8074\).dtsi/ipq\1-nowifi.dtsi/g' {} +
+		echo "qualcommax set up nowifi successfully!"
+	fi
+fi
+
+#修改root密码
+cd openwrt
+ROOT_SH="./package/lean/default-settings/files/zzz-default-settings"
+ROOT_UC="./package/base-files/files/etc/shadow"
+if [ -f "$ROOT_SH" ]; then
+	#修改root密码
+	sed -i "s//root:::0:99999:7:::/root:$1$KejhO3Om$wf8JAUSNHj0y2RiewTObe1:20185:0:99999:7:::/g" $ROOT_SH
+elif [ -f "$ROOT_UC" ]; then
+	#修改root密码
+	sed -i "s//root:::0:99999:7:::/root:$1$KejhO3Om$wf8JAUSNHj0y2RiewTObe1:20185:0:99999:7:::/g" $ROOT_UC
+	
+fi
+
+#删除无用文件
+cd openwrt
+# 定义要查找并删除的文件夹名称
+del1="luci-app-bandwidthd;luci-app-bypass;luci-app-gowebdav;luci-app-nginx-pingos;luci-app-shadowsocks;luci-app-ssr-plus;shadowsocks-libev"
+# 将文件夹名称字符串分割成数组
+IFS=';' read -r -a folders <<< "$del1"
+
+# 遍历文件夹名称数组
+for folder in "${folders[@]}"; do
+    folder_path="/$folder"
+    # 检查文件夹是否存在
+    if [ -d "$folder_path" ]; then
+        # 尝试删除文件夹
+        if rm -rf "$folder_path"; then
+            echo "成功删除文件夹: $folder_path"
+        else
+            echo "删除文件夹 $folder_path 时出错" >&2
+        fi
+    else
+        echo "文件夹 $folder_path 不存在"
+    fi
+done
 	
 # 取消主题默认设置
 # find package/luci-theme-*/* -type f -name '*luci-theme-*' -print -exec sed -i '/set luci.main.mediaurlbase/d' {} \;

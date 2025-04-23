@@ -53,8 +53,16 @@ UPDATE_PACKAGE "nikki" "nikkinikki-org/OpenWrt-nikki" "main"
 UPDATE_PACKAGE "openclash" "vernesong/OpenClash" "dev" "pkg"
 UPDATE_PACKAGE "passwall" "xiaorouji/openwrt-passwall" "main" "pkg"
 UPDATE_PACKAGE "passwall2" "xiaorouji/openwrt-passwall2" "main" "pkg"
-UPDATE_PACKAGE "mzwr" "wwz09/mzwrt_package_Lite" "main" "" "luci-app-timecontrol luci-app-control-webrestriction luci-app-control-weburl luci-app-control-timewol"
-UPDATE_PACKAGE "smal" "kenzok8/small-package" "main" "" "luci-app-adguardhome adguardhome"
+
+UPDATE_PACKAGE "luci-app-timecontrol" "wwz09/mzwrt_package_Lite" "main" "pkg"
+UPDATE_PACKAGE "luci-app-control-webrestriction" "wwz09/mzwrt_package_Lite" "main" "pkg"
+UPDATE_PACKAGE "luci-app-control-weburl" "wwz09/mzwrt_package_Lite" "main" "pkg"
+UPDATE_PACKAGE "luci-app-control-timewol" "wwz09/mzwrt_package_Lite" "main" "pkg"
+
+
+UPDATE_PACKAGE "luci-app-adguardhome" "kenzok8/small-package" "main" "pkg"
+
+UPDATE_PACKAGE "adguardhome" "kenzok8/small-package" "main" "pkg"
 UPDATE_PACKAGE "luci-app-lucky" "sirpdboy/luci-app-lucky" "main" 
 UPDATE_PACKAGE "alist" "sbwml/luci-app-alist" "main"
 UPDATE_PACKAGE "easytier" "EasyTier/luci-app-easytier" "main"

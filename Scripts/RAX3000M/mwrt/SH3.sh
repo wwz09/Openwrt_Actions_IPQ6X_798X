@@ -6,7 +6,7 @@
 
 
 ##配置IP
-sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.3.1/g' package/base-files/files/bin/config_generate
 
 
 ##取消bootstrap为默认主题
@@ -37,7 +37,7 @@ sed -i "s/ImmortalWrt-2.4G/CM520-2.4G/g" package/mtk/applications/mtwifi-cfg/fil
 sed -i "s/ImmortalWrt-5G/CM520-5G/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 
 # 加入OpenClash核心
-chmod -R a+x $GITHUB_WORKSPACE/scripts/rax3000m/Imm/preset-clash-core.sh
-$GITHUB_WORKSPACE/scripts/rax3000m/Imm/preset-clash-core.sh
+chmod -R a+x $GITHUB_WORKSPACE/Scripts/RAX3000M/mwrt/preset-clash-core.sh
+$GITHUB_WORKSPACE/Scripts/RAX3000M3000M/mwrt/preset-clash-core.sh
 
 

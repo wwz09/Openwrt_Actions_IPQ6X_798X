@@ -38,6 +38,6 @@ sed -i "s/ImmortalWrt-5G/YM520-5G/g" package/mtk/applications/mtwifi-cfg/files/m
 
 # 加入OpenClash核心
 chmod -R a+x $GITHUB_WORKSPACE/Scripts/RAX3000M/mwrt/preset-clash-core.sh
-$GITHUB_WORKSPACE/Scripts/RAX3000M3000m/mwrt/preset-clash-core.sh
+$GITHUB_WORKSPACE/Scripts/RAX3000M3000M/mwrt/preset-clash-core.sh
 
 

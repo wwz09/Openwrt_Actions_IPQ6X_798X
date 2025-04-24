@@ -1,5 +1,5 @@
 #云编译公用核心
-name: WRT-CORE
+name: WRT-TEST
 
 on:
   workflow_call:
@@ -146,24 +146,22 @@ jobs:
       - name: Update Feeds
         run: |
           cd ./wrt/
-
+           
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 
       - name: Custom Packages
         run: |
           cd ./wrt/package/
-          
-          echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
 
-          $GITHUB_WORKSPACE/Scripts/360V6/Packages.sh
+          $GITHUB_WORKSPACE/Scripts/360V6/TPackages.sh
           $GITHUB_WORKSPACE/Scripts/360V6/Handles.sh
 
       - name: Custom Settings
         run: |
           cd ./wrt/
 
-          cat $GITHUB_WORKSPACE/Config/$WRT_CONFIG.txt $GITHUB_WORKSPACE/Config/GENERAL.txt >> .config
+          cat $GITHUB_WORKSPACE/Config/$WRT_CONFIG.txt $GITHUB_WORKSPACE/Config/TEST.txt >> .config
 
           $GITHUB_WORKSPACE/Scripts/360V6/Settings.sh
 
@@ -200,7 +198,7 @@ jobs:
           cd ./wrt/ && mkdir ./upload/
 
           cp -f ./.config ./upload/Config_"$WRT_CONFIG"_"$WRT_VER"_"$WRT_DATE".txt
-
+          
           if [[ $WRT_TEST != 'true' ]]; then
             echo "WRT_KVER=$(find ./bin/targets/ -type f -name "*.manifest" -exec grep -oP '^kernel - \K[\d\.]+' {} \;)" >> $GITHUB_ENV
             echo "WRT_LIST=$(find ./bin/targets/ -type f -name "*.manifest" -exec grep -oP '^luci-(app|theme)[^ ]*' {} \; | tr '\n' ' ')" >> $GITHUB_ENV
@@ -239,6 +237,5 @@ jobs:
             平台：${{env.WRT_TARGET}}
 
             登录地址：${{env.WRT_IP}}
+            内核版本：${{env.WRT_KVER}}
            
-
-            

@@ -9,10 +9,10 @@ env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   #REPO_URL: https://github.com/wwz09/lede
   REPO_BRANCH: master
-  FEEDS_CONF: ./Scripts/rax3000m/lede/feeds.conf.default
+  FEEDS_CONF: ./Scripts/RAX3000M/lede/feeds.conf.default
   CONFIG_FILE: Config/RAX3000M-lede-test.config
-  DIY_P1_SH: ./Scripts/rax3000m/lede/ST1.sh
-  DIY_P2_SH: ./Scripts/rax3000m/lede/ST2.sh
+  DIY_P1_SH: ./Scripts/RAX3000M/lede/ST1.sh
+  DIY_P2_SH: ./Scripts/RAX3000M/lede/ST2.sh
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true

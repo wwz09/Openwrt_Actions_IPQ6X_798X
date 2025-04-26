@@ -1,0 +1,7 @@
+#设备平台
+CONFIG_TARGET_mediatek=y
+CONFIG_TARGET_mediatek_mt7981=y
+#设备列表
+CONFIG_TARGET_mediatek_mt7981_DEVICE_cmcc_rax3000m=y
+
+

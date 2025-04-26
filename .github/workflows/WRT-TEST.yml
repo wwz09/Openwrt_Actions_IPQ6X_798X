@@ -213,7 +213,7 @@ jobs:
             done
 
             find ./bin/targets/ -type f -exec mv -f {} ./upload/ \;
-            find ./wrt/upload/ -iregex ".*\(txt\|manifest\|itb\)$" -exec rm -rf {} +
+           
             make clean -j$(nproc)
           fi
 

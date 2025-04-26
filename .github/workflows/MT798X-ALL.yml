@@ -37,7 +37,7 @@ jobs:
         BRANCH: [openwrt-21.02]
 
     #调用公用编译核心WRT-CORE.yml
-    uses: ./.github/workflows/MT-CORE.ym
+    uses: ./.github/workflows/MT-CORE.yml
     with:
       #编译配置
       WRT_CONFIG: ${{matrix.CONFIG}}

@@ -226,7 +226,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{env.WRT_CONFIG}}_Qihoo_360V6_TEST
-          文件: ${{ join(fromJSON(readFile('/tmp/upload_files.txt')), ' ') }}
+          files: ${{ join(fromJSON(readFile('/tmp/upload_files.txt')), ' ') }}
           body: |
             这是个平台固件包，内含多个设备！
             请注意选择你需要的设备固件！

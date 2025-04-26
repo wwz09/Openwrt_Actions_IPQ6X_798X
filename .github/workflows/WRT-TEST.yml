@@ -208,7 +208,7 @@ jobs:
             for FILE in $(find ./bin/targets/ -type f -iname "*$WRT_TARGET*") ; do
               EXT=$(basename $FILE | cut -d '.' -f 2-)
               NAME=$(basename $FILE | cut -d '.' -f 1 | grep -io "\($WRT_TARGET\).*")
-              NEW_FILE="$WRT_CONFIG"_"Qihoo_360V6"_"$WRT_DATE"."$EXT"
+              NEW_FILE="$WRT_CONFIG"_"Qihoo_360V6_TEST"_"$WRT_DATE"."$EXT"
               mv -f $FILE ./upload/$NEW_FILE
             done
 
@@ -220,7 +220,7 @@ jobs:
       - name: Release Firmware
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{env.WRT_CONFIG}}_Qihoo_360V6
+          tag_name: ${{env.WRT_CONFIG}}_Qihoo_360V6_TEST
           files: ./wrt/upload/*.*
           body: |
             这是个平台固件包，内含多个设备！

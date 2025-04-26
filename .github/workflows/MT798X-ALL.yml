@@ -32,7 +32,7 @@ jobs:
       fail-fast: false
       #max-parallel: 3
       matrix:
-        CONFIG: [[MT798X－YES]
+        CONFIG: [MT798X－YES]
         SOURCE: [hanwckf/immortalwrt-mt798x]
         BRANCH: [openwrt-21.02]
 

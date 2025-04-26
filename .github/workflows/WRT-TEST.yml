@@ -220,7 +220,7 @@ jobs:
       - name: Release Firmware
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{env.WRT_CONFIG}}_${{env.WRT_VER}}_${{env.WRT_DATE}}
+          tag_name: ${{env.WRT_CONFIG}}_Qihoo_360V6
           files: ./wrt/upload/*.*
           body: |
             这是个平台固件包，内含多个设备！

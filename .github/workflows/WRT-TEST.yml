@@ -217,16 +217,18 @@ jobs:
             make clean -j$(nproc)
           fi
 
-      - name: Release Firmware
+      - name: Generate upload file list
         run: |
-          find ./wrt/upload/ -type f ! -iregex ".*\.\(manifest\|itb\)$" > /tmp/upload_files.txt
+          find ./wrt/upload/ -type f ! -iregex ".*\.\(manifest\|itb\)$" | tr '\n' ' ' > /tmp/upload_files.txt
+          UPLOAD_FILES=$(cat /tmp/upload_files.txt)
+          echo "UPLOAD_FILES=$UPLOAD_FILES" >> $GITHUB_ENV
         shell: bash
-        
-      - name: Create GitHub Release
+
+      - name: Release Firmware
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{env.WRT_CONFIG}}_Qihoo_360V6_TEST
-          files: ${{ join(fromJSON(readFile('/tmp/upload_files.txt')), ' ') }}
+          tag_name: ${{ env.WRT_CONFIG }}_Qihoo_360V6_TEST
+          文件: ${{ env.UPLOAD_FILES }}
           body: |
             这是个平台固件包，内含多个设备！
             请注意选择你需要的设备固件！

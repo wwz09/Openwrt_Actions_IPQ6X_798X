@@ -14,12 +14,12 @@ env:
   REPO_URL: https://github.com/LiBwrt/openwrt-6.x.git
   REPO_BRANCH: openwrt-24.10
   CONFIG_FILE: Config/ipq60xx.config
-  DIY_SCRIPT: diy-script.sh
+  DIY_SCRIPT: Scripts/360V6/LiBwrt/diy-script.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: IPQ60XX-24.10
+  FIRMWARE_TAG: IPQ60XX-LiBwrt-360V6-24.10
   TZ: Asia/Shanghai
 
 jobs:
@@ -99,6 +99,12 @@ jobs:
         cd $OPENWRT_PATH
         ./scripts/feeds update -a
         ./scripts/feeds install -a
+
+    - name: DIY执行脚本
+      run: |
+        chmod +x $DIY_SCRIPT
+        cd $OPENWRT_PATH
+        $GITHUB_WORKSPACE/$DIY_SCRIPT
   
     - name: Load Custom Configuration(加载自定义配置)
       run: |

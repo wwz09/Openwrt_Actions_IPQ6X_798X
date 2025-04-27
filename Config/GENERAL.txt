@@ -20,6 +20,7 @@ CONFIG_PACKAGE_luci-app-control-timewol=y
 CONFIG_PACKAGE_luci-app-control-weburl=y
 CONFIG_PACKAGE_luci-app-timecontrol=y
 CONFIG_PACKAGE_luci-app-lucky=y
+CONFIG_PACKAGE_luci-app-socat=y
 
 
 #É¾³ý²å¼þ

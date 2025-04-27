@@ -61,6 +61,8 @@ UPDATE_PACKAGE "luci-app-control-timewol" "wwz09/mzwrt_package_Lite" "main" "pkg
 
 
 UPDATE_PACKAGE "luci-app-adguardhome" "kenzok8/small-package" "main" "pkg"
+UPDATE_PACKAGE "luci-app-socat" "kenzok8/small-package" "main" "pkg"
+
 
 UPDATE_PACKAGE "adguardhome" "kenzok8/small-package" "main" "pkg"
 UPDATE_PACKAGE "luci-app-lucky" "sirpdboy/luci-app-lucky" "main" 
@@ -68,6 +70,7 @@ UPDATE_PACKAGE "alist" "sbwml/luci-app-alist" "main"
 UPDATE_PACKAGE "easytier" "EasyTier/luci-app-easytier" "main"
 UPDATE_PACKAGE "mosdns" "sbwml/luci-app-mosdns" "v5" "" "v2dat"
 UPDATE_PACKAGE "viking" "VIKINGYFY/packages" "main" "" "luci-app-timewol luci-app-wolplus"
+# UPDATE_PACKAGE "luci-app-socat" "sbwml/openwrt_pkgs" "main" "pkg"
 # UPDATE_PACKAGE "vnt" "lmq8267/luci-app-vnt" "main"
 # UPDATE_PACKAGE "luci-app-tailscale" "asvow/luci-app-tailscale" "main"
 # UPDATE_PACKAGE "gecoosac" "lwb1978/openwrt-gecoosac" "main"

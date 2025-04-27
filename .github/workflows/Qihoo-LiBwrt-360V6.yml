@@ -14,12 +14,12 @@ env:
   REPO_URL: https://github.com/LiBwrt/openwrt-6.x.git
   REPO_BRANCH: openwrt-24.10
   CONFIG_FILE: Config/ipq60xx.config
-  DIY_SCRIPT: diy-script.sh
+  DIY_SCRIPT: Scripts/360V6/LiBwrt/diy-script.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: IPQ60XX-24.10
+  FIRMWARE_TAG: IPQ60XX-LiBwrt-360V6-24.10
   TZ: Asia/Shanghai
 
 jobs:

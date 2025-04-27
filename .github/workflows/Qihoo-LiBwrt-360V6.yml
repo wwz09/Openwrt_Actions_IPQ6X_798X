@@ -19,7 +19,7 @@ env:
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: IPQ60XX-LiBwrt-360V6-24.10
+  FIRMWARE_TAG: IPQ60XX-LiBwrt-360V6-6.12
   TZ: Asia/Shanghai
 
 jobs:

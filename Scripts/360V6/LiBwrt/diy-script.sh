@@ -3,6 +3,12 @@
 # 修改默认IP
 sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
 
+
+#修改wifi
+sed -i 's/"LiBwrt"/"YM520"/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+sed -i 's/""/"abc5124937,"/g' package/base-files/files/bin/config_generate
+sed -i 's/"none"/"WPA2-PSK"/g' package/base-files/files/bin/config_generate
+
 # 更改默认 Shell 为 zsh
 # sed -i 's/\/bin\/ash/\/usr\/bin\/zsh/g' package/base-files/files/etc/passwd
 

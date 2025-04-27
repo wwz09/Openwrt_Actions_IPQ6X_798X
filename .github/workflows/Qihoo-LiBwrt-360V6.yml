@@ -1,4 +1,4 @@
-name: Qihoo-LiBwrt-360V6-24.10
+name: Qihoo-LiBwrt-360V6-6.12
 
 on:
  #自动编译：当Auto-Clean运行完成后
@@ -12,7 +12,7 @@ on:
 
 env:
   REPO_URL: https://github.com/LiBwrt/openwrt-6.x.git
-  REPO_BRANCH: openwrt-24.10
+  REPO_BRANCH: kernel-6.12
   CONFIG_FILE: Config/ipq60xx.config
   DIY_SCRIPT: Scripts/360V6/LiBwrt/diy-script.sh
   CLASH_KERNEL: amd64

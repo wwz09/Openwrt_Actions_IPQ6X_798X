@@ -1,13 +1,30 @@
 #!/bin/bash
 
-# 修改默认IP
-sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
 
+CFG_FILE="./package/base-files/files/bin/config_generate"
+#修改默认IP地址
+sed -i "s/192\.168\.1\.[0-9]*/192.168.2.1/g" $CFG_FILE
+#修改默认主机名
+sed -i "s/hostname='.*'/hostname='Qihoo360V6'/g" $CFG_FILE
 
-#修改wifi
-sed -i 's/"LiBwrt"/"YM520"/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
-sed -i 's/""/"abc5124937,"/g' package/base-files/files/bin/config_generate
-sed -i 's/"none"/"WPA2-PSK"/g' package/base-files/files/bin/config_generate
+#wifi设置
+WIFI_SH=$(find ./target/linux/{mediatek/filogic,qualcommax}/base-files/etc/uci-defaults/ -type f -name "*set-wireless.sh")
+WIFI_UC="./package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc"
+if [ -f "$WIFI_SH" ]; then
+	#修改WIFI名称
+	sed -i "s/BASE_SSID='.*'/BASE_SSID='YM520'/g" $WIFI_SH
+	#修改WIFI密码
+	sed -i "s/BASE_WORD='.*'/BASE_WORD='abc5124937,'/g" $WIFI_SH
+elif [ -f "$WIFI_UC" ]; then
+	#修改WIFI名称
+	sed -i "s/ssid='.*'/ssid='YM520'/g" $WIFI_UC
+	#修改WIFI密码
+	sed -i "s/key='.*'/key='abc5124937,'/g" $WIFI_UC
+	#修改WIFI地区
+	sed -i "s/country='.*'/country='CN'/g" $WIFI_UC
+	#修改WIFI加密
+	sed -i "s/encryption='.*'/encryption='psk2+ccmp'/g" $WIFI_UC
+fi
 
 # 更改默认 Shell 为 zsh
 # sed -i 's/\/bin\/ash/\/usr\/bin\/zsh/g' package/base-files/files/etc/passwd
@@ -122,7 +139,10 @@ find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/PKG_SOURCE_U
 find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/PKG_SOURCE_URL:=@GHCODELOAD/PKG_SOURCE_URL:=https:\/\/codeload.github.com/g' {}
 
 # 取消主题默认设置
-find package/luci-theme-*/* -type f -name '*luci-theme-*' -print -exec sed -i '/set luci.main.mediaurlbase/d' {} \;
+# find package/luci-theme-*/* -type f -name '*luci-theme-*' -print -exec sed -i '/set luci.main.mediaurlbase/d' {} \;
+
+#修改默认主题
+sed -i "s/luci-theme-bootstrap/luci-theme-argon/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
 
 # 调整 V2ray服务器 到 VPN 菜单
 # sed -i 's/services/vpn/g' feeds/luci/applications/luci-app-v2ray-server/luasrc/controller/*.lua

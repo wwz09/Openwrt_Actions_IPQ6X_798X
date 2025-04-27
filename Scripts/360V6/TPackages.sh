@@ -61,6 +61,8 @@ UPDATE_PACKAGE "luci-app-control-timewol" "wwz09/mzwrt_package_Lite" "main" "pkg
 
 
 UPDATE_PACKAGE "luci-app-adguardhome" "kenzok8/small-package" "main" "pkg"
+UPDATE_PACKAGE "luci-app-socat" "kenzok8/small-package" "main" "pkg"
+
 
 UPDATE_PACKAGE "adguardhome" "kenzok8/small-package" "main" "pkg"
 UPDATE_PACKAGE "luci-app-lucky" "sirpdboy/luci-app-lucky" "main" 

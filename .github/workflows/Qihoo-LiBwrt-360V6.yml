@@ -1,4 +1,4 @@
-name: Qihoo-LiBwrt-360V6-6.12
+name: Qihoo-LiBwrt-360V6-qosmio
 
 on:
  #自动编译：当Auto-Clean运行完成后

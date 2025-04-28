@@ -97,7 +97,6 @@ jobs:
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
-        sed -i 's/src-git nss_packages https:\/\/github.com\/LiBwrt\/nss-packages.git/src-git nss_packages https:\/\/github.com\/wwz09\/nss-packages.git/g' feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 

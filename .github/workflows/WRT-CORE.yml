@@ -146,7 +146,7 @@ jobs:
       - name: Update Feeds
         run: |
           cd ./wrt/
-           sed -i 's/src-git nss_packages https:\/\/github.com\/qosmio\/nss-packages.git/src-git nss_packages https:\/\/github.com\/wwz09\/nss-packages.git/g' feeds.conf.default
+           
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 

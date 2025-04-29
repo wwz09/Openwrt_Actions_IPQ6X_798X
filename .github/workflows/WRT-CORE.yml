@@ -146,7 +146,9 @@ jobs:
       - name: Update Feeds
         run: |
           cd ./wrt/
-           
+          rm tmp/info/.packageinfo-feeds_nss* tmp/.packageinfo tmp/.packagedeps
+          ./scripts/feeds update nss_packages
+          ./scripts/feeds install -p nss_packages -a
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 

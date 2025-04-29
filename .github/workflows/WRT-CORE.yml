@@ -153,8 +153,6 @@ jobs:
       - name: Custom Packages
         run: |
           cd ./wrt/package/
-          
-          echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
 
           $GITHUB_WORKSPACE/Scripts/360V6/Packages.sh
           $GITHUB_WORKSPACE/Scripts/360V6/Handles.sh

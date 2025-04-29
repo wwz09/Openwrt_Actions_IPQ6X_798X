@@ -36,7 +36,7 @@ echo "CONFIG_PACKAGE_luci=y" >> ./.config
 echo "CONFIG_LUCI_LANG_zh_Hans=y" >> ./.config
 echo "CONFIG_PACKAGE_luci-theme-$WRT_THEME=y" >> ./.config
 echo "CONFIG_PACKAGE_luci-app-$WRT_THEME-config=y" >> ./.config
-grep -Pi 'NSS_(?!DRV)|^(?!#)CONFIG_TARGET_(SUBTARGET|PROFILE|qualcommax)|^(?!#)CONFIG_(NSS_DRV|PACKAGE_kmod-qca-)|MEM_PROFILE' .config
+
 #手动调整的插件
 if [ -n "$WRT_PACKAGE" ]; then
 	echo -e "$WRT_PACKAGE" >> ./.config
@@ -50,7 +50,7 @@ if [[ $WRT_TARGET == *"QUALCOMMAX"* ]]; then
 	echo "CONFIG_FEED_sqm_scripts_nss=n" >> ./.config
 	#设置NSS版本
 	echo "CONFIG_NSS_FIRMWARE_VERSION_11_4=n" >> ./.config
-	echo "CONFIG_NSS_FIRMWARE_VERSION_12_2=y" >> ./.config
+	echo "CONFIG_NSS_FIRMWARE_VERSION_12_5=y" >> ./.config
 	#无WIFI配置调整Q6大小
 	if [[ "${WRT_CONFIG,,}" == *"wifi"* && "${WRT_CONFIG,,}" == *"no"* ]]; then
 		find $DTS_PATH -type f ! -iname '*nowifi*' -exec sed -i 's/ipq\(6018\|8074\).dtsi/ipq\1-nowifi.dtsi/g' {} +

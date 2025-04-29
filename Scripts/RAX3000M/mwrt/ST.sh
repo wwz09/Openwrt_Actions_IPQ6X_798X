@@ -80,6 +80,6 @@ rm -rf package/new/chenmozhijin-socat
 
 # 加入OpenClash核心
 chmod -R a+x $GITHUB_WORKSPACE/Scripts/RAX3000M/mwrt/preset-clash-core.sh
-$GITHUB_WORKSPACE/Scripts/RAX3000M3000M/mwrt/preset-clash-core.sh
+$GITHUB_WORKSPACE/Scripts/RAX3000M/mwrt/preset-clash-core.sh
 
 

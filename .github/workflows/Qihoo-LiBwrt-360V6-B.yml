@@ -1,4 +1,4 @@
-name: Qihoo-LiBwrt-360V6-qosmio
+name: Qihoo-LiBwrt-360V6-B
 
 on:
  #自动编译：当Auto-Clean运行完成后
@@ -11,8 +11,8 @@ on:
     # - cron: 0 19 * * *
 
 env:
-  REPO_URL: https://github.com/qosmio/openwrt-ipq.git
-  REPO_BRANCH: main-nss
+  REPO_URL: https://github.com/LiBwrt/openwrt-6.x.git
+  REPO_BRANCH: main
   CONFIG_FILE: Config/ipq60xx.config
   DIY_SCRIPT: Scripts/360V6/LiBwrt/diy-script.sh
   CLASH_KERNEL: amd64

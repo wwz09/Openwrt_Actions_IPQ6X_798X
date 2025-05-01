@@ -19,7 +19,7 @@ env:
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: IPQ60XX-LiBwrt-360V6-6.12
+  FIRMWARE_TAG: Qihoo-LiBwrt-360V6-A
   TZ: Asia/Shanghai
 
 jobs:

@@ -1,7 +1,7 @@
-#设备平台
+#璁惧骞冲彴
 CONFIG_TARGET_qualcommax=y
 CONFIG_TARGET_qualcommax_ipq60xx=y
-#设备列表
+#璁惧鍒楄〃
 CONFIG_TARGET_DEVICE_qualcommax_ipq60xx_DEVICE_qihoo_360v6=y
 
 

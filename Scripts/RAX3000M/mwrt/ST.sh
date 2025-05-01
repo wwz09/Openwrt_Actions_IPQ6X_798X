@@ -64,7 +64,7 @@ git_sparse_clone main https://github.com/ssuperh/luci-app-vlmcsd-new luci-app-vl
 git clone https://github.com/flytosky-f/openwrt-vlmcsd.git package/openwrt-vlmcsd
 
 #家长控制
-git clone --depth=1 https://github.com/sirpdboy/luci-app-parentcontrol package/luci-app-parentcontrol
+# git clone --depth=1 https://github.com/sirpdboy/luci-app-parentcontrol package/luci-app-parentcontrol
 
 # 新建new目录
 mkdir -p package/new

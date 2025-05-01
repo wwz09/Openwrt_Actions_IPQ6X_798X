@@ -56,6 +56,7 @@ git_sparse_clone main https://github.com/mzwrt/mzwrt_package_Lite  luci-app-ikoo
 git_sparse_clone main https://github.com/mzwrt/mzwrt_package_Lite  quickstart ucl upx taskd ddnsto filebrowser lua-maxminddb lucky smartdns upx-static docker
 
 git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl luci-app-timecontrol
+git_sparse_clone main https://github.com/lyin888/luci-app-socat-WROIATE luci-app-socat
 
 # 新建new目录
 mkdir -p package/new
@@ -66,9 +67,9 @@ git clone https://github.com/immortalwrt/packages package/new/immortalwrt-packag
 mv package/new/immortalwrt-packages/net/socat package/new/socat
 rm -rf package/new/immortalwrt-packages
 rm -rf feeds/luci/applications/luci-app-socat
-git clone --depth 1 https://github.com/chenmozhijin/luci-app-socat package/new/chenmozhijin-socat
-mv -n package/new/chenmozhijin-socat/luci-app-socat package/new/
-rm -rf package/new/chenmozhijin-socat
+#git clone --depth 1 https://github.com/chenmozhijin/luci-app-socat package/new/chenmozhijin-socat
+#mv -n package/new/chenmozhijin-socat/luci-app-socat package/new/
+# rm -rf package/new/chenmozhijin-socat
 
 ## adguardhome
 #git clone -b patch-1 https://github.com/kiddin9/openwrt-adguardhome package/new/openwrt-adguardhome

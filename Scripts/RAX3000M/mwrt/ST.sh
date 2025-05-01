@@ -57,6 +57,11 @@ git_sparse_clone main https://github.com/mzwrt/mzwrt_package_Lite  quickstart uc
 
 git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl luci-app-timecontrol
 git_sparse_clone main https://github.com/lyin888/luci-app-socat-WROIATE luci-app-socat
+#更新
+rm -rf feeds/luci/applications/luci-app-vlmcsd
+git_sparse_clone main https://github.com/ssuperh/luci-app-vlmcsd-new luci-app-vlmcsd
+git clone https://github.com/flytosky-f/openwrt-vlmcsd.git package/openwrt-vlmcsd
+
 
 # 新建new目录
 mkdir -p package/new

@@ -56,6 +56,8 @@ git_sparse_clone main https://github.com/mzwrt/mzwrt_package_Lite  luci-app-ikoo
 
 git_sparse_clone main https://github.com/mzwrt/mzwrt_package_Lite  quickstart ucl upx taskd ddnsto filebrowser lua-maxminddb lucky smartdns upx-static docker
 
+git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl luci-app-timecontrol
+
 # 新建new目录
 mkdir -p package/new
 

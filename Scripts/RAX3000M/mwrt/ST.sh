@@ -6,13 +6,11 @@
 
 
 ##配置IP
-sed -i 's/192.168.1.1/192.168.3.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
 
 
-##取消bootstrap为默认主题
-sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap
-sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
-sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci-nginx/Makefile
+#修改默认主题
+sed -i "s/luci-theme-bootstrap/luci-theme-argon/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
 
 ##更改主机名
 sed -i "s/hostname='.*'/hostname='RAX3000M'/g" package/base-files/files/bin/config_generate
@@ -57,6 +55,8 @@ git_sparse_clone main https://github.com/mzwrt/mzwrt_package_Lite  luci-app-ikoo
 
 git_sparse_clone main https://github.com/mzwrt/mzwrt_package_Lite  quickstart ucl upx taskd ddnsto filebrowser lua-maxminddb lucky smartdns upx-static docker
 
+git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl luci-app-timecontrol
+
 # 新建new目录
 mkdir -p package/new
 
@@ -82,6 +82,6 @@ rm -rf package/new/chenmozhijin-socat
 
 # 加入OpenClash核心
 chmod -R a+x $GITHUB_WORKSPACE/Scripts/RAX3000M/mwrt/preset-clash-core.sh
-$GITHUB_WORKSPACE/Scripts/RAX3000M3000M/mwrt/preset-clash-core.sh
+$GITHUB_WORKSPACE/Scripts/RAX3000M/mwrt/preset-clash-core.sh
 
 

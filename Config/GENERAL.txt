@@ -1,7 +1,7 @@
-#科学插件调整
+#绉戝鎻掍欢璋冩暣
 CONFIG_PACKAGE_luci-app-homeproxy=y
 
-#增加插件
+#澧炲姞鎻掍欢
 CONFIG_PACKAGE_luci-app-samba4=y
 CONFIG_PACKAGE_luci-app-smartdns=y
 CONFIG_PACKAGE_luci-app-cpufreq=y
@@ -23,26 +23,19 @@ CONFIG_PACKAGE_luci-app-lucky=y
 CONFIG_PACKAGE_luci-app-socat=y
 
 
-#删除插件
+#鍒犻櫎鎻掍欢
 CONFIG_PACKAGE_luci-app-tailscale=n
 CONFIG_PACKAGE_luci-app-wol=n
-CONFIG_PACKAGE_luci-app-ddns=n
-CONFIG_PACKAGE_luci-app-vlmcsd=n
-CONFIG_PACKAGE_luci-app-xlnetacc=n
-CONFIG_PACKAGE_luci-app-wireguard=n
-CONFIG_PACKAGE_luci-app-ipsec-vpnd=n
-CONFIG_PACKAGE_luci-app-adbyby-plus=n
-CONFIG_PACKAGE_luci-app-unblockmusic=n
-CONFIG_PACKAGE_luci-app-accesscontrol=n
-CONFIG_PACKAGE_luci-app-fileassistant=n
 
-#参数调整
+
+
+#鍙傛暟璋冩暣
 CONFIG_DEVEL=y
 CONFIG_CCACHE=y
 CONFIG_TARGET_MULTI_PROFILE=y
 CONFIG_TARGET_PER_DEVICE_ROOTFS=y
 
-#内核调整
+#鍐呮牳璋冩暣
 CONFIG_PACKAGE_kmod-dsa=y
 CONFIG_PACKAGE_kmod-fuse=y
 CONFIG_PACKAGE_kmod-tun=y
@@ -81,7 +74,7 @@ CONFIG_PACKAGE_kmod-nft-tproxy=y
 CONFIG_PACKAGE_kmod-inet-diag=y
 CONFIG_PACKAGE_kmod-netlink-diag=y
 
-#组件调整
+#缁勪欢璋冩暣
 CONFIG_PACKAGE_autocore=y
 CONFIG_PACKAGE_automount=y
 CONFIG_PACKAGE_bash=y
@@ -109,7 +102,7 @@ CONFIG_PACKAGE_luci-lua-runtime=y
 CONFIG_PACKAGE_luci-proto-bonding=y
 CONFIG_PACKAGE_luci-proto-relay=y
 
-#IPv6 相关配置添加部分
+#IPv6 鐩稿叧閰嶇疆娣诲姞閮ㄥ垎
 
 CONFIG_PACKAGE_luci-app-ipv6=y
 CONFIG_PACKAGE_luci-proto-ipv6=y
@@ -132,9 +125,9 @@ CONFIG_PACKAGE_ip6tables=y
 CONFIG_PACKAGE_radvd=y
 
 
-#自定义防火墙规则相关配置
+#鑷畾涔夐槻鐏瑙勫垯鐩稿叧閰嶇疆
 CONFIG_PACKAGE_firewall-script=y
 
-#主题
+#涓婚
 CONFIG_PACKAGE_luci-app-argon-config=y
 CONFIG_PACKAGE_luci-theme-argon=y

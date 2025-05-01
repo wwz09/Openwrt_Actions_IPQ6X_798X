@@ -87,18 +87,6 @@ jobs:
      
     - name: 更新 & 安装 feeds & 执行脚本
       run: |
-        chmod +x $DIY_P1_SH
-        cd $OPENWRT_PATH
-        $GITHUB_WORKSPACE/$DIY_P1_SH 
-
-    - name: Install Feeds(安装feeds)
-      run: |
-        cd $OPENWRT_PATH
-        ./scripts/feeds update -a
-        ./scripts/feeds install -a
-        
-    - name: DIY执行脚本
-      run: |
         chmod +x $DIY_P2_SH
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_P2_SH
@@ -110,7 +98,13 @@ jobs:
         ccache: false
         mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}
         prefix: ${{ env.OPENWRT_PATH }}
-      
+    
+    - name: Install Feeds(安装feeds)
+      run: |
+        cd $OPENWRT_PATH
+        ./scripts/feeds update -a
+        ./scripts/feeds install -a
+        
     - name: Install DIY脚本
       run: |
         chmod +x $DIY_P3_SH

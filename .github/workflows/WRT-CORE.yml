@@ -146,15 +146,13 @@ jobs:
       - name: Update Feeds
         run: |
           cd ./wrt/
-
+          
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 
       - name: Custom Packages
         run: |
           cd ./wrt/package/
-          
-          echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
 
           $GITHUB_WORKSPACE/Scripts/360V6/Packages.sh
           $GITHUB_WORKSPACE/Scripts/360V6/Handles.sh
@@ -239,6 +237,6 @@ jobs:
             平台：${{env.WRT_TARGET}}
 
             登录地址：${{env.WRT_IP}}
-           
+            内核版本：${{env.WRT_KVER}}
 
             

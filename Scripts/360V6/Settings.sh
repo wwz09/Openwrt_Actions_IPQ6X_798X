@@ -1,64 +1,64 @@
 #!/bin/bash
 
-#ÐÞ¸ÄÄ¬ÈÏÖ÷Ìâ
+#ä¿®æ”¹é»˜è®¤ä¸»é¢˜
 sed -i "s/luci-theme-bootstrap/luci-theme-$WRT_THEME/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
-#ÐÞ¸Äimmortalwrt.lan¹ØÁªIP
+#ä¿®æ”¹immortalwrt.lanå…³è”IP
 sed -i "s/192\.168\.1\.[0-9]*/$WRT_IP/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-#Ìí¼Ó±àÒëÈÕÆÚ±êÊ¶
+#æ·»åŠ ç¼–è¯‘æ—¥æœŸæ ‡è¯†
 sed -i "s/(\(luciversion || ''\))/(\1) + (' \/ $WRT_MARK-$WRT_DATE')/g" $(find ./feeds/luci/modules/luci-mod-status/ -type f -name "10_system.js")
 
 WIFI_SH=$(find ./target/linux/{mediatek/filogic,qualcommax}/base-files/etc/uci-defaults/ -type f -name "*set-wireless.sh")
 WIFI_UC="./package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc"
 if [ -f "$WIFI_SH" ]; then
-	#ÐÞ¸ÄWIFIÃû³Æ
+	#ä¿®æ”¹WIFIåç§°
 	sed -i "s/BASE_SSID='.*'/BASE_SSID='$WRT_SSID'/g" $WIFI_SH
-	#ÐÞ¸ÄWIFIÃÜÂë
+	#ä¿®æ”¹WIFIå¯†ç 
 	sed -i "s/BASE_WORD='.*'/BASE_WORD='$WRT_WORD'/g" $WIFI_SH
 elif [ -f "$WIFI_UC" ]; then
-	#ÐÞ¸ÄWIFIÃû³Æ
+	#ä¿®æ”¹WIFIåç§°
 	sed -i "s/ssid='.*'/ssid='$WRT_SSID'/g" $WIFI_UC
-	#ÐÞ¸ÄWIFIÃÜÂë
+	#ä¿®æ”¹WIFIå¯†ç 
 	sed -i "s/key='.*'/key='$WRT_WORD'/g" $WIFI_UC
-	#ÐÞ¸ÄWIFIµØÇø
+	#ä¿®æ”¹WIFIåœ°åŒº
 	sed -i "s/country='.*'/country='CN'/g" $WIFI_UC
-	#ÐÞ¸ÄWIFI¼ÓÃÜ
+	#ä¿®æ”¹WIFIåŠ å¯†
 	sed -i "s/encryption='.*'/encryption='psk2+ccmp'/g" $WIFI_UC
 fi
 
 CFG_FILE="./package/base-files/files/bin/config_generate"
-#ÐÞ¸ÄÄ¬ÈÏIPµØÖ·
+#ä¿®æ”¹é»˜è®¤IPåœ°å€
 sed -i "s/192\.168\.1\.[0-9]*/$WRT_IP/g" $CFG_FILE
-#ÐÞ¸ÄÄ¬ÈÏÖ÷»úÃû
+#ä¿®æ”¹é»˜è®¤ä¸»æœºå
 sed -i "s/hostname='.*'/hostname='$WRT_NAME'/g" $CFG_FILE
 
-#ÅäÖÃÎÄ¼þÐÞ¸Ä
+#é…ç½®æ–‡ä»¶ä¿®æ”¹
 echo "CONFIG_PACKAGE_luci=y" >> ./.config
 echo "CONFIG_LUCI_LANG_zh_Hans=y" >> ./.config
 echo "CONFIG_PACKAGE_luci-theme-$WRT_THEME=y" >> ./.config
 echo "CONFIG_PACKAGE_luci-app-$WRT_THEME-config=y" >> ./.config
 
-#ÊÖ¶¯µ÷ÕûµÄ²å¼þ
+#æ‰‹åŠ¨è°ƒæ•´çš„æ’ä»¶
 if [ -n "$WRT_PACKAGE" ]; then
 	echo -e "$WRT_PACKAGE" >> ./.config
 fi
 
-#¸ßÍ¨Æ½Ì¨µ÷Õû
+#é«˜é€šå¹³å°è°ƒæ•´
 DTS_PATH="./target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/"
 if [[ $WRT_TARGET == *"QUALCOMMAX"* ]]; then
-	#È¡ÏûnssÏà¹Øfeed
+	#å–æ¶ˆnssç›¸å…³feed
 	echo "CONFIG_FEED_nss_packages=n" >> ./.config
 	echo "CONFIG_FEED_sqm_scripts_nss=n" >> ./.config
-	#ÉèÖÃNSS°æ±¾
+	#è®¾ç½®NSSç‰ˆæœ¬
 	echo "CONFIG_NSS_FIRMWARE_VERSION_11_4=n" >> ./.config
 	echo "CONFIG_NSS_FIRMWARE_VERSION_12_5=y" >> ./.config
-	#ÎÞWIFIÅäÖÃµ÷ÕûQ6´óÐ¡
+	#æ— WIFIé…ç½®è°ƒæ•´Q6å¤§å°
 	if [[ "${WRT_CONFIG,,}" == *"wifi"* && "${WRT_CONFIG,,}" == *"no"* ]]; then
 		find $DTS_PATH -type f ! -iname '*nowifi*' -exec sed -i 's/ipq\(6018\|8074\).dtsi/ipq\1-nowifi.dtsi/g' {} +
 		echo "qualcommax set up nowifi successfully!"
 	fi
 fi
 
-#±àÒëÆ÷ÓÅ»¯
+#ç¼–è¯‘å™¨ä¼˜åŒ–
 if [[ $WRT_TARGET != *"X86"* ]]; then
 	echo "CONFIG_TARGET_OPTIONS=y" >> ./.config
 	echo "CONFIG_TARGET_OPTIMIZATION=\"-O2 -pipe -march=armv8-a+crypto+crc -mcpu=cortex-a53+crypto+crc -mtune=cortex-a53\"" >> ./.config

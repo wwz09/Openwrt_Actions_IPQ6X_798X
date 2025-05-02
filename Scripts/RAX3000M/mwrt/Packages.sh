@@ -106,10 +106,10 @@ function git_sparse_clone() {
 
 
 ## 添加额外插件
-git_sparse_clone IMM https://github.com/wwz09/LEDE-IMM-package quickstart ucl upx taskd ddnsto filebrowser lua-maxminddb  smartdns upx-static docker lucky luci-lib-xterm luci-lib-taskd luci-lib-iform
+git_sparse_clone IMM https://github.com/wwz09/LEDE-IMM-package quickstart ucl upx  ddnsto filebrowser lua-maxminddb  smartdns upx-static docker lucky luci-lib-xterm  luci-lib-iform
 # git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite luci-app-control-timewol luci-app-control-weburl luci-app-lucky lucky  luci-app-socat 
 # git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite filebrowser luci-theme-argon luci-app-argon-config luci-theme-design
-git_sparse_clone openwrt-21.02 https://github.com/immortalwrt/luci applications/luci-app-firewall
+# git_sparse_clone openwrt-21.02 https://github.com/immortalwrt/luci applications/luci-app-firewall
 # git_sparse_clone main https://github.com/gxnas/ImmortalWrt-2410-Packages luci-app-firewall
 
 

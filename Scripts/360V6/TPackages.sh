@@ -54,10 +54,10 @@ UPDATE_PACKAGE "openclash" "vernesong/OpenClash" "dev" "pkg"
 UPDATE_PACKAGE "passwall" "xiaorouji/openwrt-passwall" "main" "pkg"
 UPDATE_PACKAGE "passwall2" "xiaorouji/openwrt-passwall2" "main" "pkg"
 
-UPDATE_PACKAGE "luci-app-timecontrol" "wwz09/mzwrt_package_Lite" "main" "pkg"
-UPDATE_PACKAGE "luci-app-control-webrestriction" "wwz09/mzwrt_package_Lite" "main" "pkg"
-UPDATE_PACKAGE "luci-app-control-weburl" "wwz09/mzwrt_package_Lite" "main" "pkg"
-UPDATE_PACKAGE "luci-app-control-timewol" "wwz09/mzwrt_package_Lite" "main" "pkg"
+UPDATE_PACKAGE "luci-app-timecontrol" "wwz09/IPQ_package" "IMM" "pkg"
+UPDATE_PACKAGE "luci-app-control-webrestriction" "wwz09/IPQ_package" "IMM" "pkg"
+UPDATE_PACKAGE "luci-app-control-weburl" "wwz09/IPQ_package" "IMM" "pkg"
+UPDATE_PACKAGE "luci-app-control-timewol" "wwz09/IPQ_package" "IMM" "pkg"
 
 
 UPDATE_PACKAGE "luci-app-adguardhome" "kenzok8/small-package" "main" "pkg"

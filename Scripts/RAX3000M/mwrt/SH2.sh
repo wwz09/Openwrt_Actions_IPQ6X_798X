@@ -62,9 +62,9 @@ git_sparse_clone IMM https://github.com/wwz09/LEDE-IMM-package luci-app-control-
 
 
 #更换luci-app-vlmcsd
-rm -rf feeds/luci/applications/luci-app-vlmcsd
-git_sparse_clone main https://github.com/ssuperh/luci-app-vlmcsd-new luci-app-vlmcsd
-git clone https://github.com/flytosky-f/openwrt-vlmcsd.git package/openwrt-vlmcsd
+# rm -rf feeds/luci/applications/luci-app-vlmcsd
+# git_sparse_clone main https://github.com/ssuperh/luci-app-vlmcsd-new luci-app-vlmcsd
+# git clone https://github.com/flytosky-f/openwrt-vlmcsd.git package/openwrt-vlmcsd
 
 # 新建new目录
 mkdir -p package/new

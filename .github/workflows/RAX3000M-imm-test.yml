@@ -17,8 +17,7 @@ env:
   #REPO_BRANCH: openwrt-23.05
   CONFIG_FILE: Config/rax3000m-imm.config
   DIY_P1_SH: ./Scripts/RAX3000M/mwrt/ST.sh
-  DIY_P2_SH: ./Scripts/RAX3000M/mwrt/Packages.sh
-  DIY_P3_SH: ./Scripts/RAX3000M/mwrt/PU.sh
+  DIY_P2_SH: ./Scripts/RAX3000M/mwrt/PU.sh
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
@@ -88,10 +87,8 @@ jobs:
     - name: 更新 & 安装 feeds & 执行脚本
       run: |
         chmod +x $DIY_P1_SH
-        chmod +x $DIY_P2_SH
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_P1_SH
-        $GITHUB_WORKSPACE/$DIY_P2_SH 
         
     - name: Cache Toolchain(缓存工具链)
       if: env.CACHE_TOOLCHAIN == 'true'
@@ -109,14 +106,10 @@ jobs:
         
     - name: Install DIY脚本
       run: |
-        chmod +x $DIY_P3_SH
+        chmod +x $DIY_P2_SH
         cd $OPENWRT_PATH
-        $GITHUB_WORKSPACE/$DIY_P3_SH
+        $GITHUB_WORKSPACE/$DIY_P2_SH
 
-    #- name: 导入files文件夹
-      #run: |
-        #[ -e ./scripts/rax3000m/Imm/798x/files ] && mv ./scripts/rax3000m/Imm/798x/files $OPENWRT_PATH/files  
-        #chmod +x $OPENWRT_PATH/files   
 
     - name: Load Custom Configuration(加载自定义配置)
       run: |

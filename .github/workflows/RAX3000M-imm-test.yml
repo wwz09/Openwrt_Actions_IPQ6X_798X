@@ -16,8 +16,8 @@ env:
   REPO_BRANCH: openwrt-21.02
   #REPO_BRANCH: openwrt-23.05
   CONFIG_FILE: Config/rax3000m-imm.config
-  DIY_P1_SH: ./Scripts/RAX3000M/mwrt/SH1.sh
-  DIY_P2_SH: ./Scripts/RAX3000M/mwrt/ST.sh
+  DIY_P1_SH: ./Scripts/RAX3000M/mwrt/ST.sh
+  DIY_P2_SH: ./Scripts/RAX3000M/mwrt/Packages.sh
   DIY_P3_SH: ./Scripts/RAX3000M/mwrt/PU.sh
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
@@ -87,8 +87,10 @@ jobs:
      
     - name: 更新 & 安装 feeds & 执行脚本
       run: |
+        chmod +x $DIY_P1_SH
         chmod +x $DIY_P2_SH
         cd $OPENWRT_PATH
+        $GITHUB_WORKSPACE/$DIY_P1_SH
         $GITHUB_WORKSPACE/$DIY_P2_SH 
         
     - name: Cache Toolchain(缓存工具链)

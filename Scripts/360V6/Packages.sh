@@ -1,23 +1,23 @@
 #!/bin/bash
 
-#°²×°ºÍ¸üĞÂÈí¼ş°ü
+#å®‰è£…å’Œæ›´æ–°è½¯ä»¶åŒ…
 UPDATE_PACKAGE() {
 	local PKG_NAME=$1
 	local PKG_REPO=$2
 	local PKG_BRANCH=$3
 	local PKG_SPECIAL=$4
-	local PKG_LIST=("$PKG_NAME" $5)  # µÚ5¸ö²ÎÊıÎª×Ô¶¨ÒåÃû³ÆÁĞ±í
+	local PKG_LIST=("$PKG_NAME" $5)  # ç¬¬5ä¸ªå‚æ•°ä¸ºè‡ªå®šä¹‰åç§°åˆ—è¡¨
 	local REPO_NAME=${PKG_REPO#*/}
 
 	echo " "
 
-	# É¾³ı±¾µØ¿ÉÄÜ´æÔÚµÄ²»Í¬Ãû³ÆµÄÈí¼ş°ü
+	# åˆ é™¤æœ¬åœ°å¯èƒ½å­˜åœ¨çš„ä¸åŒåç§°çš„è½¯ä»¶åŒ…
 	for NAME in "${PKG_LIST[@]}"; do
-		# ²éÕÒÆ¥ÅäµÄÄ¿Â¼
+		# æŸ¥æ‰¾åŒ¹é…çš„ç›®å½•
 		echo "Search directory: $NAME"
 		local FOUND_DIRS=$(find ../feeds/luci/ ../feeds/packages/ -maxdepth 3 -type d -iname "*$NAME*" 2>/dev/null)
 
-		# É¾³ıÕÒµ½µÄÄ¿Â¼
+		# åˆ é™¤æ‰¾åˆ°çš„ç›®å½•
 		if [ -n "$FOUND_DIRS" ]; then
 			while read -r DIR; do
 				rm -rf "$DIR"
@@ -28,10 +28,10 @@ UPDATE_PACKAGE() {
 		fi
 	done
 
-	# ¿ËÂ¡ GitHub ²Ö¿â
+	# å…‹éš† GitHub ä»“åº“
 	git clone --depth=1 --single-branch --branch $PKG_BRANCH "https://github.com/$PKG_REPO.git"
 
-	# ´¦Àí¿ËÂ¡µÄ²Ö¿â
+	# å¤„ç†å…‹éš†çš„ä»“åº“
 	if [[ $PKG_SPECIAL == "pkg" ]]; then
 		find ./$REPO_NAME/*/ -maxdepth 3 -type d -iname "*$PKG_NAME*" -prune -exec cp -rf {} ./ \;
 		rm -rf ./$REPO_NAME/
@@ -40,11 +40,11 @@ UPDATE_PACKAGE() {
 	fi
 }
 
-# µ÷ÓÃÊ¾Àı
+# è°ƒç”¨ç¤ºä¾‹
 # UPDATE_PACKAGE "OpenAppFilter" "destan19/OpenAppFilter" "master" "" "custom_name1 custom_name2"
-# UPDATE_PACKAGE "open-app-filter" "destan19/OpenAppFilter" "master" "" "luci-app-appfilter oaf" ÕâÑù»á°ÑÔ­ÓĞµÄopen-app-filter£¬luci-app-appfilter£¬oafÏà¹Ø×é¼şÉ¾³ı£¬²»»á³öÏÖcoremark´íÎó¡£
+# UPDATE_PACKAGE "open-app-filter" "destan19/OpenAppFilter" "master" "" "luci-app-appfilter oaf" è¿™æ ·ä¼šæŠŠåŸæœ‰çš„open-app-filterï¼Œluci-app-appfilterï¼Œoafç›¸å…³ç»„ä»¶åˆ é™¤ï¼Œä¸ä¼šå‡ºç°coremarké”™è¯¯ã€‚
 
-# UPDATE_PACKAGE "°üÃû" "ÏîÄ¿µØÖ·" "ÏîÄ¿·ÖÖ§" "pkg/name£¬¿ÉÑ¡£¬pkgÎª´Ó´óÔÓ»âÖĞµ¥¶ÀÌáÈ¡°üÃû²å¼ş£»nameÎªÖØÃüÃûÎª°üÃû"
+# UPDATE_PACKAGE "åŒ…å" "é¡¹ç›®åœ°å€" "é¡¹ç›®åˆ†æ”¯" "pkg/nameï¼Œå¯é€‰ï¼Œpkgä¸ºä»å¤§æ‚çƒ©ä¸­å•ç‹¬æå–åŒ…åæ’ä»¶ï¼›nameä¸ºé‡å‘½åä¸ºåŒ…å"
 # UPDATE_PACKAGE "argon" "sbwml/luci-theme-argon" "openwrt-24.10"
 UPDATE_PACKAGE "kucat" "sirpdboy/luci-theme-kucat" "js"
 
@@ -54,10 +54,10 @@ UPDATE_PACKAGE "openclash" "vernesong/OpenClash" "dev" "pkg"
 UPDATE_PACKAGE "passwall" "xiaorouji/openwrt-passwall" "main" "pkg"
 UPDATE_PACKAGE "passwall2" "xiaorouji/openwrt-passwall2" "main" "pkg"
 
-UPDATE_PACKAGE "luci-app-timecontrol" "wwz09/mzwrt_package_Lite" "main" "pkg"
-UPDATE_PACKAGE "luci-app-control-webrestriction" "wwz09/mzwrt_package_Lite" "main" "pkg"
-UPDATE_PACKAGE "luci-app-control-weburl" "wwz09/mzwrt_package_Lite" "main" "pkg"
-UPDATE_PACKAGE "luci-app-control-timewol" "wwz09/mzwrt_package_Lite" "main" "pkg"
+UPDATE_PACKAGE "luci-app-timecontrol" "wwz09/IPQ_package" "IMM" "pkg"
+UPDATE_PACKAGE "luci-app-control-webrestriction" "wwz09/IPQ_package" "IMM" "pkg"
+UPDATE_PACKAGE "luci-app-control-weburl" "wwz09/IPQ_package" "IMM" "pkg"
+UPDATE_PACKAGE "luci-app-control-timewol" "wwz09/IPQ_package" "IMM" "pkg"
 
 
 UPDATE_PACKAGE "luci-app-adguardhome" "kenzok8/small-package" "main" "pkg"
@@ -80,7 +80,7 @@ if [[ $WRT_REPO != *"immortalwrt"* ]]; then
 	UPDATE_PACKAGE "qmi-wwan" "immortalwrt/wwan-packages" "master" "pkg"
 fi
 
-#¸üĞÂÈí¼ş°ü°æ±¾
+#æ›´æ–°è½¯ä»¶åŒ…ç‰ˆæœ¬
 UPDATE_VERSION() {
 	local PKG_NAME=$1
 	local PKG_MARK=${2:-false}
@@ -122,7 +122,7 @@ UPDATE_VERSION() {
 }
 
 
-# GitÏ¡Êè¿ËÂ¡£¬Ö»¿ËÂ¡Ö¸¶¨Ä¿Â¼µ½±¾µØ
+# Gitç¨€ç–å…‹éš†ï¼Œåªå…‹éš†æŒ‡å®šç›®å½•åˆ°æœ¬åœ°
 function git_sparse_clone() {
   branch="$1" repourl="$2" && shift 2
   git clone --depth=1 -b $branch --single-branch --filter=blob:none --sparse $repourl
@@ -133,13 +133,13 @@ function git_sparse_clone() {
 }
 
 
-## Ìí¼Ó¶îÍâ²å¼ş
+## æ·»åŠ é¢å¤–æ’ä»¶
 
 # git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite luci-app-control-timewol luci-app-control-weburl luci-app-lucky lucky  luci-app-socat 
 # git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite filebrowser luci-theme-argon luci-app-argon-config luci-theme-design
 # git_sparse_clone openwrt-21.02 https://github.com/immortalwrt/luci applications/luci-app-firewall
 # git_sparse_clone main https://github.com/gxnas/ImmortalWrt-2410-Packages luci-app-firewall
 
-#UPDATE_VERSION "Èí¼ş°üÃû" "²âÊÔ°æ£¬true£¬¿ÉÑ¡£¬Ä¬ÈÏÎª·ñ"
+#UPDATE_VERSION "è½¯ä»¶åŒ…å" "æµ‹è¯•ç‰ˆï¼Œtrueï¼Œå¯é€‰ï¼Œé»˜è®¤ä¸ºå¦"
 UPDATE_VERSION "sing-box"
 UPDATE_VERSION "tailscale"

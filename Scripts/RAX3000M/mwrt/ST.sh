@@ -37,6 +37,7 @@ sed -i "s/12345678/abc5124937,/g" package/mtk/drivers/wifi-profile/files/mt7981/
 ##New WiFi
 sed -i "s/ImmortalWrt-2.4G/YM520-2.4G/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 sed -i "s/ImmortalWrt-5G/YM520-5G/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
+
 #修改无线加密及密码
 sed -i 's/encryption=none/encryption=psk-mixed+ccmp\n            set wireless.default_radio${devidx}.key=abc5124937,\n/g' package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 

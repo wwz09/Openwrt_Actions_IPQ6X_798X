@@ -55,7 +55,7 @@ git_sparse_clone main https://github.com/mzwrt/mzwrt_package_Lite  luci-app-ikoo
 
 git_sparse_clone main https://github.com/mzwrt/mzwrt_package_Lite  quickstart ucl upx taskd ddnsto filebrowser lua-maxminddb  smartdns upx-static docker lucky luci-app-homeproxy
 
-git_sparse_clone IMM https://github.com/wwz09/LEDE-IMM-package luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl luci-app-timecontrol luci-app-parentcontrol
+git_sparse_clone IMM https://github.com/wwz09/LEDE-IMM-package luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl luci-app-timecontrol luci-app-parentcontrol relevance
 git_sparse_clone main https://github.com/lyin888/luci-app-socat-WROIATE luci-app-socat
 
 #更换luci-app-vlmcsd

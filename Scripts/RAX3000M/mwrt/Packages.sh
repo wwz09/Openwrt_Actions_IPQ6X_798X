@@ -85,9 +85,9 @@ UPDATE_PACKAGE "viking" "VIKINGYFY/packages" "main" "" "luci-app-timewol luci-ap
 # UPDATE_PACKAGE "gecoosac" "lwb1978/openwrt-gecoosac" "main"
 # UPDATE_PACKAGE "qmodem" "FUjr/modem_feeds" "main"
 
-#if [[ $WRT_REPO != *"immortalwrt"* ]]; then
-#	UPDATE_PACKAGE "qmi-wwan" "immortalwrt/wwan-packages" "master" "pkg"
-#fi
+if [[ $WRT_REPO != *"immortalwrt"* ]]; then
+	UPDATE_PACKAGE "qmi-wwan" "immortalwrt/wwan-packages" "master" "pkg"
+fi
 
 #更换luci-app-vlmcsd
 #rm -rf feeds/luci/applications/luci-app-vlmcsd

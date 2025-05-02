@@ -90,9 +90,9 @@ if [[ $WRT_REPO != *"immortalwrt"* ]]; then
 fi
 
 #更换luci-app-vlmcsd
-rm -rf feeds/luci/applications/luci-app-vlmcsd
-git_sparse_clone main https://github.com/ssuperh/luci-app-vlmcsd-new luci-app-vlmcsd
-git clone https://github.com/flytosky-f/openwrt-vlmcsd.git package/openwrt-vlmcsd
+#rm -rf feeds/luci/applications/luci-app-vlmcsd
+#git_sparse_clone main https://github.com/ssuperh/luci-app-vlmcsd-new luci-app-vlmcsd
+#git clone https://github.com/flytosky-f/openwrt-vlmcsd.git package/openwrt-vlmcsd
 
 # Git稀疏克隆，只克隆指定目录到本地
 function git_sparse_clone() {

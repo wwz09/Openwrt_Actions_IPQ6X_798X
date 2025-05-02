@@ -39,58 +39,23 @@ rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
 
 
-# Git稀疏克隆，只克隆指定目录到本地
-function git_sparse_clone() {
-  branch="$1" repourl="$2" && shift 2
-  git clone --depth=1 -b $branch --single-branch --filter=blob:none --sparse $repourl
-  repodir=$(echo $repourl | awk -F '/' '{print $(NF)}')
-  cd $repodir && git sparse-checkout set $@
-  mv -f $@ ../package
-  cd .. && rm -rf $repodir
-}
 
-## 添加额外插件
 
-git_sparse_clone main https://github.com/mzwrt/mzwrt_package_Lite  luci-app-ikoolproxy luci-app-store luci-app-quickstart luci-app-openclash luci-app-easymesh luci-app-ddnsto  luci-theme-argon luci-theme-design luci-app-design-config luci-app-argon-config luci-app-lucky luci-app-smartdns luci-lib-xterm luci-lib-taskd luci-lib-iform
 
-git_sparse_clone main https://github.com/mzwrt/mzwrt_package_Lite  quickstart ucl upx taskd ddnsto filebrowser lua-maxminddb  smartdns upx-static docker lucky luci-app-homeproxy
 
-git_sparse_clone IMM https://github.com/wwz09/LEDE-IMM-package luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl luci-app-timecontrol luci-app-parentcontrol relevance
-git_sparse_clone main https://github.com/lyin888/luci-app-socat-WROIATE luci-app-socat
-
-#更换luci-app-vlmcsd
-rm -rf feeds/luci/applications/luci-app-vlmcsd
-git_sparse_clone main https://github.com/ssuperh/luci-app-vlmcsd-new luci-app-vlmcsd
-git clone https://github.com/flytosky-f/openwrt-vlmcsd.git package/openwrt-vlmcsd
-
-#家长控制
-# git clone --depth=1 https://github.com/sirpdboy/luci-app-parentcontrol package/luci-app-parentcontrol
 
 # 新建new目录
-mkdir -p package/new
+#mkdir -p package/new
 
 ## 加入 luci-app-socat
-rm -rf feeds/packages/net/socat
-git clone https://github.com/immortalwrt/packages package/new/immortalwrt-packages
-mv package/new/immortalwrt-packages/net/socat package/new/socat
-rm -rf package/new/immortalwrt-packages
-rm -rf feeds/luci/applications/luci-app-socat
-#git clone --depth 1 https://github.com/chenmozhijin/luci-app-socat package/new/chenmozhijin-socat
-#mv -n package/new/chenmozhijin-socat/luci-app-socat package/new/
-# rm -rf package/new/chenmozhijin-socat
+#rm -rf feeds/packages/net/socat
+#git clone https://github.com/immortalwrt/packages package/new/immortalwrt-packages
+#mv package/new/immortalwrt-packages/net/socat package/new/socat
+#rm -rf package/new/immortalwrt-packages
+#rm -rf feeds/luci/applications/luci-app-socat
 
-## adguardhome
-#git clone -b patch-1 https://github.com/kiddin9/openwrt-adguardhome package/new/openwrt-adguardhome
-#mv package/new/openwrt-adguardhome/*adguardhome package/new/
-#rm -rf package/new/luci-app-adguardhome/root/usr/share/AdGuardHome/AdGuardHome_template.yaml
-#cp -rf $GITHUB_WORKSPACE/patches/AdGuardHome/AdGuardHome_template.yaml #package/new/luci-app-adguardhome/root/usr/share/AdGuardHome/AdGuardHome_template.yaml
-#rm -rf package/new/luci-app-adguardhome/root/usr/share/AdGuardHome/links.txt
-#cp -rf $GITHUB_WORKSPACE/patches/AdGuardHome/links.txt package/new/luci-app-adguardhome/root/usr/share/AdGuardHome/links.txt
-# sed -i 's/+adguardhome/+PACKAGE_$(PKG_NAME)_INCLUDE_binary:adguardhome/g' package/new/luci-app-adguardhome/Makefile
-#rm -rf package/new/openwrt-adguardhome
 
-# 加入OpenClash核心
-chmod -R a+x $GITHUB_WORKSPACE/Scripts/RAX3000M/mwrt/preset-clash-core.sh
-$GITHUB_WORKSPACE/Scripts/RAX3000M/mwrt/preset-clash-core.sh
+
+
 
 

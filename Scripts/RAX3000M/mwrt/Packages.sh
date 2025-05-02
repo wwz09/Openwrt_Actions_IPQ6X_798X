@@ -89,6 +89,31 @@ if [[ $WRT_REPO != *"immortalwrt"* ]]; then
 	UPDATE_PACKAGE "qmi-wwan" "immortalwrt/wwan-packages" "master" "pkg"
 fi
 
+#更换luci-app-vlmcsd
+rm -rf feeds/luci/applications/luci-app-vlmcsd
+git_sparse_clone main https://github.com/ssuperh/luci-app-vlmcsd-new luci-app-vlmcsd
+git clone https://github.com/flytosky-f/openwrt-vlmcsd.git package/openwrt-vlmcsd
+
+# Git稀疏克隆，只克隆指定目录到本地
+function git_sparse_clone() {
+  branch="$1" repourl="$2" && shift 2
+  git clone --depth=1 -b $branch --single-branch --filter=blob:none --sparse $repourl
+  repodir=$(echo $repourl | awk -F '/' '{print $(NF)}')
+  cd $repodir && git sparse-checkout set $@
+  mv -f $@ ../package
+  cd .. && rm -rf $repodir
+}
+
+
+## 添加额外插件
+git_sparse_clone IMM https://github.com/wwz09/LEDE-IMM-package quickstart ucl upx taskd ddnsto filebrowser lua-maxminddb  smartdns upx-static docker lucky luci-lib-xterm luci-lib-taskd luci-lib-iform
+# git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite luci-app-control-timewol luci-app-control-weburl luci-app-lucky lucky  luci-app-socat 
+# git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite filebrowser luci-theme-argon luci-app-argon-config luci-theme-design
+git_sparse_clone openwrt-21.02 https://github.com/immortalwrt/luci applications/luci-app-firewall
+# git_sparse_clone main https://github.com/gxnas/ImmortalWrt-2410-Packages luci-app-firewall
+
+
+
 #更新软件包版本
 UPDATE_VERSION() {
 	local PKG_NAME=$1
@@ -131,23 +156,10 @@ UPDATE_VERSION() {
 }
 
 
-# Git稀疏克隆，只克隆指定目录到本地
-function git_sparse_clone() {
-  branch="$1" repourl="$2" && shift 2
-  git clone --depth=1 -b $branch --single-branch --filter=blob:none --sparse $repourl
-  repodir=$(echo $repourl | awk -F '/' '{print $(NF)}')
-  cd $repodir && git sparse-checkout set $@
-  mv -f $@ ../package
-  cd .. && rm -rf $repodir
-}
+# 加入OpenClash核心
+chmod -R a+x $GITHUB_WORKSPACE/Scripts/RAX3000M/mwrt/preset-clash-core.sh
+$GITHUB_WORKSPACE/Scripts/RAX3000M/mwrt/preset-clash-core.sh
 
-
-## 添加额外插件
-git_sparse_clone IMM https://github.com/wwz09/LEDE-IMM-package quickstart ucl upx taskd ddnsto filebrowser lua-maxminddb  smartdns upx-static docker lucky luci-lib-xterm luci-lib-taskd luci-lib-iform
-# git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite luci-app-control-timewol luci-app-control-weburl luci-app-lucky lucky  luci-app-socat 
-# git_sparse_clone main https://github.com/wwz09/mzwrt_package_Lite filebrowser luci-theme-argon luci-app-argon-config luci-theme-design
-# git_sparse_clone openwrt-21.02 https://github.com/immortalwrt/luci applications/luci-app-firewall
-# git_sparse_clone main https://github.com/gxnas/ImmortalWrt-2410-Packages luci-app-firewall
 
 #UPDATE_VERSION "软件包名" "测试版，true，可选，默认为否"
 UPDATE_VERSION "sing-box"

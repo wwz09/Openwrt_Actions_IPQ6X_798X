@@ -26,18 +26,18 @@ sed -i "3iuci commit istore" package/emortal/default-settings/files/99-default-s
 sed -i.bak "s,mirrors.vsean.net/openwrt,mirrors.vsean.net/openwrt,g" package/emortal/default-settings/files/99-default-settings
 
 
-##WiFi
+#WiFi相关设置1
 sed -i "s/MT7981_AX3000_2.4G/YM520-2.4G/g" package/mtk/drivers/wifi-profile/files/mt7981/mt7981.dbdc.b0.dat
 sed -i "s/12345678/abc5124937,/g" package/mtk/drivers/wifi-profile/files/mt7981/mt7981.dbdc.b0.dat
 sed -i "s/MT7981_AX3000_5G/YM520-5G/g" package/mtk/drivers/wifi-profile/files/mt7981/mt7981.dbdc.b1.dat
 sed -i "s/12345678/abc5124937,/g" package/mtk/drivers/wifi-profile/files/mt7981/mt7981.dbdc.b1.dat
 
-
-##New WiFi
+#WiFi相关设置2
 sed -i "s/ImmortalWrt-2.4G/YM520-2.4G/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 sed -i "s/ImmortalWrt-5G/YM520-5G/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
+#sed -i "s/htbsscoex="1"/htbsscoex="0"/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 
-#修改无线加密及密码
+#WiFi相关设置3
 sed -i 's/encryption=none/encryption=psk-mixed+ccmp\n            set wireless.default_radio${devidx}.key=abc5124937,\n/g' package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 
 ## golang编译环境

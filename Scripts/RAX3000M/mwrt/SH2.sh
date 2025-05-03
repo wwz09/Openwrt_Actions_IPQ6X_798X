@@ -39,7 +39,7 @@ sed -i "s/ImmortalWrt-5G/YM520-5G/g" package/mtk/applications/mtwifi-cfg/files/m
 #sed -i "s/htbsscoex="1"/htbsscoex="0"/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 
 #WiFi相关设置3
-sed -i 's/encryption=none/encryption=psk-mixed+ccmp\n            set wireless.default_radio${devidx}.key=abc5124937,\n/g' package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
+sed -i 's/encryption=none/encryption=psk2+ccmp\n            set wireless.default_radio${devidx}.key=abc5124937,\n/g' package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 
 ## golang编译环境
 rm -rf feeds/packages/lang/golang

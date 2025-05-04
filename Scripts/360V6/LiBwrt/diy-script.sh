@@ -62,6 +62,7 @@ git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-a
 git_sparse_clone main https://github.com/Lienol/openwrt-package luci-app-filebrowser luci-app-ssr-mudb-server
 git_sparse_clone openwrt-18.06 https://github.com/immortalwrt/luci applications/luci-app-eqos 
 git_sparse_clone IMM https://github.com/wwz09/IPQ_package luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl luci-app-timecontrol luci-app-socat luci-app-wolplus
+git_sparse_clone mzwrt_package https://github.com/wwz09/IPQ_package luci-theme-argon luci-app-argon-config luci-app-quickstart quickstart ucl luci-app-ddnsto ddnsto luci-app-vlmcsd 
 # git_sparse_clone master https://github.com/syb999/openwrt-19.07.1 package/network/services/msd_lite
 
 # 科学上网插件
@@ -73,10 +74,10 @@ git_sparse_clone IMM https://github.com/wwz09/IPQ_package luci-app-control-timew
 
 # Themes
 git clone --depth=1 -b 18.06 https://github.com/kiddin9/luci-theme-edge package/luci-theme-edge
-git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
-git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
-git clone --depth=1 https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom package/luci-theme-infinityfreedom
-git_sparse_clone main https://github.com/haiibo/packages luci-theme-atmaterial luci-theme-opentomcat luci-theme-netgear
+# git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
+# git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
+# git clone --depth=1 https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom package/luci-theme-infinityfreedom
+# git_sparse_clone main https://github.com/haiibo/packages luci-theme-atmaterial luci-theme-opentomcat luci-theme-netgear
 
 # 更改 Argon 主题背景
 # cp -f $GITHUB_WORKSPACE/images/bg1.jpg package/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg

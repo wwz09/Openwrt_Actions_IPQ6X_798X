@@ -144,11 +144,16 @@ jobs:
       if: steps.compile.outputs.status == 'success'
       run: |
         cd $OPENWRT_PATH/bin/targets/*/*
-        cat sha256sums
+        rm -rf sha256sums
+        rm -rf profiles.json
         cp $OPENWRT_PATH/.config build.config
+        mv config.buildinfo Qihoo360V6.buildinfo
+        rm -rf libwrt-qualcommax-ipq60xx.manifest
+        mv libwrt-qualcommax-ipq60xx-qihoo_360v6-squashfs-factory.ubi IMM-${{ env.FIRMWARE_TAG }}-factory.ubi
+        mv libwrt-qualcommax-ipq60xx-qihoo_360v6-squashfs-sysupgrade.bin IMM-${{ env.FIRMWARE_TAG }}-sysupgrade.bin
         mv -f $OPENWRT_PATH/bin/packages/*/*/*.ipk packages
         tar -zcf Packages.tar.gz packages
-        rm -rf packages feeds.buildinfo version.buildinfo
+        rm -rf packages feeds.buildinfo version.buildinfo config.buildinfo
         echo "FIRMWARE_PATH=$PWD" >> $GITHUB_ENV
 
     - name: Upload Firmware To Artifact(将固件上传到Artifact)

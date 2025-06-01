@@ -13,7 +13,7 @@ on:
 env:
   REPO_URL: https://github.com/LiBwrt/openwrt-6.x.git
   REPO_BRANCH: kernel-6.12
-  CONFIG_FILE: Config/ipq60xx.config
+  CONFIG_FILE: Config/ipq60xx-6.12-wifi.config
   DIY_SCRIPT: Scripts/360V6/LiBwrt/diy-script.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
